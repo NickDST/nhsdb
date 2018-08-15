@@ -22,7 +22,7 @@
 			<section id="banner">
 				<div class="inner">
 					<header>
-						<h1>NHS Website, idk change the name nick</h1>
+						<h1>NHS Database</h1>
 					</header>
 
 					<div class="flex ">

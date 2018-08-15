@@ -49,7 +49,7 @@ while ($student = $result->fetch_assoc()): ?>
 	<!--Where the student activates the pending request, an extra verification step-->
 	<a href="activatepending.php">Pending Requests</a>
 	<br>
-	<a href="removeself.php">Remove myself from a project</a>
+	<a href="removeself.php">Remove myself from a project/tutor</a>
 	<br>
 	<!--heads back-->
 	<a href="index.php">back</a>
@@ -91,7 +91,7 @@ while ($student = $result->fetch_assoc()): ?>
 
 				<?php
 				/*Projects where status = ongoing*/
-				$studentsql = "SELECT project_list.*, students_in_projects.*, students.* FROM project_list, students_in_projects, students WHERE students.studentid = students_in_projects.studentid AND students_in_projects.projectid = project_list.projectid AND students.studentid = '$id' AND project_list.status = 'ongoing'";
+				$studentsql = "SELECT project_list.*, students_in_projects.*, students.* FROM project_list, students_in_projects, students WHERE students.studentid = students_in_projects.studentid AND students_in_projects.projectid = project_list.projectid AND students.studentid = '$id' AND datetime_end > NOW()";
 				$resultsql = mysqli_query( $connection, $studentsql );
 
 				$resultCheck = mysqli_num_rows($resultsql);

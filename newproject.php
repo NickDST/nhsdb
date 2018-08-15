@@ -45,7 +45,7 @@ if(isset($_POST) & !empty($_POST)){
 	}
 
 
-	$sql = "INSERT INTO project_list (project_name, student_rep, teacher_name, teacher_contact, datetime_start, datetime_end, status, affiliated_group, entered_by, project_description) VALUES ('$project_name', '$student_rep', '$teacher_name', '$teacher_contact' , '$datetime_start' , '$datetime_end', '$status', '$affiliated_group', '$id', '$project_description');";
+	$sql = "INSERT INTO project_list (project_name, student_rep, teacher_name, teacher_contact, datetime_start, datetime_end, status, affiliated_group, entered_by, project_description, type) VALUES ('$project_name', '$student_rep', '$teacher_name', '$teacher_contact' , '$datetime_start' , '$datetime_end', '$status', '$affiliated_group', '$id', '$project_description', 'project');";
 
 	echo $sql;
 

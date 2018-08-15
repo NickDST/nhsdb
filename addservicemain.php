@@ -38,7 +38,7 @@ if (isset($_SESSION['studentid'])) {
 	<div class = "article-container">
 		<hr>
 		<?php
-		$sql = "SELECT * FROM project_list";
+		$sql = "SELECT * FROM project_list WHERE type != 'tutor'";
 		$result = mysqli_query($connection, $sql);
 		$queryResults = mysqli_num_rows($result);
 		if ($queryResults > 0) {

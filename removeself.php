@@ -32,7 +32,7 @@ if (isset($_SESSION['studentid'])) {
 	<div class = "article-container">
 		
 		<?php
-			$search = mysqli_real_escape_string($connection, $_POST['search']);
+			//$search = mysqli_real_escape_string($connection, $_POST['search']);
 			$sql = "SELECT project_list.*, students_in_projects.*, students.* FROM project_list, students_in_projects, students WHERE students.studentid = students_in_projects.studentid AND students_in_projects.projectid = project_list.projectid AND students.studentid = '$id'";
 			
 			$result = mysqli_query($connection, $sql);

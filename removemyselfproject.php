@@ -53,6 +53,8 @@ if (isset($_SESSION['studentid'])) {
 				    <p> I am the ".$row['role']."</p>
 				</div>
 				<hr>";
+				
+				$type = $row['type'];
 			}
 			
 			
@@ -83,13 +85,30 @@ if(isset($_POST) & !empty($_POST)){
 		} else {
 		
 			echo "Entry failed to be removed";
-		}
-
+		}	
 		
-	}
+		
+		if($type == 'tutor'){
+	$confirm = mysqli_real_escape_string($connection, $_POST["confirm"]);
+	
+		
+		$sql = "DELETE FROM project_list WHERE projectid = '$projectid'";
+		
+		$result = mysqli_query($connection, $sql);
+		if ($result) {
+			echo "everything successfully removed";
 
+
+		} else {
+		
+			echo "everything failed to be removed";
+		}	
 }
 		
+	}
+}
+		
+
 ?>
 		
 		
