@@ -15,6 +15,8 @@ if (isset($_SESSION['studentid'])) {
 	echo "nothing yet";
 }
 
+
+include 'emailheader.php';
 ?>
 
 
@@ -128,8 +130,6 @@ if(isset($_POST) & !empty($_POST)){
 		
 		
 		
-	
-		
 		$sql2 = "DELETE FROM request WHERE studentid = '$id' AND requestid = '$requestid'";
 		
 		$result2 = mysqli_query($connection, $sql2);
@@ -142,11 +142,80 @@ if(isset($_POST) & !empty($_POST)){
 			echo "Entry failed to be removed";
 		}
 
+			
+			
+	//querying to look for the student email		
+	$sql3 = "SELECT * FROM students WHERE studentid = '$id'";
+			$resultsql3 = mysqli_query( $connection, $sql3 );
+			$resultCheck3 = mysqli_num_rows($resultsql3);
+			
+				if ($resultCheck3 > 0) {
+					
+					while ( $row = $resultsql3->fetch_assoc() ):
+					
+					$studentcontact = $row['contact'];
+					$studentname = $row['name'];
+
+				
+					 endwhile; 
+				} else {
+					echo "Student has no email";
+				}
+				
+							
+
+			
+			
+$to = $vpemail;
+$subject = "EMAIL TO VP";
+$message = "<h1> A new Request has been submitted </h1> <p> Requestee name: '$requestee' <br> They are requesting for the time starting at '$datetime_start' <p>";
+$headers = "from: NHS Database Organiser <sender@NHS.com>";
+$headers = "Content-type: text/html\r\n";
+mail($to, $subject, $message, $headers,"-f Nick@cissnhs.com");
+echo "<br>email to Project Manager sent";
+	
+		
+			
+			
+$to = $studentcontact;
+$subject = "EMAIL TO STUDENT CONTACT";
+$message = "<h1> You have confirmed the tutor request! Here is an email of the info </h1> <p> Requestee name: $requestee <br> They are requesting for the time starting at $datetime_start to $datetime_end<p> <h3>Log into the NHS database to verify this request</h3>";
+$headers = "from: NHS Database Organiser <sender@NHS.com>";
+$headers = "Content-type: text/html\r\n";
+mail($to, $subject, $message, $headers,"-f Nick@cissnhs.com");
+echo "<br>email to student tutor sent";
+			
+
+			
+$to = $requestee_email;
+$subject = "EMAIL TO REQUESTEE";
+$message = "<h1> Your Request has been received! </h1> <p> tutor name: $studentname <br> You will be starting at for the time starting at $datetime_start to $datetime_end<p> ";
+$headers = "from: NHS Database Organiser <sender@NHS.com>";
+$headers = "Content-type: text/html\r\n";
+mail($to, $subject, $message, $headers,"-f Nick@cissnhs.com");
+echo "<br>email to requestee  sent";			
+			
+			
+			
+	
+$to = $chapmanemail;
+$subject = "EMAIL TO CHAPMAN";
+$message = "<h1> Email to chapman </h1> <p> $studentname has accepted and verified the tutor request to $requestee <p> Requestee name: $requestee <br> They are requesting for the time starting at $datetime_start to $datetime_end<p> <h3>Log into the NHS database to verify this request</h3>";
+$headers = "from: NHS Database Organiser <sender@NHS.com>";
+$headers = "Content-type: text/html\r\n";
+mail($to, $subject, $message, $headers,"-f Nick@cissnhs.com");
+echo "<br>email to chapman has been sent";
+			
+		} else { 
+			echo "Emails failed to send";
+				}				
+			
+			
 		
 	}
 
 }
-}
+
 ?>
 		
 		

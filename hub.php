@@ -105,6 +105,7 @@ while ($student = $result->fetch_assoc()): ?>
 					?>
 
 					<?php echo $projectinfo['project_name'];?> <br>
+					<?php echo $projectinfo['requestee'];?> <br>
 					<?php echo "Role: ".nl2br($projectinfo['role']."\r\n");?> 
 
 

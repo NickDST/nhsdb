@@ -2,6 +2,7 @@
 //index.php
 	 session_start();
 	require_once('includes/dbh.inc.php');
+	include 'emailheader.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -229,34 +230,64 @@ if(isset($_POST) & !empty($_POST)){
 			if ($result) {
 			
 			echo "updated";
+				
+				
+			
+		$sql3 = "SELECT * FROM students WHERE studentid = '$studentid'";
+			$resultsql3 = mysqli_query( $connection, $sql3 );
+			$resultCheck3 = mysqli_num_rows($resultsql3);
+			
+				if ($resultCheck3 > 0) {
+					
+					while ( $row = $resultsql3->fetch_assoc() ):
+					
+					$studentcontact = $row['contact'];
+
+				
+					 endwhile; 
+				} else {
+					echo "Student has no email";
+				}
+				
+				
+				
+				
 			
 			
 					
-//Automated Email test. The email variables are in the header.php	
-$vpemail = 'nicholas2019108@concordiashanghai.org';
+//Automated Email Test. The email variables are in the emailheader.php	
+
 $to = $vpemail;
-
 $subject = "A Project Request has been submitted!!";
-
 $message = "<h1> A new Request has been submitted </h1> <p> Requestee name: '$requestee' <br> They are requesting for the time starting at '$datetime_start' <p>";
-
-$headers = "From: NHS Database Organiser <sender@NHS.com>";
-
+$headers = "from: NHS Database Organiser <sender@NHS.com>";
 $headers = "Content-type: text/html\r\n";
-
-mail($to, $subject, $message, $headers,"-f Nick");
-
-echo "mailing test";
+mail($to, $subject, $message, $headers,"-f Nick@cissnhs.com");
+echo "email to Project Manager sent";
+			
+		} else { 
+			echo "Request to Project Manager failed to send";
+				}
+		
 			
 			
-
-		} else { echo "Request failed to send";}
+$to = $studentcontact;
+$subject = "";
+$message = "<h1> Someone has requested for you to tutor them in $subject </h1> <p> Requestee name: $requestee <br> They are requesting for the time starting at $datetime_start to $datetime_end<p> <h3>Log into the NHS database to verify this request</h3>";
+$headers = "from: NHS Database Organiser <sender@NHS.com>";
+$headers = "Content-type: text/html\r\n";
+mail($to, $subject, $message, $headers,"-f Nick@cissnhs.com");
+echo "email to student tutor sent";
+			
+		} else { 
+			echo "Request failed to send";
+				}			
 	
 	
 } 
 	
 }
-}
+
 ?>
 
 	
