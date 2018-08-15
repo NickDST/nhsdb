@@ -25,7 +25,7 @@
 						<h1>NHS Database</h1>
 					</header>
 
-					<div class="flex ">
+					<div class="flex" >
 
 						<div>
 							<a href="requestcal2.php"><h3>NHS Calendar</h3></a>

@@ -19,7 +19,7 @@ foreach($result as $row)
  $data[] = array(
   'id'   => $row["id"],
 	 //taking out the titles
-  'title'   => $row["title"],
+  'title'   => $row["studentid"],
   'start'   => $row["datetime_start"],
   'end'   => $row["datetime_end"]
  );

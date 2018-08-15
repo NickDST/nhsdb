@@ -13,7 +13,7 @@ $connect = new PDO('mysql:host=localhost;dbname=nhsdb', 'root', 'sql2019');
 
 $data = array();
 
-$query = "SELECT available_times.*, students_in_subjects.* FROM available_times, students_in_subjects WHERE available_times.studentid = students_in_subjects.studentid AND students_in_subjects.subject = 'biology'";
+$query = "SELECT available_times.*, students_in_subjects.* FROM available_times, students_in_subjects WHERE available_times.studentid = students_in_subjects.studentid AND students_in_subjects.subject = 'biology' AND available_times.hold = 'free'";
 
 $statement = $connect->prepare($query);
 
@@ -26,7 +26,7 @@ foreach($result as $row)
  $data[] = array(
   'id'   => $row["id"],
 	 //taking out the titles
-  'title'   => $row["title"],
+  'title'   => $row["x"],
   'start'   => $row["datetime_start"],
   'end'   => $row["datetime_end"]
  );

@@ -219,8 +219,19 @@ if(isset($_POST) & !empty($_POST)){
 
 		$result = mysqli_query($connection, $sql);
 		if ($result) {
+			
+			
+			
 			echo "Request successfully sent!";
 			
+			$sql2 = "UPDATE available_times SET hold = 'hold' WHERE id = '$id'";
+			$result2 = mysqli_query($connection, $sql2);
+			if ($result) {
+			
+			echo "updated";
+			
+			
+					
 //Automated Email test. The email variables are in the header.php	
 $vpemail = 'nicholas2019108@concordiashanghai.org';
 $to = $vpemail;
@@ -233,15 +244,18 @@ $headers = "From: NHS Database Organiser <sender@NHS.com>";
 
 $headers = "Content-type: text/html\r\n";
 
-mail($to, $subject, $message, $headers);
+mail($to, $subject, $message, $headers,"-f Nick");
 
 echo "mailing test";
+			
+			
 
 		} else { echo "Request failed to send";}
 	
 	
 } 
 	
+}
 }
 ?>
 
