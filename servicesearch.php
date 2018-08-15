@@ -14,6 +14,7 @@ if (isset($_SESSION['studentid'])) {
 } else {
 	echo "nothing yet";
 }
+//yoyos are cool
 
 ?>
 
