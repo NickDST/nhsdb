@@ -13,6 +13,7 @@
 					<a href="index.html" class="logo"><strong>Projection</strong> by TEMPLATED</a>
 					<nav id="nav">
 						<a href="login.php">Admin Login</a>
+						<a href ="register.php"> Register</a>
 					</nav>
 					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 				</div>
@@ -43,11 +44,7 @@
 
 					</div>
 
-					<footer>
-						<a href="register.php" class="button">Register</a>
-						<p></p>
-						<p>No account? Register here!</p>
-					</footer>
+					
 				</div>
 			</section>
 
@@ -64,4 +61,3 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
-	</body>
