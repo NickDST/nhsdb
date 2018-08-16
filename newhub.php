@@ -1,6 +1,8 @@
 <?php
 
 session_start();
+require_once('includes/dbh.inc.php');
+
 if (!isset($_SESSION['studentid'])) {
 	header('Location: login.php');
   exit;
@@ -13,8 +15,6 @@ if (isset($_SESSION['studentid'])) {
 } else {
 	echo "nothing yet";
 }
-
-require_once('includes/dbh.inc.php');
 $sql = "SELECT * FROM students WHERE studentid = '$id'";
 echo $id;
 $result = mysqli_query($connection, $sql);
