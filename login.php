@@ -27,10 +27,7 @@
 		
 	}
 				
-if (isset($_SESSION['studentid'])) {
-	echo "logged in as ".$_SESSION['studentid'];
-}			
-	
+
  ?>
 
 <!doctype html>
@@ -39,32 +36,65 @@ if (isset($_SESSION['studentid'])) {
 <meta charset="UTF-8">
 <title>Login</title>
 </head>
+<head>
+  <meta charset="UTF-8">
+  <title>Login </title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
+  <link rel="stylesheet" href="css/loginstyle.css">
+	
+	
+	
+	
 <body>
 	
-	  <div class="form">
-    <form class="login-form" method = "POST">
-      <input type="text" name="username" class="form-control" placeholder="Username" required/>
-      <input type="password" name="password" id="input Password" class= "form-control" placeholder = "password" required/>
-	  <input type="text" name="studentid" id="" class= "form-control" placeholder = "student id" required/>
-      <button>login</button>
-      <p class="message">Not registered? <a href="register.php">Create an account</a></p>
 	
-    </form>
-		<br>
-		<a href="logout.php"><button>logout</button></a>
+  
+	  <div class="login-container">
+  <section class="login" id="login">
+    
 		
- 	 </div>
+		<?php
+		if (isset($_SESSION['studentid'])) {?>
+	  
+	  <header style = "padding-bottom:30px ;"> <br><?php
+
+	echo "Currently Logged in as ".$_SESSION['studentid'];
+	echo '<script>window.location.href = "hub.php";</script>';			
+}	else { 	?>
+		<header>	
+	
+      <h2>NHS DB</h2>
+      <h4>Login</h4>
+		
+	<?php }?>
+		
+    </header>
+	 
+    <form class="login-form" action="#" method="post">
+  <input type="text" name="username" class="login-input" placeholder="Username" required/>
+      <input type="password" name="password" id="input Password" class= "login-input" placeholder = "password" required/>
+	  <input type="text" name="studentid" id="" class= "login-input" placeholder = "student id" required/>
+      <button class = "login-button">login</button>
+      </div>
+    </form>
+  </section>
+  <p class="message">Not registered? <a href="register.php">Create an account</a></p>
+</div>
+<br>
+ <a href="logout.php"><button class = "login-button">logout</button></a> 
+<a href="index.php"><button class = "login-button">Back</button></a> 
 	<br>
-	<a href="hub.php">hub</a>	
-	<a href="test.php">test</a>
-	<a href="index.php">back</a>	 
+
 	 
 <?php 
   
   ?>
 </body>
-	
+	    <script  src="js/loginindex.js"></script>
 	
 	
 	

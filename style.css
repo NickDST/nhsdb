@@ -1,5 +1,11 @@
 /* CSS Document */
-
 body {
-	background-color:#BFBFBF;
+  margin: 0;
+  padding: 0;
+  background-color:grey;
+}
+ 
+.navbar {
+    position: relative;
+  
 }
