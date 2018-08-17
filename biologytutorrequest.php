@@ -14,15 +14,7 @@
 
 if(!isset($_SESSION['tutortime'])) {
 
-	
-	
-	
-	if(isset($_GET['message'])){
-		echo "Your project has been sent in! Thank you!";
-		
-	} else {
-		echo "   Please choose a date <br>";
-	}
+	echo "<br>Please choose a date <br>";
 	
 }else {
 	 
@@ -34,11 +26,6 @@ if (isset($_SESSION['tutortime'])) {
 } else {
 	echo "nothing yet";
 }
-	
-
-
-	
-	
 
 
 $sql1 = "SELECT * FROM available_times WHERE id = $id ";
@@ -70,9 +57,12 @@ while ($tutor = $result->fetch_assoc()): ?>
 		$datetime_start = $tutor['datetime_start'];
 		$datetime_end = $tutor['datetime_end'];
 		$studentid = $tutor['studentid'];
+					
 	
-	?>
-					<br>
+	endwhile; ?> 
+
+				
+				<br>
 				<br>
 				<input type="text" name="subject_level" id="" class= "form-control" placeholder = "Subject Difficulty/Level, i.e. Precalculus, 9th Grade Writing"  required >
 
@@ -81,11 +71,6 @@ while ($tutor = $result->fetch_assoc()): ?>
 				<button class="btn" type="submit" name = "submitbtn">submit</button>
 
 			</form>
-	
-<?php	endwhile; ?> 
-
-				
-				
 
 <?php
 
@@ -144,9 +129,11 @@ if(isset($_POST['submitbtn']) & !empty(isset($_POST['submitbtn']))){
 					echo "Student has no email";
 				}
 				
-
 				
-
+				
+				
+			
+			
 					
 //Automated Email Test. The email variables are in the emailheader.php	
 
@@ -181,14 +168,11 @@ echo "email to student tutor sent";
 			
 		} else { 
 			echo "Request failed to send";
-				}	
+				}			
 	
-	unset($_SESSION["tutortime"]);				
-echo '<script>window.location.href = "biologytutorrequest.php?message=success";</script>';				
-			
-			
 
 
+unset($_SESSION["tutortime"]);
 	
 } 
 	

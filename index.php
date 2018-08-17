@@ -58,7 +58,7 @@
   </article>
   <article class="strips__strip">
     <div class="strip__content">
-      <h1 class="strip__title" data-name="Sit">SMS</h1>
+      <h1 class="strip__title" data-name="Sit">Writing</h1>
       <div class="strip__inner-text">
         <h2>Writing Tutoring Services</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia sapiente deserunt consectetur, quod reiciendis corrupti quo ea aliquid! Repellendus numquam quo, voluptate. Suscipit soluta omnis quibusdam facilis, illo voluptates odit!</p>
