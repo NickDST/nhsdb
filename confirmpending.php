@@ -1,24 +1,8 @@
 <?php
-
-session_start();
-require_once('includes/dbh.inc.php');
-if (!isset($_SESSION['studentid'])) {
-	header('Location: login.php');
-  exit;
-}
-
-if (isset($_SESSION['studentid'])) {
-	$id = $_SESSION['studentid'];
-	
-	?> 	 <?php	 
-} else {
-	echo "nothing yet";
-}
-
+include 'hubheader.php';
 
 include 'emailheader.php';
 ?>
-
 
 
 <!doctype html>
@@ -29,10 +13,23 @@ include 'emailheader.php';
 </head>
 
 <body>
-<a href="hub.php">Back to Hub</a>
+<!--<a href="hub.php">Back to Hub</a>-->
 	
-	<h1>Activate This Project</h1>
+<!--	<h1>Activate This Project</h1>-->
+	
+		 <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+					
+                    <div class="col-md-12">
+                        <div class="card">
 
+                            <div class="header">
+                                <h2 class="title">Activate This Tutor Request</h2>
+                                <p class="category">Enter the correct information to activate the request</p>
+                            </div>
+                            <div class = "" style= "padding-left:15px;">
+               
 	
 	<div class = "article-container">
 		<hr>
@@ -71,21 +68,29 @@ include 'emailheader.php';
 <form method="POST">
 		<label for=""> Type "I accept" in the designated box to accept this request</label>
 		<input type="text" name="confirm" id="" class= "form-control" placeholder = "Type it"  required >
-	<button type="submit" name = "accept" >Submit</button>	
+	<br>
+	<button type="submit" name = "accept" class = "btn btn-success">Submit</button>	
 </form>		
 		
 <br>
 		
 <form method="POST">
 		<label for=""> Type "reject" in the designated box to delete this request. </label>
-		<input type="text" name="confirm" id="" class= "form-control" placeholder = "Type it"  required >
+		<input type="text" name="deny" id="" class= "form-control" placeholder = "Type it"  required >
 		<br>
 		<label for="">Enter reason for rejecting</label>
+	<br>
 		<textarea name="reason" rows="5" cols="40" required></textarea>
-	<button type="submit" name = "reject" >Submit</button>	
+	<br>
+	<button type="submit" name = "reject" class = "btn btn-danger">Reject</button>	
 </form>		
-
-		
+      </div>
+                        </div>
+                    </div>
+						      </div>
+                        </div>
+                    </div>
+		 </div>
 <!--if(isset($_POST['submitbtn']) & !empty(isset($_POST['submitbtn']))){-->
 		
 <?php
@@ -228,7 +233,9 @@ echo "<br>email to chapman has been sent";
 }
 
 /* Rejection */
-if(isset($_POST['reject']) & !empty(isset($_POST['reject']))){	
+if(isset($_POST['reject']) & !empty(isset($_POST['reject']))){
+	$deny = mysqli_real_escape_string($connection, $_POST["deny"]);
+	if ($deny == "reject") {
 	
 		$reason = mysqli_real_escape_string($connection, $_POST["reason"]);
 	
@@ -257,6 +264,7 @@ $headers = 'From: NHS Organizer <NHS@database.com>' . PHP_EOL .
 mail($to, $subject, $message, $headers);
 echo "<br>email to chapman has been sent";
 			
+} 
 }
 			
 				

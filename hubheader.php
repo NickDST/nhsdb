@@ -54,7 +54,7 @@ while ($student = $result->fetch_assoc()): ?>
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="black" data-image="assets/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="blue" data-image="assets/img/sidebar-5.jpg">
 
     <!--
 
@@ -69,12 +69,26 @@ while ($student = $result->fetch_assoc()): ?>
                     NHS HUB
                 </a>
             </div>
-
+				<ul class="nav">
+                <li class="active">
+                    <a href="hub.php">
+                        <i class="pe-7s-global"></i>
+                        <p>Hub Home</p>
+                    </a>
+                </li>
+				<br>
             <ul class="nav">
                 <li class="active">
-                    <a href="myprojects.php">
-                        <i class="pe-7s-graph"></i>
-                        <p>My Projects/Service</p>
+                    <a href="activatepending.php">
+                        <i class="pe-7s-user"></i>
+                        <p>Activate Requests</p>
+                    </a>
+                </li>
+				<br>
+				<li class="active">
+                    <a href="addservicemain.php">
+                        <i class="pe-7s-comment"></i>
+                        <p>Log Service Hours</p>
                     </a>
                 </li>
 				<br>
@@ -86,16 +100,9 @@ while ($student = $result->fetch_assoc()): ?>
                 </li>
 				<br>
 				<li class="active">
-                    <a href="activatepending.php">
-                        <i class="pe-7s-users"></i>
-                        <p>Activate Requests</p>
-                    </a>
-                </li>
-				<br>
-				<li class="active">
-                    <a href="addservicemain.php">
-                        <i class="pe-7s-users"></i>
-                        <p>Add Service Hours</p>
+                    <a href="myprojects.php">
+                        <i class="pe-7s-graph"></i>
+                        <p>My Projects</p>
                     </a>
                 </li>
 

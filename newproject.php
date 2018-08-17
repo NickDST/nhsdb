@@ -1,21 +1,5 @@
 <?php
-
-session_start();
-require_once('includes/dbh.inc.php');
-if (!isset($_SESSION['studentid'])) {
-	header('Location: login.php');
-  exit;
-}
-
-if (isset($_SESSION['studentid'])) {
-	$id = $_SESSION['studentid'];
-	
-	?> 	 <?php	 
-} else {
-	echo "nothing yet";
-}
-
-
+include 'hubheader.php';
 
 
 
@@ -83,15 +67,25 @@ if(isset($_POST) & !empty($_POST)){
 </head>
 
 <body>
+ <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+					
+                    <div class="col-md-12">
+                        <div class="card">
 
-<a href="hub.php">back to hub</a>
+                            <div class="header">
+                              <h2 class= "title">Enter the new project</h2>
+                            </div>
+                            <div class = "" style= "padding-left:15px;">
+<!--<a href="hub.php">back to hub</a>-->
 	<div class="movedown">
 	<div class="student-specify">
 	<div class="">
 		<?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert"> <?php echo $smsg; ?> </div><?php } ?>
       <?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
 		<form class="" method = "POST">
-			<h2 class= "">Enter the new project</h2>
+			
 			<br>
 
 			<label for="">Name of Project</label>
@@ -154,7 +148,12 @@ if(isset($_POST) & !empty($_POST)){
 
 
 		</form>
-
+   </div>
+                        </div>
+                    </div>
+								   </div>
+                        </div>
+                    </div>
 
 	</div>
 </div>
