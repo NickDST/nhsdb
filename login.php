@@ -15,6 +15,8 @@
 			
 			$_SESSION['studentid']=$studentid;
 			echo $_SESSION['studentid'];
+			
+			echo '<script>window.location.href = "hub.php";</script>';	
 
 	
 		} else  {

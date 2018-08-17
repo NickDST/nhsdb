@@ -1,5 +1,5 @@
 <?php
-
+/*
 session_start();
 require_once('includes/dbh.inc.php');
 if (!isset($_SESSION['studentid'])) {
@@ -15,10 +15,14 @@ if (isset($_SESSION['studentid'])) {
 	echo "nothing yet";
 }
 
+*/
+
+include 'hubheader.php';
+
 
 
 $sql = "SELECT * FROM students WHERE studentid = '$id'";
-echo $id;
+//echo $id;
 $result = mysqli_query($connection, $sql);
 while ($student = $result->fetch_assoc()): ?>
 
@@ -32,16 +36,30 @@ while ($student = $result->fetch_assoc()): ?>
 
 <body>
 	
-	<h3>Welcome <?= $student['name'] ?> To Viewing Projects</h3>
+<!--	<h3>Welcome <?/*= $student['name'] */?> To Viewing Projects</h3>-->
 
 	<!--heads back-->
-	<a href="hub.php">back to hub</a>
+<!--	<a href="hub.php">back to hub</a>-->
 	
 	
 
 	
-	
-	<h4> Projects + Service Hours</h4>
+		 <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+					
+                    <div class="col-md-12">
+                        <div class="card">
+
+                            <div class="header">
+                                <h4 class="title">Projects + Service Hours</h4>
+                                <p class="category">These are all your past/current projects and service</p>
+                            </div>
+                            <div class = "" style= "padding-left:15px;">
+               
+
+                     
+<!--	<h4> Projects + Service Hours</h4>-->
 
 				<?php
 				/*For all previous service hours and projects*/
@@ -78,7 +96,10 @@ while ($student = $result->fetch_assoc()): ?>
 				
 				<hr>
 				
-				
+				      
+                            </div>
+                        </div>
+                    </div>
 		
 	
 	

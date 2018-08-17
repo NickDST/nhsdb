@@ -27,7 +27,7 @@ if (isset($_SESSION['studentid'])) {
 </head>
 
 <body>
-	<form action="servicesearch.php" method = "POST">
+	<form action="addservicesearch.php" method = "POST">
 		<input type="text" name="search" placeholder="Search">
 		<button type="submit" name = "submit-search">Submit</button>
 	</form>

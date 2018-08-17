@@ -35,7 +35,7 @@ if (isset($_SESSION['studentid'])) {
 		<?php
 		if (isset($_POST['submit-search'])) {
 			$search = mysqli_real_escape_string($connection, $_POST['search']);
-			$sql = "SELECT * FROM project_list WHERE project_name LIKE '%$search%' OR requestee LIKE '%$search%' OR project_description LIKE '%$search%' OR affiliated_group LIKE '%$search%' OR datetime_start LIKE '%$search%' OR type LIKE '%$search%'";
+			$sql = "SELECT * FROM project_list WHERE project_name LIKE '%$search%' OR requestee LIKE '%$search%' OR project_description LIKE '%$search%' OR affiliated_group LIKE '%$search%' OR datetime_start LIKE '%$search%' OR type LIKE '%$search%' AND type != 'tutor'";
 			
 			$result = mysqli_query($connection, $sql);
 			$queryResult = mysqli_num_rows($result);

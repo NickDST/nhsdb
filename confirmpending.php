@@ -68,16 +68,28 @@ include 'emailheader.php';
 		?>
 		
 
-<form method="post">
-		<label for=""> Type "I accept" in the designated box</label>
+<form method="POST">
+		<label for=""> Type "I accept" in the designated box to accept this request</label>
 		<input type="text" name="confirm" id="" class= "form-control" placeholder = "Type it"  required >
-	<button type="submit">Submit</button>	
+	<button type="submit" name = "accept" >Submit</button>	
 </form>		
 		
+<br>
+		
+<form method="POST">
+		<label for=""> Type "reject" in the designated box to delete this request. </label>
+		<input type="text" name="confirm" id="" class= "form-control" placeholder = "Type it"  required >
+		<br>
+		<label for="">Enter reason for rejecting</label>
+		<textarea name="reason" rows="5" cols="40" required></textarea>
+	<button type="submit" name = "reject" >Submit</button>	
+</form>		
 
 		
+<!--if(isset($_POST['submitbtn']) & !empty(isset($_POST['submitbtn']))){-->
+		
 <?php
-if(isset($_POST) & !empty($_POST)){
+if(isset($_POST['accept']) & !empty(isset($_POST['accept']))){
 	$confirm = mysqli_real_escape_string($connection, $_POST["confirm"]);
 	if ($confirm == "I accept") {
 		
@@ -164,8 +176,7 @@ if(isset($_POST) & !empty($_POST)){
 				
 							
 
-			
-			
+		
 $to = $vpemail;
 $subject = "EMAIL TO VP";
 $message = "<h1> A new Request has been submitted </h1> <p> Requestee name: '$requestee' <br> They are requesting for the time starting at '$datetime_start' <p>";
@@ -186,7 +197,7 @@ mail($to, $subject, $message, $headers,"-f Nick@cissnhs.com");
 echo "<br>email to student tutor sent";
 			
 
-			
+/*			
 $to = $requestee_email;
 $subject = "EMAIL TO REQUESTEE";
 $message = "<h1> Your Request has been received! </h1> <p> tutor name: $studentname <br> You will be starting at for the time starting at $datetime_start to $datetime_end<p> ";
@@ -194,7 +205,7 @@ $headers = "from: NHS Database Organiser <sender@NHS.com>";
 $headers = "Content-type: text/html\r\n";
 mail($to, $subject, $message, $headers,"-f Nick@cissnhs.com");
 echo "<br>email to requestee  sent";			
-			
+*/			
 			
 			
 	
@@ -216,6 +227,44 @@ echo "<br>email to chapman has been sent";
 
 }
 
+/* Rejection */
+if(isset($_POST['reject']) & !empty(isset($_POST['reject']))){	
+	
+		$reason = mysqli_real_escape_string($connection, $_POST["reason"]);
+	
+		$sqlremove = "DELETE FROM request WHERE studentid = '$id' AND requestid = '$requestid'";
+		
+		$removeresult = mysqli_query($connection, $sqlremove);
+		if ($removeresult) {
+			echo "Entry successfully removed";
+
+
+		} else {
+		
+			echo "Entry failed to be removed";
+		}
+
+	$to = $chapmanemail;
+$subject = "EMAIL TO CHAPMAN";
+$message = "$studentname has rejected $requestee for tutoring at $datetime_start for the reason of $reason. ";
+
+$headers = 'From: NHS Organizer <NHS@database.com>' . PHP_EOL .
+    'Reply-To: NHS <NHS@database.com>' . PHP_EOL .
+    'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
+	
+mail($to, $subject, $message, $headers);
+echo "<br>email to chapman has been sent";
+			
+}
+			
+				
+	
+	
+	
+	
+	
+
+		
 ?>
 		
 		

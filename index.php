@@ -20,21 +20,22 @@
 		<link rel="shortcut icon" href="../favicon.ico">
 <!--		<link rel="stylesheet" type="text/css" href="css/normalize.css" />-->
 <!--		<link rel="stylesheet" type="text/css" href="css/demo.css" />-->
-		<link rel="stylesheet" type="text/css" href="css/component2.css" />
-		<script src="js/modernizr-2.6.2.min.js"></script>
+<!--		<link rel="stylesheet" type="text/css" href="css/component2.css" />-->
+<!--		<script src="js/modernizr-2.6.2.min.js"></script>-->
 
+	
 <script type="text/javascript">
-var _gaq = _gaq || [];
+/*var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-7243260-2']);
 _gaq.push(['_trackPageview']);
 (function() {
 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
+})(); */
 </script>
-	
-	
+
+
 	
 	
   
@@ -54,21 +55,14 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
         <p>
 <!--          <a href="https://twitter.com/ettrics" target="_blank"><i class="fa fa-twitter"></i></a>-->
         </p>
-		  <br>
-		  <br>
-		  <br>
-		  <br>
-		  <br>
-		  <br>
-		  <br>
-		  <br>
-		  <br>
-		
+
 		  
 
 		  		<!-- Start Nav Structure -->
+<!--		  
 				<button class="cn-button" id="cn-button">Menu</button>
 				<div class="cn-wrapper" id="cn-wrapper">
+					<div class = "science">
 					<ul>
 						<li><a href="#"><span></span></a></li>
 						<li><a href="#"><span>SNHS</span></a></li>
@@ -79,7 +73,8 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 						<li><a href="#"><span></span></a></li>
 					 </ul>
 				</div>
-			  
+				</div>
+			  -->
 			  
 				<!-- End of Nav Structure -->
 		  
@@ -103,7 +98,9 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia sapiente deserunt consectetur, quod reiciendis corrupti quo ea aliquid! Repellendus numquam quo, voluptate. Suscipit soluta omnis quibusdam facilis, illo voluptates odit!</p>
         <p>
           <a href="https://twitter.com/ettrics" target="_blank"><i class="fa fa-twitter"></i></a>
-        </p>
+        </p> 
+		
+		  
       </div>
     </div>
   </article>
@@ -133,7 +130,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
   </article>
   <article class="strips__strip">
     <div class="strip__content">
-      <h1 class="strip__title" data-name="Amet">X</h1>
+      <h1 class="strip__title" data-name="Amet">Social Studies</h1>
       <div class="strip__inner-text">
         <h2>Members Login</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia sapiente deserunt consectetur, quod reiciendis corrupti quo ea aliquid! Repellendus numquam quo, voluptate. Suscipit soluta omnis quibusdam facilis, illo voluptates odit!</p>
@@ -151,8 +148,8 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
   
 
     <script  src="js/index.js"></script>
-    <script src="js/polyfills.js"></script>
-	<script src="js/demo2.js"></script>
+<!--    <script src="js/polyfills.js"></script>-->
+<!--	<script src="js/demo2.js"></script>-->
 
 
 

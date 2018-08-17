@@ -39,7 +39,7 @@ if (isset($_SESSION['studentid'])) {
 		$startdate = mysqli_real_escape_string($connection, $_GET['startdate']);
 		$projectid = mysqli_real_escape_string($connection, $_GET['id']);
 		echo $projectid;
-		$sql = "SELECT * FROM project_list WHERE project_name = '$name' AND datetime_start = '$startdate'";
+		$sql = "SELECT * FROM project_list WHERE project_name = '$name' AND datetime_start = '$startdate' AND type != 'tutor'";
 		$result = mysqli_query($connection, $sql);
 		$queryResults = mysqli_num_rows($result);
 		if ($queryResults > 0) {
