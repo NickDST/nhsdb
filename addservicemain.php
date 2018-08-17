@@ -1,20 +1,6 @@
 <?php
 
-session_start();
-require_once('includes/dbh.inc.php');
-if (!isset($_SESSION['studentid'])) {
-	header('Location: login.php');
-  exit;
-}
-
-if (isset($_SESSION['studentid'])) {
-	$id = $_SESSION['studentid'];
-	
-	?> 	 <?php	 
-} else {
-	echo "nothing yet";
-}
-
+include 'hubheader.php'
 ?>
 
 
@@ -23,17 +9,30 @@ if (isset($_SESSION['studentid'])) {
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Untitled Document</title>
+<title>Add Service</title>
 </head>
 
 <body>
+	
+	 <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+					
+                    <div class="col-md-12">
+                        <div class="card">
+
+                            <div class="header">
+                                <h2 class="title">All Projects</h2>
+                                <h3 class="category">Search for the project you want to add yourself to</h3>
+                            </div>
+							<br>
+                            <div class = "" style= "padding-left:15px;">
 	<form action="addservicesearch.php" method = "POST">
 		<input type="text" name="search" placeholder="Search">
 		<button type="submit" name = "submit-search">Submit</button>
 	</form>
 	
-	<h1>All Projects</h1>
-	<h2>Search for the project you want to add yourself to</h2>
+
 	
 	<div class = "article-container">
 		<hr>
@@ -55,7 +54,11 @@ if (isset($_SESSION['studentid'])) {
 		}
 		
 		?>
-
+     </div>
+                        </div>
+                    </div>     </div>
+                        </div>
+                    </div>
 	</div>
 	
 

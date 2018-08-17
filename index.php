@@ -51,7 +51,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 <!--		    <p>We offer</p>-->
         <h2>Science Tutoring Services</h2>
 <!--        <p>We offer tutoring science fields.  </p>-->
-<!--		  <a href="biologytutorrequest.php">Biology</a>-->
+		  <a href="biologytutorrequest.php">Biology</a>
         <p>
 <!--          <a href="https://twitter.com/ettrics" target="_blank"><i class="fa fa-twitter"></i></a>-->
         </p>

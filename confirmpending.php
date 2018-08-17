@@ -244,6 +244,8 @@ if(isset($_POST['reject']) & !empty(isset($_POST['reject']))){
 			echo "Entry failed to be removed";
 		}
 
+	
+	
 	$to = $chapmanemail;
 $subject = "EMAIL TO CHAPMAN";
 $message = "$studentname has rejected $requestee for tutoring at $datetime_start for the reason of $reason. ";

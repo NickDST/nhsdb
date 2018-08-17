@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 if (!isset($_SESSION['studentid'])) {
@@ -6,6 +7,25 @@ if (!isset($_SESSION['studentid'])) {
   exit;
 }
 
+if (isset($_SESSION['studentid'])) {
+	$id = $_SESSION['studentid'];
+	
+	?> 	 <?php	 
+} else {
+	echo "nothing yet";
+}
+
+require_once('includes/dbh.inc.php');
+
+$sql = "SELECT * FROM students WHERE studentid = '$id'";
+//echo $sql;
+$result = mysqli_query($connection, $sql);
+while ($student = $result->fetch_assoc()): 
+
+$studentname = $student['name'];
+
+endwhile;
+//include 'hubheader.php'
 ?>
 
 <!DOCTYPE html>
@@ -17,8 +37,11 @@ if (!isset($_SESSION['studentid'])) {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <link rel="stylesheet" href="style.css"> 
+	 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
   <script>
+	
 
   $(document).ready(function() {
    var calendar = $('#calendar').fullCalendar({
@@ -113,12 +136,34 @@ if (!isset($_SESSION['studentid'])) {
  </head>
  <body>
   <br />
-  <h2 align="center"><a href="#"><?php
-	echo $_SESSION['studentid'];
+  <h2 align="center"><a href="hub.php"><?php
+	echo $studentname;
 	?></a></h2>
   <br />
-  <div class="container">
-   <div id="calendar"></div>
-  </div>
+
+		 
+ <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+					
+                    <div class="col-md-12">
+                        <div class="card">
+
+                            <div class="header" style = "margin-left:20px; margin-top:10px;">
+                                <h2 class="title">Availability</h2>
+                                <p class="category">Click a cell to set a time where you are available</p>
+                            </div>
+                       <div class = "" style= "padding-left:15px;">
+  						<div class="container">
+   						<div id="calendar"></div>
+	  
+  						</div>
+						</div> 
+					</div>
+                </div>
+          </div>
+		</div>
+   </div>
+				
  </body>
 </html>

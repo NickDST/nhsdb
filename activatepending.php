@@ -1,20 +1,6 @@
 <?php
 
-session_start();
-require_once('includes/dbh.inc.php');
-if (!isset($_SESSION['studentid'])) {
-	header('Location: login.php');
-  exit;
-}
-
-if (isset($_SESSION['studentid'])) {
-	$id = $_SESSION['studentid'];
-	
-	?> 	 <?php	 
-} else {
-	echo "nothing yet";
-}
-
+include 'hubheader.php';
 ?>
 
 
@@ -27,8 +13,23 @@ if (isset($_SESSION['studentid'])) {
 </head>
 
 <body>
-	<h1>Activate Pending</h1>
 	
+
+	 <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+					
+                    <div class="col-md-12">
+                        <div class="card">
+
+                            <div class="header">
+                                <h2 class="title">Activate Pending</h2>
+								<br>
+                                <p class="category">This is where your pending tutor requests will be shown</p>
+								<br>
+                            </div>
+                            <div class = "" style= "padding-left:15px;">
+               
 	<div class = "article-container">
 		
 		<?php
@@ -51,7 +52,7 @@ if (isset($_SESSION['studentid'])) {
 					<p>".$row['datetime_end']."</p>
 					</div>
 					<a href = 'confirmpending.php?name=".$row['requestee']."&startdate=".$row['datetime_start']."&id=".$row['requestid']."'>More Info
-					<a>
+					</a>
 					<hr>";
 					
 				}
@@ -62,10 +63,14 @@ if (isset($_SESSION['studentid'])) {
 		
 		
 		?>
-		
+		        </div>
+                        </div>
+                    </div>
 	
 	</div>
-	
+	</div>
+				</div>
+		 </div>
 	
 </body>
 </html>

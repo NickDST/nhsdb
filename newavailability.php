@@ -11,10 +11,11 @@ if (isset($_SESSION['studentid'])) {
 	
 	?> 	 <?php	 
 } else {
-	//echo "nothing yet";
+	echo "nothing yet";
 }
 
 require_once('includes/dbh.inc.php');
+
 $sql = "SELECT * FROM students WHERE studentid = '$id'";
 //echo $id;
 $result = mysqli_query($connection, $sql);
@@ -45,7 +46,7 @@ while ($student = $result->fetch_assoc()): ?>
     <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
 
     <!--     Fonts and icons     -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<!--    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">-->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
     <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
 
@@ -166,8 +167,12 @@ while ($student = $result->fetch_assoc()): ?>
             </div>
         </nav>
 
-
-        <div class="content">
+		<?php endwhile ?>
+		
+		
+		
+<!--		
+		 <div class="content">
             <div class="container-fluid">
                 <div class="row">
 					
@@ -175,167 +180,32 @@ while ($student = $result->fetch_assoc()): ?>
                         <div class="card">
 
                             <div class="header">
-                                <h4 class="title">Pending Requests</h4>
-                                <p class="category">Please View Your Active Requests</p>
+                                <h4 class="title">Title</h4>
+                                <p class="category">subtitle</p>
                             </div>
                             <div class = "" style= "padding-left:15px;">
-                               	<?php
-				/*Pending requests*/
-				$pendingsql = "SELECT * FROM request WHERE datetime_start > NOW() AND studentid = '$id' ORDER BY datetime_start";
-				$Presultsql = mysqli_query( $connection, $pendingsql );
-
-				$pendingCheck = mysqli_num_rows($Presultsql);
-		
-			
-				if ($pendingCheck > 0) {
-					
-					while ( $pendingrequest = $Presultsql->fetch_assoc() ):
-					
-					?>
-					
-
-					<?php echo "Name: ".$pendingrequest['requestee'];?> <br>
-								
-					<?php echo $pendingrequest['contact'];?> hours - 
-					<?php echo nl2br($pendingrequest['subject']."\r\n");?> 
-					<hr>
-
-
-
-					<!-- End While -->
-					<?php endwhile; 
-				} else {
-					echo "No Pending Requests";
-				}
-				?>
-				
+               
 
                            
                             </div>
                         </div>
                     </div>
-<!--					New section-->
-					
-					<div class="col-md-12">
-                        <div class="card">
-
-                            <div class="header">
-                                <h4 class="title">Ongoing Projects</h4>
-                                <p class="category">Currently Active are displayed</p>
-                            </div>
-                            <div class = "" style= "padding-left:15px;">
-                               		<?php
-				/*Projects where status = ongoing*/
-				$studentsql = "SELECT project_list.*, students_in_projects.*, students.* FROM project_list, students_in_projects, students WHERE students.studentid = students_in_projects.studentid AND students_in_projects.projectid = project_list.projectid AND students.studentid = '$id' AND datetime_end > NOW()";
-				$resultsql = mysqli_query( $connection, $studentsql );
-
-				$resultCheck = mysqli_num_rows($resultsql);
+-->
 		
-			
-				if ($resultCheck > 0) {
-					
-					while ( $projectinfo = $resultsql->fetch_assoc() ):
-
-
-					?>
-
-					<?php echo $projectinfo['project_name'];?> <br>
-					<?php echo $projectinfo['requestee'];?> <br>
-					<?php echo "Role: ".nl2br($projectinfo['role']."\r\n");?> 
-					<hr>
-
-
-
-					<!-- End While for project ID -->
-					<?php endwhile; 
-				} else {
-					echo "No Projects Entered Yet";
-				}
-				?>
-				
-				
-
-                           
-                            </div>
-                        </div>
-                    </div>
-
-<!--New Section-->
-					 <div class="col-md-12">
-                        <div class="card">
-
-                            <div class="header">
-                                <h4 class="title">Finished Projects Here</h4>
-                                <p class="category">Service Hours have been accounted for</p>
-                            </div>
-                            <div class = "" style= "padding-left:15px;">
-                            <?php
-				/*For all previous service hours and projects*/
-				$studentsql = "SELECT project_list.*, students_in_projects.*, students.* FROM project_list, students_in_projects, students WHERE students.studentid = students_in_projects.studentid AND students_in_projects.projectid = project_list.projectid AND students.studentid = '$id'";
-				$resultsql = mysqli_query( $connection, $studentsql );
-
-				$resultCheck = mysqli_num_rows($resultsql);
 		
-			
-				if ($resultCheck > 0) {
-					
-					while ( $projectinfo = $resultsql->fetch_assoc() ):
-
-
-					?>
-
-					<?php echo $projectinfo['project_name'];?> <br>
-					<?php echo $projectinfo['service_hours'];?> hours - 
-					<?php echo nl2br($projectinfo['role']."\r\n");?> 
-	<br>
-
-
-
-					<!-- End While for project ID -->
-					<?php endwhile; 
-				} else {
-					echo "No Projects Entered Yet";
-				}
-				?>
-				
-				<hr>
-				
-				
-
-                           
-                            </div>
-                        </div>
-                    </div>
-					
-                </div>
-            </div>
-        </div>
-
-
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                Home
-                            </a>
-                        </li>
-
-                    </ul>
-                </nav>
-                <p class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script> NHS DB
-                </p>
-            </div>
-        </footer>
-
-    </div>
-</div>
-
-<?php endwhile ?>
-</body>
-
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+		
+		
     <!--   Core JS Files   -->
     <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
 	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
@@ -347,13 +217,154 @@ while ($student = $result->fetch_assoc()): ?>
     <script src="assets/js/bootstrap-notify.js"></script>
 
     <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-	<script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+<!--	<script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>-->
 
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-	<script src="assets/js/demo.js"></script>
+<!--	<script src="assets/js/demo.js"></script>-->
+		
+		
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Availability Times </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+	 
+	 
+  <script>
 
+	  
 
+  $(document).ready(function() {
+   var calendar = $('#calendar').fullCalendar({
+    editable:true,
+    header:{
+     left:'prev,next today',
+     center:'title',
+     right:'month,agendaWeek,agendaDay'
+    },
+    events: 'load.php',
+    //select a particular cell, dragging events and stuff
+    selectable:true,
+    selectHelper:true,
+    select: function(start, end, allDay)
+    {
+     var title = prompt("Enter Event Title");
+     if(title)
+     {
+      var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+      var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+      $.ajax({
+       url:"insert.php",
+       type:"POST",
+       data:{title:title, start:start, end:end},
+       success:function()
+       {
+        calendar.fullCalendar('refetchEvents');
+        alert("Added Successfully");
+       }
+      })
+     }
+    },
+    //You are allowed to edi the table....
+    editable:true,
+    eventResize:function(event)
+    {
+     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+     var title = event.title;
+     var id = event.id;
+     $.ajax({
+      url:"update.php",
+      type:"POST",
+      data:{title:title, start:start, end:end, id:id},
+      success:function(){
+       calendar.fullCalendar('refetchEvents');
+       alert('Event Update');
+      }
+     })
+    },
+
+    eventDrop:function(event)
+    {
+     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+     var title = event.title;
+     var id = event.id;
+     $.ajax({
+      url:"update.php",
+      type:"POST",
+      data:{title:title, start:start, end:end, id:id},
+      success:function()
+      {
+       calendar.fullCalendar('refetchEvents');
+       alert("Event Updated");
+      }
+     });
+    },
+
+    eventClick:function(event)
+    {
+     if(confirm("Are you sure you want to remove it?"))
+     {
+      var id = event.id;
+      $.ajax({
+       url:"delete.php",
+       type:"POST",
+       data:{id:id},
+       success:function()
+       {
+        calendar.fullCalendar('refetchEvents');
+        alert("Event Removed");
+       }
+      })
+     }
+    },
+
+   });
+  });
+
+	  
+  </script>
+ </head>
+ <body>
+
+<!--	 
+  <h2 align="center"><a href="#"><?php
+	echo $_SESSION['studentid'];
+	?></a></h2>
+-->
+
+	 
+ <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+					
+                    <div class="col-md-12">
+                        <div class="card">
+
+                            <div class="header">
+                                <h4 class="title">Title</h4>
+                                <p class="category">subtitle</p>
+                            </div>
+                       <div class = "" style= "padding-left:15px;">
+  						<div class="container">
+   						<div id="calendar"></div>
+	  
+  						</div>
+						</div> 
+					</div>
+                </div>
+          </div>
+		</div>
+   </div>
+				
+ </body>
 </html>

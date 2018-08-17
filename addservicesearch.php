@@ -1,20 +1,6 @@
 <?php
 
-session_start();
-require_once('includes/dbh.inc.php');
-if (!isset($_SESSION['studentid'])) {
-	header('Location: login.php');
-  exit;
-}
-
-if (isset($_SESSION['studentid'])) {
-	$id = $_SESSION['studentid'];
-	
-	?> 	 <?php	 
-} else {
-	echo "nothing yet";
-}
-//yoyos are cool
+include 'hubheader.php';
 
 ?>
 
@@ -30,15 +16,37 @@ if (isset($_SESSION['studentid'])) {
 <body>
 	<h1>Search Page</h1>
 	
+		 <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+					
+                    <div class="col-md-12">
+                        <div class="card">
+
+                            <div class="header">
+                                <h2 class="title">All Projects</h2>
+                                <h3 class="category">Search for the project you want to add yourself to</h3>
+                            </div>
+							<br>
+                            <div class = "" style= "padding-left:15px;">
+	
 	<div class = "article-container">
+		
+		
 		
 		<?php
 		if (isset($_POST['submit-search'])) {
 			$search = mysqli_real_escape_string($connection, $_POST['search']);
-			$sql = "SELECT * FROM project_list WHERE project_name LIKE '%$search%' OR requestee LIKE '%$search%' OR project_description LIKE '%$search%' OR affiliated_group LIKE '%$search%' OR datetime_start LIKE '%$search%' OR type LIKE '%$search%' AND type != 'tutor'";
+			$sql = "SELECT * FROM project_list WHERE type != 'tutor' AND (project_name LIKE '%$search%' OR requestee LIKE '%$search%' OR project_description LIKE '%$search%' OR affiliated_group LIKE '%$search%' OR datetime_start LIKE '%$search%')";
 			
 			$result = mysqli_query($connection, $sql);
 			$queryResult = mysqli_num_rows($result);
+			
+			//SELECT * FROM project_list WHERE type != 'tutor' AND (project_name LIKE '%nhs%' OR requestee LIKE '%nhs%' OR project_description LIKE '%nhs%' OR affiliated_group LIKE '%nhs%' OR datetime_start LIKE '%nhs%')
+			
+			
+			
+			
 			
 			echo "There are ".$queryResult. " results <hr>";
 			
@@ -46,14 +54,17 @@ if (isset($_SESSION['studentid'])) {
 			if ($queryResult > 0) {
 				while ($row = mysqli_fetch_assoc($result)) {
 					echo "
-					<a href = 'addmyselfproject.php?name=".$row['project_name']."&startdate=".$row['datetime_start']."&id=".$row['projectid']."'>
+				
 					<div>
 					<h3>".$row['project_name']."</h3>
 					<p>".$row['project_description']."</p>
 					<p>".$row['datetime_start']."</p>
 					</div>
-					<a>
+					<a href = 'addmyselfproject.php?name=".$row['project_name']."&startdate=".$row['datetime_start']."&id=".$row['projectid']."'>I'm also in this project</a>
 					<hr>";
+					
+				/*	<a href = 'confirmpending.php?name=".$row['requestee']."&startdate=".$row['datetime_start']."&id=".$row['requestid']."'>More Info
+					</a> */
 					
 				}
 				
@@ -66,6 +77,13 @@ if (isset($_SESSION['studentid'])) {
 		
 		
 		<h5>Don't see anything matching your search? <a href="newproject.php">add a new project</a></h5>
+		<br>
+	</div>
+	   </div>
+                        </div>
+                    </div>     </div>
+                        </div>
+                    </div>
 	</div>
 	
 	

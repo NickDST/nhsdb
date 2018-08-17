@@ -180,8 +180,8 @@ while ($student = $result->fetch_assoc()): ?>
                         <div class="card">
 
                             <div class="header">
-                                <h4 class="title">Pending Requests</h4>
-                                <p class="category">Please View Your Active Requests</p>
+                                <h4 class="title">Title</h4>
+                                <p class="category">subtitle</p>
                             </div>
                             <div class = "" style= "padding-left:15px;">
                
