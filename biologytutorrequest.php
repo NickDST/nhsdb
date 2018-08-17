@@ -13,8 +13,14 @@
 	 <?php
 
 if(!isset($_SESSION['tutortime'])) {
-
-	echo "<br>Please choose a date <br>";
+	
+	
+		if(isset($_GET['message'])){
+		echo "Your project has been sent in! Thank you!";
+		
+	} else {
+		echo "   Please choose a date <br>";
+	}
 	
 }else {
 	 
@@ -173,6 +179,8 @@ echo "email to student tutor sent";
 
 
 unset($_SESSION["tutortime"]);
+	echo '<script>window.location.href = "biologytutorrequest.php?message=success";</script>';				
+		
 	
 } 
 	
