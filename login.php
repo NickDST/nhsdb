@@ -7,7 +7,48 @@
 		$username = mysqli_real_escape_string($connection, $_POST['username']);
 		$studentid = mysqli_real_escape_string($connection, $_POST['studentid']);
 		$password = md5($_POST['password']);
+	
+	//Querying to create sessions for each of the officers/admins
+		
+		
+		$adminsql = "SELECT * FROM `login` WHERE username = '$username' AND studentid='$studentid' AND password = '$password' and admin_rights = 'yes';";
+		$adminresult = mysqli_query($connection, $adminsql);
+		$count = mysqli_num_rows($adminresult);
+		if ($count == 1) {
+			$admin_rights = 'yes';
+			
+			$_SESSION['admin_rights']=$admin_rights;
+			//echo "created admin session but u cant see this anyway";
 
+		} 
+		
+		
+		$adminsql = "SELECT * FROM `login` WHERE username = '$username' AND studentid='$studentid' AND password = '$password' and nhs_officer_rights = 'yes';";
+		$adminresult = mysqli_query($connection, $adminsql);
+		$count = mysqli_num_rows($adminresult);
+		if ($count == 1) {
+			$nhs_officer_rights = 'yes';
+			
+			$_SESSION['nhs_officer_rights']=$nhs_officer_rights;
+			//echo "created nhs session but u cant see this anyway";
+
+		} 	
+		
+		
+		$adminsql = "SELECT * FROM `login` WHERE username = '$username' AND studentid='$studentid' AND password = '$password' and snhs_officer_rights = 'yes';";
+		$adminresult = mysqli_query($connection, $adminsql);
+		$count = mysqli_num_rows($adminresult);
+		if ($count == 1) {
+			$snhs_officer_rights = 'yes';
+			
+			$_SESSION['snhs_officer_rights']=$snhs_officer_rights;
+			//echo "created snhs session but u cant see this anyway";
+
+		} 			
+		
+
+		
+		
 	$sql = "SELECT * FROM `login` WHERE username = '$username' AND studentid='$studentid' AND password = '$password';";
 		$result = mysqli_query($connection, $sql);
 		$count = mysqli_num_rows($result);

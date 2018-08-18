@@ -54,6 +54,11 @@ $color = $student['sidecolor'];
 </head>
 <body>
 
+	
+	
+	
+	
+
 <div class="wrapper">
 	
 	<?php 
@@ -82,7 +87,7 @@ $color = $student['sidecolor'];
                         <p>Hub Home</p>
                     </a>
                 </li>
-				<br>
+				
             <ul class="nav">
                 <li class="active">
                     <a href="activatepending.php">
@@ -100,15 +105,29 @@ $color = $student['sidecolor'];
 				<br>
 				<li class="active">
                     <a href="availability.php">
-                        <i class="pe-7s-network"></i>
+                        <i class="pe-7s-date"></i>
                         <p>Tutoring Availability</p>
                     </a>
                 </li>
 				<br>
 				<li class="active">
                     <a href="myprojects.php">
-                        <i class="pe-7s-graph"></i>
+                        <i class="pe-7s-rocket"></i>
                         <p>My Projects</p>
+                    </a>
+                </li>
+				<br>
+				<li class="active">
+                    <a href="myprojects.php">
+                        <i class="pe-7s-graph1"></i>
+                        <p>Look Up Project</p>
+                    </a>
+                </li>
+				<br>
+				<li class="active">
+                    <a href="myprojects.php">
+                        <i class="pe-7s-coffee"></i>
+                        <p>Personal Calendar</p>
                     </a>
                 </li>
 
@@ -146,6 +165,18 @@ $color = $student['sidecolor'];
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
+						
+								<?php
+								if (isset($_SESSION['admin_rights'])) {
+								?>
+								 <li>
+                           <a href="aboutme.php">
+                               <p>Admin</p>
+                            </a>
+                        </li>
+						<?php } ?>
+						
+						
                         <li>
                            <a href="aboutme.php">
                                <p>Account</p>
@@ -181,6 +212,27 @@ $color = $student['sidecolor'];
         </nav>
 <div style = "padding-left:30px; ">	
 <div style = "margin-left: 350px;">
+	
+		<?php
+if (isset($_SESSION['admin_rights'])) {
+echo "I have admin_rights";
+	
+} 
+
+if (isset($_SESSION['nhs_officer_rights'])) {
+echo "I have nhs officer rights";
+	
+} 
+	
+if (isset($_SESSION['snhs_officer_rights'])) {
+echo "I have snhs officer rights";
+	
+} 
+?>
+	
+	
+	
+	
 <h1>Main Hub</h1>
 </div>	
 <hr>
@@ -195,7 +247,7 @@ $color = $student['sidecolor'];
                         <div class="card">
 
                             <div class="header">
-                                <h4 class="title">Pending Requests</h4>
+                                <h4 class="title"><strong>Pending Requests</strong></h4>
                                 <p class="category">Please View Your Active Requests</p>
                             </div>
                             <div class = "" style= "padding-left:15px; padding-bottom:20px;">

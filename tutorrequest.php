@@ -46,7 +46,7 @@
 								<?php 
 								if(isset($_SESSION['subjectname'])) {						   
 	echo "<h4>Currently displaying open dates for: </h4><br><h3>".$_SESSION['subjectname']."</h3>";	
-								
+								}
 								?>
 								<br>
 								<p>Select Subject:</p>	
@@ -294,7 +294,7 @@ unset($_SESSION["tutortime"]);
 }
 
 }
-								}
+								
 ?>
 
 	 
@@ -319,7 +319,7 @@ unset($_SESSION["tutortime"]);
     header:{
      left:'prev,next today',
      center:'title',
-     right:'month,agendaWeek,agendaDay'
+     right:'month,agendaWeek'
     },
     events: 'tutorload.php',
     //select a particular cell, dragging events and stuff

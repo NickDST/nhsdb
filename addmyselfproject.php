@@ -79,6 +79,17 @@ include 'hubheader.php';
 													<br>
 													<input type="text" name="role" class="form-control" placeholder="My Role" required>
 													<br>
+													
+													<select name="affiliated_group_for_servicehours" id="">
+													<option>Select affiliated group you want service hours to count towards</option>
+										 			<option value="NHS">NHS</option>
+										  			<option value="SNHS">SNHS</option>
+														
+
+										 
+													</select>
+													<br>
+													<br>
 													<button class="btn btn-success" name='add' type="submit" value='add'>Add Me To this Project</button>
 												</form>
 
@@ -86,18 +97,22 @@ include 'hubheader.php';
 												<?php
 
 												if ( isset( $_POST[ 'add' ] ) == 'add' & !empty( $_POST[ 'add' ] ) ) {
+													
+													$affiliated_group_for_servicehours = $_POST["affiliated_group_for_servicehours"];	
 
 													$alreadysql = "SELECT * FROM students_in_projects WHERE projectid = '$projectid' AND studentid = '$id'";
 													//echo $alreadysql;
 													$alreadyresult = mysqli_query( $connection, $alreadysql );
 													$alreadyqueryResults = mysqli_num_rows( $alreadyresult );
+													
+													
 													if ( $alreadyqueryResults == 0 ) {
 
 														$service_hours = mysqli_real_escape_string( $connection, $_POST[ "service_hours" ] );
 														$role = mysqli_real_escape_string( $connection, $_POST[ "role" ] );
 
 
-														$addstudentsql = "INSERT INTO students_in_projects (projectid, studentid, service_hours, role) VALUES ('$projectid', '$id', '$service_hours' , '$role');";
+														$addstudentsql = "INSERT INTO students_in_projects (projectid, studentid, service_hours, role, affiliated_group_for_servicehours) VALUES ('$projectid', '$id', '$service_hours' , '$role', '$affiliated_group_for_servicehours');";
 														//echo $addstudentsql;
 
 
