@@ -8,7 +8,8 @@
 
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
   
   <link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="style.css">
@@ -53,14 +54,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 
 <body>
 
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 <div>
 
@@ -77,7 +71,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 		  
 <!--		    <p>We offer</p>-->
         <h2>Science Tutoring Services</h2>
-<!--        <p>We offer tutoring science fields.  </p>-->
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia sapiente deserunt consectetur, quod reiciendis corrupti quo ea aliquid! Repellendus numquam quo, voluptate. Suscipit soluta omnis quibusdam facilis, illo voluptates odit!</p>
 		  <a href="biologytutorrequest.php">Biology</a>
         <p>
 <!--          <a href="https://twitter.com/ettrics" target="_blank"><i class="fa fa-twitter"></i></a>-->
@@ -132,7 +126,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
       <div class="strip__inner-text">
         <h2>Members Login</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia sapiente deserunt consectetur, quod reiciendis corrupti quo ea aliquid! Repellendus numquam quo, voluptate. Suscipit soluta omnis quibusdam facilis, illo voluptates odit!</p>
-		  <a href="login.php">login</a>
+		  <a href="login.php"><button class="btn">login</button></a>
         <p>
           <a href="https://twitter.com/ettrics" target="_blank"><i class="fa fa-twitter"></i></a>
         </p>

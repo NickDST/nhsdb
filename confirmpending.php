@@ -9,7 +9,7 @@ include 'emailheader.php';
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Untitled Document</title>
+<title>Confirm Pending</title>
 </head>
 
 <body>
@@ -251,11 +251,29 @@ if(isset($_POST['reject']) & !empty(isset($_POST['reject']))){
 			echo "Entry failed to be removed";
 		}
 
+			
+	//querying to look for the student email		
+	$sql3 = "SELECT * FROM students WHERE studentid = '$id'";
+			$resultsql3 = mysqli_query( $connection, $sql3 );
+			$resultCheck3 = mysqli_num_rows($resultsql3);
+			
+				if ($resultCheck3 > 0) {
+					
+					while ( $row = $resultsql3->fetch_assoc() ):
+					
+					$studentcontact = $row['contact'];
+					$studentname = $row['name'];
+
+				
+					 endwhile; 
+				} else {
+					echo "Student has no email";
+				}		
 	
 	
 	$to = $chapmanemail;
 $subject = "EMAIL TO CHAPMAN";
-$message = "$studentname has rejected $requestee for tutoring at $datetime_start for the reason of $reason. ";
+$message = "$studentname has rejected $requestee for tutoring at $datetime_start for the reason of '$reason'. ";
 
 $headers = 'From: NHS Organizer <NHS@database.com>' . PHP_EOL .
     'Reply-To: NHS <NHS@database.com>' . PHP_EOL .

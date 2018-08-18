@@ -14,7 +14,7 @@
 		if ($count == 1) {
 			
 			$_SESSION['studentid']=$studentid;
-			echo $_SESSION['studentid'];
+		//	echo $_SESSION['studentid'];
 			
 			echo '<script>window.location.href = "hub.php";</script>';	
 

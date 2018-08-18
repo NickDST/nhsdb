@@ -172,8 +172,9 @@ while ($student = $result->fetch_assoc()): ?>
                 </div>
             </div>
         </nav>
-
-
+<div style = "padding-left:30px;">
+<h1>HUB MAIN PAGE</h1>
+</div>
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -361,7 +362,7 @@ while ($student = $result->fetch_assoc()): ?>
 	<script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
 
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-	<script src="assets/js/demo.js"></script>
+<!--	<script src="assets/js/demo.js"></script>-->
 
 
 </html>
