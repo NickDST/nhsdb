@@ -34,7 +34,7 @@
 						</div>
 
 						<div>
-							<a href="biologytutorrequest.php"><h3>Biology Tutoring</h3></a>
+							<a href="tutorrequest.php"><h3>Biology Tutoring</h3></a>
 							<p>Struggling? Find </p>
 							<p>someone to help!</p>
 						</div>

@@ -85,7 +85,7 @@
 			$subjectname = $_POST["subjectname"];	
 		 $_SESSION['subjectname']=$subjectname;
 		unset($_SESSION["tutortime"]);
-		echo '<script>window.location.href = "biologytutorrequest.php?";</script>';
+		echo '<script>window.location.href = "tutorrequest.php?";</script>';
 	
 	}
 	
@@ -278,7 +278,7 @@ echo "email to student tutor sent";
 			
 			
 unset($_SESSION["tutortime"]);
-	echo '<script>window.location.href = "biologytutorrequest.php?message=success";</script>';	
+	echo '<script>window.location.href = "tutorrequest.php?message=success";</script>';	
 			
 		} else { 
 			echo "Request failed to send";
@@ -321,7 +321,7 @@ unset($_SESSION["tutortime"]);
      center:'title',
      right:'month,agendaWeek,agendaDay'
     },
-    events: 'biologyloadtime.php',
+    events: 'tutorload.php',
     //select a particular cell, dragging events and stuff
     selectable:false,
     selectHelper:false,
