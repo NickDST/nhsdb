@@ -6,7 +6,7 @@ $sql1 = "SELECT * FROM students_in_subjects WHERE subject = 'biology' ";
 $result = mysqli_query($connection, $sql);
 while ($student = $result->fetch_assoc()): ?>	
 */
-
+include "includes/dbhcal.inc.php";
 session_start();
 
 
@@ -21,7 +21,7 @@ if (isset($_SESSION['subjectname'])) {
 
 
 //load.php
-$connect = new PDO('mysql:host=localhost;dbname=nhsdb', 'root', 'sql2019');
+//$connect = new PDO('mysql:host=localhost;dbname=nhsdb', 'root', 'sql2019');
 
 $data = array();
 

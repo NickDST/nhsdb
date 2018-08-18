@@ -7,12 +7,14 @@
 <!DOCTYPE html>
 <html>
  <head>
-	 <a href="index.php">back</a>
-  <title>Biology</title>
+	<br>
+  <title>Tutor Request</title>
+	 
+	 
 
-	 
-	 
-	 	 
+	 <div style = "text-align: center">
+	 <h1>Make A Tutor Request</h1>
+	 	</div> 
  <div class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -24,7 +26,7 @@
 								
 
                                 <h2 class="title"></h2>
-                                <h4 class="category">Set Availability</h4>
+                                <h4 class="category"></h4>
                             </div>
                        <div class = "" style= "padding-left:15px;">
   						<div class="container">
@@ -39,11 +41,18 @@
                         <div class="card">
 
                             <div class="header" style = "margin-left:20px; margin-top:10px;">
-                                <h2 class="title">Notes</h2>
+<!--                                <h2 class="title"></h2>-->
+<!--								<br>-->
+								<?php 
+								if(isset($_SESSION['subjectname'])) {						   
+	echo "<h4>Currently displaying open dates for: </h4><br><h3>".$_SESSION['subjectname']."</h3>";	
 								
+								?>
+								<br>
 								<p>Select Subject:</p>	
 								<form method="POST">
 									<select name="subjectname" id="">
+										  <option>Choose a Subject</option>
 										  <option value="Biology">Biology</option>
 										  <option value="Physics">Physics</option>
 										  <option value="Chemistry">Chemistry</option>
@@ -61,6 +70,10 @@
 									<br>
 								
 								 <button type="submit" name = "setsubject" class = "btn btn-warning">Submit Subject</button>
+									<br>
+									<br>
+								<p>Then click on the date you want</p>	
+								<a href="index.php">or go back</a>
 								<hr>
 <!--                                <p class="category">Click a cell to set a time where you are available</p>-->
                             </div>
@@ -71,6 +84,8 @@
 	if(isset($_POST['setsubject']) & !empty(isset($_POST['setsubject']))){		
 			$subjectname = $_POST["subjectname"];	
 		 $_SESSION['subjectname']=$subjectname;
+		unset($_SESSION["tutortime"]);
+		echo '<script>window.location.href = "biologytutorrequest.php?";</script>';
 	
 	}
 	
@@ -82,10 +97,9 @@
 	 
 	 
 	 <?php
+//if(isset($_SESSION['subjectname']))	{
+//	echo "Please Click on a Date"; }
 
-if(isset($_SESSION['subjectname'])) {						   
-	echo "<h3>Currently displaying open dates for: </h3><h2>".$_SESSION['subjectname']."</h2>";				   
-}
 						   
 if(!isset($_SESSION['tutortime'])) {
 	
@@ -94,18 +108,18 @@ if(!isset($_SESSION['tutortime'])) {
 		echo "Your project has been sent in! Thank you!";
 		
 	} else {
-		echo "<br><br>Please Click on a Date<br>";
+//		echo "Please Click on a Date<br>";
 	}
 	
-}else {
+} else {
 	
 if(isset($_SESSION['subjectname']))	{
-	
+	//echo "Please Click on a Date";
 	 
 if (isset($_SESSION['tutortime'])) {
-    echo "Event ID = ";
+    //echo "Event ID = ";
 	$id = $_SESSION['tutortime'];
-	echo $id;
+	//echo $id;
 	?> 	 <?php	 
 } else {
 	echo "nothing yet";
@@ -127,15 +141,17 @@ while ($tutor = $result->fetch_assoc()): ?>
 				
 				<h2 class= "">Send in a tutoring request!</h2>
 			
-				<input type="text" name="requestee" id="" class= "form-control" placeholder = "Your Name"  required >
+				<input type="text" name="requestee" id="" class= "form-control" placeholder = "Your Name"   >
 				<br>
-				<input type="email" name="contact" id="" class= "form-control" placeholder = "Email" required>
+				<input type="email" name="contact" id="" class= "form-control" placeholder = "Email" >
+				<br>
+				<input type="number" name="age" id="" class= "form-control" placeholder = "Age" >
 				<br>
 	
 				
 				<h5>Time Start: <?= $tutor['datetime_start'] ?></h5>
 				<h5>Time End: <?= $tutor['datetime_end'] ?></h5>
-				<h5>Student: <?= $tutor['studentid'] ?></h5>
+<!--				<h5>Student: <?= $tutor['studentid'] ?></h5>-->
 				
 				<?php 
 		$datetime_start = $tutor['datetime_start'];
@@ -146,13 +162,13 @@ while ($tutor = $result->fetch_assoc()): ?>
 	endwhile; ?> 
 
 				
+			
 				<br>
-				<br>
-				<input type="text" name="subject_level" id="" class= "form-control" placeholder = "Subject Difficulty/Level, i.e. Precalculus, 9th Grade Writing"  required >
+				<input type="text" name="subject_level" id="" class= "form-control" placeholder = "Topic i.e Fractions"   >
 
 				<br>
 
-				<button class="btn" type="submit" name = "submitbtn">submit</button>
+				<button class="btn btn-success" type="submit" name = "submitbtn">submit</button>
 
 			</form>
 						   
@@ -170,8 +186,9 @@ if(isset($_POST['submitbtn']) & !empty(isset($_POST['submitbtn']))){
 	$requestee = mysqli_real_escape_string($connection, $_POST["requestee"]);
 	$contact = mysqli_real_escape_string($connection, $_POST["contact"]);
 	$subject_level = mysqli_real_escape_string($connection, $_POST["subject_level"]);
+	$age = mysqli_real_escape_string($connection, $_POST["age"]);
 
-	$subject = "biology";
+	$subject = "$subjectname";
 	
 	/*
 	$datetime_start = mysqli_real_escape_string($connection, $_POST["date_time"]);
@@ -184,7 +201,7 @@ if(isset($_POST['submitbtn']) & !empty(isset($_POST['submitbtn']))){
 	
 	
 //Inserting the data into the projects...
-	$sql = "INSERT INTO request (requestee, contact, datetime_start, datetime_end, subject, tutor_diff, type, studentid) VALUES ('$requestee', '$contact', '$datetime_start' , '$datetime_end' , '$subject', '$subject_level', 'tutor', '$studentid');";
+	$sql = "INSERT INTO request (requestee, contact, datetime_start, datetime_end, subject, tutor_diff, type, studentid, age) VALUES ('$requestee', '$contact', '$datetime_start' , '$datetime_end' , '$subject', '$subject_level', 'tutor', '$studentid', '$age');";
 	
 	echo $sql;
 	
@@ -197,7 +214,7 @@ if(isset($_POST['submitbtn']) & !empty(isset($_POST['submitbtn']))){
 			
 			echo "Request successfully sent!";
 			
-			$sql2 = "UPDATE available_times SET hold = 'hold' WHERE id = '$id'";
+			$sql2 = "UPDATE available_times SET hold = 'hold', title = 'on hold' WHERE id = '$id'";
 			$result2 = mysqli_query($connection, $sql2);
 			if ($result) {
 			
@@ -231,7 +248,7 @@ if(isset($_POST['submitbtn']) & !empty(isset($_POST['submitbtn']))){
 
 $to = $vpemail;
 $subject = "A Project Request has been submitted!!";
-$message = "A new Request has been submitted \r\n Requestee name: '$requestee' \r\n They are requesting for the time starting at '$datetime_start'";
+$message = "A new Request has been submitted \r\nRequestee name: '$requestee' \r\nThey are requesting for the time starting at '$datetime_start'";
 				
 $headers = 'From: NHS  <NHS@database.com>' . PHP_EOL .
     'Reply-To: NHS <NHS@database.com>' . PHP_EOL .
@@ -249,14 +266,19 @@ echo "email to Project Manager sent";
 			
 $to = $studentcontact;
 $subject = "";
-$message = "<h1> Someone has requested for you to tutor them in $subject </h1> <p> Requestee name: $requestee <br> They are requesting for the time starting at $datetime_start to $datetime_end<p> <h3>Log into the NHS database to verify this request</h3>";
+$message = "<h1> Someone has requested for you to tutor them in $subject </h1> <p> Requestee name: $requestee <br> They are requesting for the time starting at $datetime_start to $datetime_end<p> <h3>Log into the NHS database to verify this request They are $age years old</h3>";
 			
 $headers = 'From: NHS  <NHS@database.com>' . PHP_EOL .
     'Reply-To: NHS <NHS@database.com>' . PHP_EOL .
-    'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
+    'X-Mailer: PHP/' . phpversion() . 'Content-type: text/html; charset: utf8\r\n' . 'MIME-Version: 1.0';
 			
 mail($to, $subject, $message, $headers);
 echo "email to student tutor sent";
+			
+			
+			
+unset($_SESSION["tutortime"]);
+	echo '<script>window.location.href = "biologytutorrequest.php?message=success";</script>';	
 			
 		} else { 
 			echo "Request failed to send";
@@ -264,8 +286,7 @@ echo "email to student tutor sent";
 	
 
 
-unset($_SESSION["tutortime"]);
-	echo '<script>window.location.href = "biologytutorrequest.php?message=success";</script>';				
+			
 		
 	
 } 
@@ -273,6 +294,7 @@ unset($_SESSION["tutortime"]);
 }
 
 }
+								}
 ?>
 
 	 
@@ -373,7 +395,7 @@ unset($_SESSION["tutortime"]);
        success:function()
        {
         calendar.fullCalendar('refetchEvents');
-        alert("Parameters Set");
+//        alert("Parameters Set");
 		document.location.reload(true)
        }
       })

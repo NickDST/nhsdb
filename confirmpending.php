@@ -158,6 +158,22 @@ if(isset($_POST['accept']) & !empty(isset($_POST['accept']))){
 		
 			echo "Entry failed to be removed";
 		}
+			
+			
+			
+			
+			
+			$sql5 = "DELETE FROM available_times WHERE studentid = '$id' AND datetime_start = '$datetime_start' AND datetime_end = '$datetime_end'";
+		
+		$result5 = mysqli_query($connection, $sql5);
+		if ($result5) {
+			echo "date successfully removed";
+
+
+		} else {
+		
+			echo "Entry failed to be removed";
+		}	
 
 			
 			
@@ -184,10 +200,14 @@ if(isset($_POST['accept']) & !empty(isset($_POST['accept']))){
 		
 $to = $vpemail;
 $subject = "EMAIL TO VP";
-$message = "<h1> A new Request has been submitted </h1> <p> Requestee name: '$requestee' <br> They are requesting for the time starting at '$datetime_start' <p>";
-$headers = "from: NHS Database Organiser <sender@NHS.com>";
-$headers = "Content-type: text/html\r\n";
-mail($to, $subject, $message, $headers,"-f Nick@cissnhs.com");
+$message = "A new Request has been submitted \r\nRequestee name: '$requestee' \r\nThey are requesting for the time starting at '$datetime_start'";
+
+$headers = 'From: NHS Database <NHS@database.com>' . PHP_EOL .
+    'Reply-To: NHS <NHS@database.com>' . PHP_EOL .
+    'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
+			
+			
+mail($to, $subject, $message, $headers);
 echo "<br>email to Project Manager sent";
 	
 		
@@ -195,31 +215,39 @@ echo "<br>email to Project Manager sent";
 			
 $to = $studentcontact;
 $subject = "EMAIL TO STUDENT CONTACT";
-$message = "<h1> You have confirmed the tutor request! Here is an email of the info </h1> <p> Requestee name: $requestee <br> They are requesting for the time starting at $datetime_start to $datetime_end<p> <h3>Log into the NHS database to verify this request</h3>";
-$headers = "from: NHS Database Organiser <sender@NHS.com>";
-$headers = "Content-type: text/html\r\n";
-mail($to, $subject, $message, $headers,"-f Nick@cissnhs.com");
+$message = "You have confirmed the tutor request! Here is an email of the info \r\nRequestee name: $requestee \r\n\r\nThey are requesting for the time starting at $datetime_start to $datetime_end \r\nLog into the NHS database to verify this request";
+$headers = 'From: NHS Database <NHS@database.com>' . PHP_EOL .
+    'Reply-To: NHS <NHS@database.com>' . PHP_EOL .
+    'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
+mail($to, $subject, $message, $headers);
 echo "<br>email to student tutor sent";
 			
 
-/*			
+		
 $to = $requestee_email;
 $subject = "EMAIL TO REQUESTEE";
-$message = "<h1> Your Request has been received! </h1> <p> tutor name: $studentname <br> You will be starting at for the time starting at $datetime_start to $datetime_end<p> ";
-$headers = "from: NHS Database Organiser <sender@NHS.com>";
-$headers = "Content-type: text/html\r\n";
-mail($to, $subject, $message, $headers,"-f Nick@cissnhs.com");
+$message = "Your Request has been received! \r\ntutor name: $studentname \r\n\r\nYou will be starting at for the time starting at $datetime_start to $datetime_end<p> ";
+
+$headers = 'From: NHS Database <NHS@database.com>' . PHP_EOL .
+    'Reply-To: NHS <NHS@database.com>' . PHP_EOL .
+    'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
+			
+mail($to, $subject, $message, $headers);
 echo "<br>email to requestee  sent";			
-*/			
+		
 			
 			
 	
 $to = $chapmanemail;
 $subject = "EMAIL TO CHAPMAN";
-$message = "<h1> Email to chapman </h1> <p> $studentname has accepted and verified the tutor request to $requestee <p> Requestee name: $requestee <br> They are requesting for the time starting at $datetime_start to $datetime_end<p> <h3>Log into the NHS database to verify this request</h3>";
-$headers = "from: NHS Database Organiser <sender@NHS.com>";
-$headers = "Content-type: text/html\r\n";
-mail($to, $subject, $message, $headers,"-f Nick@cissnhs.com");
+$message = "Email to chapman \r\n$studentname has accepted and verified the tutor request to $requestee \r\n\r\nRequestee name: $requestee \r\n\r\nThey are requesting for the time starting at $datetime_start to $datetime_end";
+
+
+$headers = 'From: NHS Database <NHS@database.com>' . PHP_EOL .
+    'Reply-To: NHS <NHS@database.com>' . PHP_EOL .
+    'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
+			
+mail($to, $subject, $message, $headers);
 echo "<br>email to chapman has been sent";
 			
 		} else { 

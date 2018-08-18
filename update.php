@@ -1,8 +1,8 @@
 <?php
 
 //update.php
-
-$connect = new PDO('mysql:host=localhost;dbname=nhsdb', 'root', 'sql2019');
+include "includes/dbhcal.inc.php";
+//$connect = new PDO('mysql:host=localhost;dbname=nhsdb', 'root', 'sql2019');
 
 if(isset($_POST["id"]))
 {

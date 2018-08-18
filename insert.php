@@ -1,4 +1,5 @@
 <?php
+include "includes/dbhcal.inc.php";
 session_start();
 
 if (!isset($_SESSION['studentid'])) {
@@ -10,7 +11,7 @@ if (!isset($_SESSION['studentid'])) {
 
 //insert.php
 
-$connect = new PDO('mysql:host=localhost;dbname=nhsdb', 'root', 'sql2019');
+//$connect = new PDO('mysql:host=localhost;dbname=nhsdb', 'root', 'sql2019');
 
 if(isset($_POST["title"]))
 {
