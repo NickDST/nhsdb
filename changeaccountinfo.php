@@ -89,12 +89,12 @@
 									  <input type="checkbox" name="Physics" value="Physics">Physics<br>
   									  <input type="checkbox" name="English" value="English">English<br>
 									  <input type="checkbox" name="Writing" value="Writing">Writing<br>
-  									  <input type="checkbox" name="Worldhistory" value="Worldhistory">World History<br>	
+  									  <input type="checkbox" name="Worldhistory" value="World History">World History<br>	
 									  <input type="checkbox" name="Reading" value="Reading">Reading<br>
   									  <input type="checkbox" name="Precalculus" value="Precalculus">Precalculus<br>
 									
-									  <input type="checkbox" name="alg2" value="alg2">Algebra 2<br>
-  									  <input type="checkbox" name="geo" value="geo">Geometry or Lower<b></b><br><br>
+									  <input type="checkbox" name="alg2" value="Algebra 2">Algebra 2<br>
+  									  <input type="checkbox" name="geo" value="Geometry or Lower" required>Geometry or Lower<b></b><br><br>
 									  <button type="submit" name = "updatefields" class = "btn btn">Update My Tutoring Fields</button>
 									  
 									
@@ -452,7 +452,7 @@ if(isset($_POST['updatefields']) & !empty(isset($_POST['updatefields']))){
 
                             <div class="header">
                                 <h4 class="title">Change Sidebar Color</h4>
-                                <p class="category">Nick programmed this feature in</p>
+                                <p class="category">Nick actually programmed this feature in. Appreciate it.</p>
                             </div>
                             <div class = "" style= "padding-left:15px; padding-bottom:15px;">
 								
@@ -462,6 +462,8 @@ if(isset($_POST['updatefields']) & !empty(isset($_POST['updatefields']))){
 										  <option value="black">Black</option>
 										  <option value="green">Green</option>
 										  <option value="red">Red</option>
+										  <option value="orange">Orange</option>
+										  <option value="purple">Purple</option>
 
 										 
 									</select>

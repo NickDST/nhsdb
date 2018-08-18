@@ -162,7 +162,7 @@ $color = $student['sidecolor'];
                               <ul class="dropdown-menu">
                                 <li><a href="myprojects.php">My Projects</a></li>
                                 <li><a href="aboutme.php">About Me</a></li>
-                                <li><a href="addservicemain.php">Add Service/Project</a></li>
+                                <li><a href="changeaccountinfo.php">Change Account Info</a></li>
                                 <li><a href="availability.php">Change Availability</a></li>
                                 <li><a href="removeself.php">Remove Self from Project</a></li>
                                 <li class="divider"></li>
@@ -179,8 +179,11 @@ $color = $student['sidecolor'];
                 </div>
             </div>
         </nav>
-<div style = "padding-left:30px; ">
-<h1>HUB MAIN PAGE</h1>
+<div style = "padding-left:30px; ">	
+<div style = "margin-left: 350px;">
+<h1>Main Hub</h1>
+</div>	
+<hr>
 <h2>Currently logged in as: <?= $student['logged_honor_society'];?></h2>
 <a href="changeaccountinfo.php" class ="btn">Change Logged Society</a>
 </div>

@@ -9,9 +9,84 @@
  <head>
 	 <a href="index.php">back</a>
   <title>Biology</title>
+
+	 
+	 
+	 	 
+ <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+					
+                    <div class="col-md-8">
+                        <div class="card">
+
+                            <div class="header" style = "margin-left:20px; margin-top:10px;">
+								
+
+                                <h2 class="title"></h2>
+                                <h4 class="category">Set Availability</h4>
+                            </div>
+                       <div class = "" style= "padding-left:15px;">
+  						<div class="container">
+   						<div id="calendar"></div>
+	  
+  						</div>
+						</div> 
+					</div>
+                </div>
+					
+					 <div class="col-md-4">
+                        <div class="card">
+
+                            <div class="header" style = "margin-left:20px; margin-top:10px;">
+                                <h2 class="title">Notes</h2>
+								
+								<p>Select Subject:</p>	
+								<form method="POST">
+									<select name="subjectname" id="">
+										  <option value="Biology">Biology</option>
+										  <option value="Physics">Physics</option>
+										  <option value="Chemistry">Chemistry</option>
+										  <option value="English">English</option>
+										  <option value="Reading">Reading</option>
+										  <option value="World History">World History</option>
+										  <option value="Writing">Writing</option>
+										  <option value="Precalculus">Precalculus</option>
+										  <option value="Algebra 2">Algebra 2</option>
+										  <option value="Geometry or Lower">Geometry or Lower</option>
+
+										 
+									</select>
+									<br>
+									<br>
+								
+								 <button type="submit" name = "setsubject" class = "btn btn-warning">Submit Subject</button>
+								<hr>
+<!--                                <p class="category">Click a cell to set a time where you are available</p>-->
+                            </div>
+                       <div class = "" style= "padding-left:15px; padding-bottom:20px;">
+<!--								-->
+	  
+<?php
+	if(isset($_POST['setsubject']) & !empty(isset($_POST['setsubject']))){		
+			$subjectname = $_POST["subjectname"];	
+		 $_SESSION['subjectname']=$subjectname;
+	
+	}
+	
+	
+?>  		
+	 
+	 
+	 
+	 
 	 
 	 <?php
 
+if(isset($_SESSION['subjectname'])) {						   
+	echo "<h3>Currently displaying open dates for: </h3><h2>".$_SESSION['subjectname']."</h2>";				   
+}
+						   
 if(!isset($_SESSION['tutortime'])) {
 	
 	
@@ -19,10 +94,13 @@ if(!isset($_SESSION['tutortime'])) {
 		echo "Your project has been sent in! Thank you!";
 		
 	} else {
-		echo "<br><br>Please choose a date <br>";
+		echo "<br><br>Please Click on a Date<br>";
 	}
 	
 }else {
+	
+if(isset($_SESSION['subjectname']))	{
+	
 	 
 if (isset($_SESSION['tutortime'])) {
     echo "Event ID = ";
@@ -77,6 +155,14 @@ while ($tutor = $result->fetch_assoc()): ?>
 				<button class="btn" type="submit" name = "submitbtn">submit</button>
 
 			</form>
+						   
+						   				</div>
+						</div> 
+					</div>
+                </div>
+          </div>
+		</div>
+   </div>
 
 <?php
 
@@ -186,6 +272,7 @@ unset($_SESSION["tutortime"]);
 	
 }
 
+}
 ?>
 
 	 
@@ -298,22 +385,10 @@ unset($_SESSION["tutortime"]);
 	 
   </script>
 	 
-
-	 
-
 	
-	
- </head>
- <body>
-  <br />
-  <h2 align="center"><a href="#">NHS Tutor Scheduler: Biology</a></h2>
-  <br />
-  <div class="container">
-   <div id="calendar"></div>
-  </div>
+				
  </body>
 </html>
-
 
 
 

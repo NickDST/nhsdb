@@ -7,13 +7,25 @@ $result = mysqli_query($connection, $sql);
 while ($student = $result->fetch_assoc()): ?>	
 */
 
+session_start();
+
+
+if (isset($_SESSION['subjectname'])) {
+	$subjectname = $_SESSION['subjectname'];
+	
+	?> 	 <?php	 
+} else {
+	//echo "nothing yet";
+}
+
+
 
 //load.php
 $connect = new PDO('mysql:host=localhost;dbname=nhsdb', 'root', 'sql2019');
 
 $data = array();
 
-$query = "SELECT available_times.*, students_in_subjects.* FROM available_times, students_in_subjects WHERE available_times.studentid = students_in_subjects.studentid AND students_in_subjects.subject = 'Biology' AND available_times.hold = 'free'";
+$query = "SELECT available_times.*, students_in_subjects.* FROM available_times, students_in_subjects WHERE available_times.studentid = students_in_subjects.studentid AND students_in_subjects.subject = '$subjectname' AND available_times.hold = 'free'";
 
 $statement = $connect->prepare($query);
 

@@ -50,6 +50,18 @@
 }
  ?>
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  <link rel="stylesheet" href="css/loginstyle.css">
+	
+	
+
 <!doctype html>
 <html>
 <head>
@@ -61,20 +73,29 @@
 	<?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert" style = "margin-top: 100px;"> <?php echo $smsg; ?> </div><?php } ?>
     <?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert" style = "margin-top: 100px;"> <?php echo $fmsg; ?> </div><?php } ?>
 	
-<div class="login-page">
-  <div class="form" >
-    <form class="login-form" method = "POST">
-      <input type="text" name="username" class="form-control" placeholder="Username" required/>
-      <input type="password" name="password" id="input Password" class= "form-control" placeholder = "Password" required/>
-      <input type="email" name="email" id="inputEmail" class= "form-control" placeholder = "Email address"  required />
-		<input type="text" name="studentid" class= "form-control" placeholder = "Student ID" required/>
+		 
+
+	 <div class="login-container">
+  <section class="login" id="login">
+	
+
+    <form class="login-form" action="#" method="post">
+      <input type="text" name="username" class="login-input" placeholder="Username" required/>
+      <input type="password" name="password" id="input Password" class= "login-input" placeholder = "Password" required/>
+      <input type="email" name="email" id="inputEmail" class= "login-input" placeholder = "Email address"  required />
+		<input type="text" name="studentid" class= "login-input" placeholder = "Student ID" required/>
 		
-	<input type="password" name="passwordAgain" id="input Password" class= "form-control" placeholder = "Password Again" required>
-      <button>create</button>
+	<input type="password" name="passwordAgain" id="input Password" class= "login-input" placeholder = "Password Again" required>
+      <button class = "btn btn-success">create</button>
+		
+		  </form>
+  </section>
+	</div>	
+		
 	  
       <p class="message">Already registered? <a href="login.php">Sign In</a></p>
-    </form>
-		</div>
-	
-</div>
+  
+		
+	 <script  src="js/loginindex.js"></script>
+
 </html>
