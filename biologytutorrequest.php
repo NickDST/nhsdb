@@ -19,7 +19,7 @@ if(!isset($_SESSION['tutortime'])) {
 		echo "Your project has been sent in! Thank you!";
 		
 	} else {
-		echo "   Please choose a date <br>";
+		echo "<br><br>Please choose a date <br>";
 	}
 	
 }else {
@@ -214,8 +214,8 @@ unset($_SESSION["tutortime"]);
     },
     events: 'biologyloadtime.php',
     //select a particular cell, dragging events and stuff
-    selectable:true,
-    selectHelper:true,
+    selectable:false,
+    selectHelper:false,
     select: function(start, end, allDay)
     {
      var title = prompt("Enter Event Title");

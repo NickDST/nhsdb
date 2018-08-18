@@ -1,5 +1,5 @@
 <?php
-
+/*
 session_start();
 require_once('includes/dbh.inc.php');
 if (!isset($_SESSION['studentid'])) {
@@ -18,30 +18,43 @@ if (isset($_SESSION['studentid'])) {
 $sql = "SELECT * FROM students WHERE studentid = '$id'";
 echo $id;
 $result = mysqli_query($connection, $sql);
-while ($student = $result->fetch_assoc()): ?>
+while ($student = $result->fetch_assoc()): 
+*/
+include 'hubheader.php';
+
+?>
 
 
-
+<!--
 <!doctype html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Untitled Document</title>
+<title>About ME</title>
 </head>
 
 <body>
 	
 	
-	<h3>Welcome <?= $student['name'] ?> To About Me</h3>
+	
 
-	<!--heads back-->
 	<a href="hub.php">back to hub</a>
-	
-	
+-->	
+	<div class="content">
+            <div class="container-fluid">
+                <div class="row">
+					
+                    <div class="col-md-12">
+                        <div class="card">
 
-	
-	
-	<h4>My Info</h4>
+                            <div class="header">
+                                <h2 class="title">My Info</h2>
+                                <p class="category">The tutoring fields and student information</p>
+                            </div>
+                            <div class = "" style= "padding-left:15px; padding-bottom:20px;">
+								<br>
+
+
 
 				<?php
 				/*For all previous service hours and projects*/
@@ -88,11 +101,19 @@ while ($student = $result->fetch_assoc()): ?>
 				}
 				?>
 
-					
+								
+                    
+                            </div>
+                        </div>
+                    </div>
+
+      			</div>
+       </div>
+    </div>					
 	
 	
 	
-<?php endwhile; ?> 
+<?php// endwhile; ?> 
 				<hr>
 				
 				

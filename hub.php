@@ -18,7 +18,9 @@ require_once('includes/dbh.inc.php');
 $sql = "SELECT * FROM students WHERE studentid = '$id'";
 //echo $id;
 $result = mysqli_query($connection, $sql);
-while ($student = $result->fetch_assoc()): ?>
+while ($student = $result->fetch_assoc()): 
+$color = $student['sidecolor'];
+?>
 
 
 <!doctype html>
@@ -53,7 +55,12 @@ while ($student = $result->fetch_assoc()): ?>
 <body>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="blue" data-image="assets/img/sidebar-5.jpg">
+	
+	<?php 
+		echo "<div class='sidebar' data-color='$color' data-image='assets/img/sidebar-5.jpg'>";
+	?>
+	
+<!--    <div class="sidebar" data-color="blue" data-image="assets/img/sidebar-5.jpg">-->
 
     <!--
 
@@ -174,6 +181,8 @@ while ($student = $result->fetch_assoc()): ?>
         </nav>
 <div style = "padding-left:30px;">
 <h1>HUB MAIN PAGE</h1>
+<h2>Currently logged in as: <?= $student['logged_honor_society'];?></h2>
+<a href="changeaccountinfo.php" class ="btn">Change Logged Society</a>
 </div>
         <div class="content">
             <div class="container-fluid">

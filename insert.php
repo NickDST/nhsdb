@@ -16,8 +16,8 @@ if(isset($_POST["title"]))
 {
  $query = "
  INSERT INTO available_times
- (title, datetime_start, datetime_end, studentid)
- VALUES (:title, :start_event, :end_event, :studentid)
+ (title, datetime_start, datetime_end, studentid, grouporone)
+ VALUES (:title, :start_event, :end_event, :studentid, :grouporone)
  ";
  $statement = $connect->prepare($query);
  $statement->execute(
@@ -25,7 +25,8 @@ if(isset($_POST["title"]))
    ':title'  => $_POST['title'],
    ':start_event' => $_POST['start'],
    ':end_event' => $_POST['end'],
-   ':studentid' => $_SESSION['studentid']
+   ':studentid' => $_SESSION['studentid'],
+   ':grouporone' => "one on one tutoring",
    
   )
  );
