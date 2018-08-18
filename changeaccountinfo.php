@@ -489,7 +489,7 @@ if(isset($_POST['updatefields']) & !empty(isset($_POST['updatefields']))){
 		
 		if ($changecolorresult) {
 			//echo "everything worked successfully";
-			echo '<script>window.location.href = "hub.php";</script>';		
+			echo '<script>window.location.href = "changeaccountinfo.php";</script>';		
 
 		} else {
 			//echo "Error: " . $sql . "<br>" . mysqli_error($conn);

@@ -37,7 +37,11 @@ endwhile;
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
-  <link rel="stylesheet" href="style.css"> 
+  <link rel="stylesheet" href="calendar.css"> 
+	 
+	    <!-- Bootstrap core CSS     -->
+<!--   <link href="assets/css/bootstrap.min.css" rel="stylesheet" /> -->
+	 
 	 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
   <script>
@@ -136,26 +140,79 @@ endwhile;
  </head>
  <body>
   <br />
+<!--	
   <h2 align="center"><a href="hub.php"><?php
-	echo $studentname;
+//	echo $studentname;
 	?></a></h2>
   <br />
-
+-->
 		 
  <div class="content">
             <div class="container-fluid">
                 <div class="row">
 					
-                    <div class="col-md-12">
+                    <div class="col-md-8">
                         <div class="card">
 
                             <div class="header" style = "margin-left:20px; margin-top:10px;">
-                                <h2 class="title">Availability</h2>
-                                <p class="category">Click a cell to set a time where you are available</p>
+                                <h2 class="title"><?php echo $studentname;?></h2>
+                                <h4 class="category">Set Availability</h4>
                             </div>
                        <div class = "" style= "padding-left:15px;">
   						<div class="container">
    						<div id="calendar"></div>
+	  
+  						</div>
+						</div> 
+					</div>
+                </div>
+					
+					 <div class="col-md-4">
+                        <div class="card">
+
+                            <div class="header" style = "margin-left:20px; margin-top:10px;">
+                                <h2 class="title">Notes</h2>
+                                <p class="category">Click a cell to set a time where you are available</p>
+                            </div>
+                       <div class = "" style= "padding-left:15px; padding-bottom:20px;">
+							<!--  Insert other things here				-->
+						   
+						   <p>Click "week" to drag the box to the specific time you want to be set to available.</p>
+						   
+						   <p>Those who look for requests under your subject fields will see these times.</p>
+						   
+						   <p>Click on the event time to delete it.</p>
+						   
+						   	<?php
+					$fieldsql = "SELECT students_in_subjects.*, students.* FROM students_in_subjects, students WHERE students.studentid = students_in_subjects.studentid AND students.studentid = '$id'";
+				$fieldresultsql = mysqli_query( $connection, $fieldsql );
+
+				$fieldresultCheck = mysqli_num_rows($fieldresultsql); 
+				
+				echo "Fields I'm tutoring in: ";
+				if ($fieldresultCheck > 0) {
+					
+					while ( $fieldinfo = $fieldresultsql->fetch_assoc() ): ?>
+	
+					<?php echo $fieldinfo['subject']. ",";?> 
+					
+					
+					<?php endwhile;  ?>
+					
+					
+			<?php	
+				} else {
+					echo "Nothing Entered Yet";
+				}
+				?>
+			    <br>
+				<br>		   
+				<a href="changeaccountinfo.php" class ="btn btn-warning">Change these subjects</a>
+			    <br>
+				<br>		   
+				<a href="hub.php" class ="btn btn-info">Back to Hub</a>
+
+						   
 	  
   						</div>
 						</div> 

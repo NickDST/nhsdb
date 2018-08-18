@@ -179,7 +179,7 @@ $color = $student['sidecolor'];
                 </div>
             </div>
         </nav>
-<div style = "padding-left:30px;">
+<div style = "padding-left:30px; ">
 <h1>HUB MAIN PAGE</h1>
 <h2>Currently logged in as: <?= $student['logged_honor_society'];?></h2>
 <a href="changeaccountinfo.php" class ="btn">Change Logged Society</a>
@@ -195,7 +195,8 @@ $color = $student['sidecolor'];
                                 <h4 class="title">Pending Requests</h4>
                                 <p class="category">Please View Your Active Requests</p>
                             </div>
-                            <div class = "" style= "padding-left:15px;">
+                            <div class = "" style= "padding-left:15px; padding-bottom:20px;">
+								<br>
                                	<?php
 				/*Pending requests*/
 				$pendingsql = "SELECT * FROM request WHERE datetime_start > NOW() AND studentid = '$id' ORDER BY datetime_start";
@@ -240,7 +241,7 @@ $color = $student['sidecolor'];
                                 <h4 class="title">Ongoing Projects</h4>
                                 <p class="category">Currently Active are displayed</p>
                             </div>
-                            <div class = "" style= "padding-left:15px; padding-bottom: 10px;">
+                            <div class = "" style= "padding-left:15px; padding-bottom: 5px; ">
                                		<?php
 				/*Projects where status = ongoing*/
 				$studentsql = "SELECT project_list.*, students_in_projects.*, students.* FROM project_list, students_in_projects, students WHERE students.studentid = students_in_projects.studentid AND students_in_projects.projectid = project_list.projectid AND students.studentid = '$id' AND datetime_end > NOW()";
@@ -283,7 +284,7 @@ $color = $student['sidecolor'];
                         <div class="card">
 
                             <div class="header">
-                                <h4 class="title">Finished Projects Here</h4>
+                                <h4 class="title">Finished Projects/Service Here</h4>
                                 <p class="category">Service Hours have been accounted for</p>
                             </div>
                             <div class = "" style= "padding-left:15px; padding-bottom: 10px;">
@@ -335,7 +336,7 @@ $color = $student['sidecolor'];
                 <nav class="pull-left">
                     <ul>
                         <li>
-                            <a href="#">
+                            <a href="hub.php">
                                 Home
                             </a>
                         </li>
