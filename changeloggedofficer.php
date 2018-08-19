@@ -110,7 +110,7 @@ echo "I have snhs officer rights";
             </div>
 			<ul class="nav">
                 <li class="active">
-                    <a href="hub.php">
+                    <a href="adminhub.php">
                         <i class="pe-7s-global"></i>
                         <p>Admin Hub Home</p>
                     </a>
@@ -118,28 +118,28 @@ echo "I have snhs officer rights";
 				
             <ul class="nav">
                 <li class="active">
-                    <a href="activatepending.php">
+                    <a href="adminsearchstudent.php">
                         <i class="pe-7s-user"></i>
                         <p>Search Student</p>
                     </a>
                 </li>
 				<br>
 				<li class="active">
-                    <a href="addservicemain.php">
+                    <a href="adminrequirements.php">
                         <i class="pe-7s-comment"></i>
                         <p>Search Requirements</p>
                     </a>
                 </li>
 				<br>
 				<li class="active">
-                    <a href="availability.php">
+                    <a href="adminviewdates.php">
                         <i class="pe-7s-date"></i>
                         <p>View All Student Dates</p>
                     </a>
                 </li>
 				<br>
 				<li class="active">
-                    <a href="myprojects.php">
+                    <a href="admingroupprojects.php">
                         <i class="pe-7s-rocket"></i>
                         <p>Set Group Tutor Session</p>
                     </a>
