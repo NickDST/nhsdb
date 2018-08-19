@@ -1,5 +1,5 @@
 <?php
-
+/*
 session_start();
 require_once('includes/dbh.inc.php');
 if (!isset($_SESSION['studentid'])) {
@@ -14,6 +14,9 @@ if (isset($_SESSION['studentid'])) {
 } else {
 	echo "nothing yet";
 }
+*/
+
+include 'hubheader.php';
 
 ?>
 
@@ -27,9 +30,20 @@ if (isset($_SESSION['studentid'])) {
 </head>
 
 <body>
-	<h1>Remove From Project</h1>
+<!--	<h1>Remove From Project</h1>-->
 	
-	<div class = "article-container">
+	<div class="content">
+            <div class="container-fluid">
+                <div class="row">
+					
+                    <div class="col-md-12">
+                        <div class="card">
+
+                            <div class="header">
+                                <h2 class="title">Remove</h2>
+                                <p class="category">Choose the project you want to remove yourself from</p>
+                            </div>
+                            <div class = "" style= "padding-left:15px;">
 		
 		<?php
 			//$search = mysqli_real_escape_string($connection, $_POST['search']);
@@ -60,9 +74,15 @@ if (isset($_SESSION['studentid'])) {
 		
 		
 		?>
-		
+		                     </div>
+                        </div>
+                    </div>
+
+      			</div>
+       </div>
+    </div>
 	
-	</div>
+	
 	
 	
 </body>

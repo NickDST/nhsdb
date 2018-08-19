@@ -211,28 +211,28 @@ $color = $student['sidecolor'];
             </div>
         </nav>
 <div style = "padding-left:30px; ">	
-<div style = "margin-left: 350px;">
+
 	
 		<?php
 if (isset($_SESSION['admin_rights'])) {
-echo "I have admin_rights";
+//echo "I have admin_rights";
 	
 } 
 
 if (isset($_SESSION['nhs_officer_rights'])) {
-echo "I have nhs officer rights";
+//echo "I have nhs officer rights";
 	
 } 
 	
 if (isset($_SESSION['snhs_officer_rights'])) {
-echo "I have snhs officer rights";
+//echo "I have snhs officer rights";
 	
 } 
 ?>
 	
 	
 	
-	
+<div>	
 <h1>Main Hub</h1>
 </div>	
 <hr>

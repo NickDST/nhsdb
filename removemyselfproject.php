@@ -1,5 +1,5 @@
 <?php
-
+/*
 session_start();
 require_once('includes/dbh.inc.php');
 if (!isset($_SESSION['studentid'])) {
@@ -14,6 +14,8 @@ if (isset($_SESSION['studentid'])) {
 } else {
 	echo "nothing yet";
 }
+*/
+include 'hubheader.php';
 
 ?>
 
@@ -23,16 +25,27 @@ if (isset($_SESSION['studentid'])) {
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Untitled Document</title>
+<title>Remove Me From This Project</title>
 </head>
 
 <body>
-<a href="hub.php">Back to Hub</a>
+<!--<a href="hub.php">Back to Hub</a>-->
 	
-	<h1>Project</h1>
+<!--	<h1>Project</h1>-->
 
 	
-	<div class = "article-container">
+	<div class="content">
+            <div class="container-fluid">
+                <div class="row">
+					
+                    <div class="col-md-12">
+                        <div class="card">
+
+                            <div class="header">
+                                <h2 class="title">Project</h2>
+                                <p class="category">This is the project</p>
+                            </div>
+                            <div class = "" style= "padding-left:15px;">
 		<hr>
 		<?php
 		$name = mysqli_real_escape_string($connection, $_GET['name']);
@@ -63,17 +76,18 @@ if (isset($_SESSION['studentid'])) {
 		
 
 <form method="post">
-		<label for=""> Type "remove me" in the designated box</label>
+		<label for=""> Type "remove me", in caps, in the designated box</label>
 		<input type="text" name="confirm" id="" class= "form-control" placeholder = "Type it"  required >
-	<button type="submit">Remove Me From This Project</button>	
+	<br>
+	<button type="submit" class = "btn btn-danger">Remove Me From This Project</button>	
 </form>		
-		
+		<br>
 
 		
 <?php
 if(isset($_POST) & !empty($_POST)){
 	$confirm = mysqli_real_escape_string($connection, $_POST["confirm"]);
-	if ($confirm == "remove me") {
+	if ($confirm == "REMOVE ME") {
 		
 		$sql = "DELETE FROM students_in_projects WHERE studentid = '$id' AND projectid = '$projectid'";
 		
@@ -110,5 +124,13 @@ if(isset($_POST) & !empty($_POST)){
 		
 
 ?>
+								     
+                            </div>
+                        </div>
+                    </div>
+
+      			</div>
+       </div>
+    </div>
 		
 		

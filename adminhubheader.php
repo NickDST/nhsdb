@@ -240,7 +240,7 @@ echo "I have snhs officer rights";
 		
 		
 		<div style = "padding-left:30px; ">	
-<div style = "margin-left: 290px;">
+<div>
 	
 <h1> Admin/Officer Hub</h1>
 </div>	

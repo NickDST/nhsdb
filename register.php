@@ -19,20 +19,38 @@
 		$usernameres = mysqli_query($connection, $usernamesql);
 		$count = mysqli_num_rows($usernameres);
 		if ($count == 1) {
-			$fmsg .= "Username Already Exists! ";
-		}
+			$fmsg = "Username Already Exists! ";
+			$error = "true";
+			
+		} 
 
 		$emailsql = "SELECT * FROM `login` WHERE contact = '$email'";
 		$emailsqlres = mysqli_query($connection, $emailsql);
 		$count = mysqli_num_rows($emailsqlres);
 
 		if ($count == 1) {
-			$fmsg .= "Email Already Exists! ";
+			$fmsg = "Email Already Exists! ";
+			$error = "true";
+			
 		}
+		
+		$studentidsql = "SELECT * FROM `students` WHERE studentid = '$studentid'";
+		$studentidsqlres = mysqli_query($connection, $studentidsql);
+		$count = mysqli_num_rows($studentidsqlres);
+
+		if ($count == 1) {
+			$fmsg .= "Student ID Already Exists";
+			$error = "true";
+			
+		}
+		
+		if ($error != "true") {
 
 		$sql = "INSERT INTO login (username, contact, password, studentid) VALUES ('$username', '$email', '$password', '$studentid');";
 		
-		echo $sql;
+		//echo $sql;
+			
+		
 
 		$result = mysqli_query($connection, $sql);
 		if ($result) {
@@ -40,14 +58,19 @@
 			
 
 		} else {
-			$fmsg .= "User Registration Failed";
-		}
+			$fmsg = "User Registration Failed";
+		} }
+		
+		
+		
 	} else {
 		$fmsg = "Password Does Not Match";
 	}
 
 
 }
+		
+
  ?>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">

@@ -3,7 +3,7 @@ include 'hubheader.php';
 
 include 'emailheader.php';
 ?>
-
+<!--I need to set this page to be able to choose between the two honor societies for tutoring-->
 
 <!doctype html>
 <html>
@@ -63,10 +63,25 @@ include 'emailheader.php';
 	
 		}
 		?>
-		
 
+<?php 		
+$sql = "SELECT * FROM students WHERE studentid = '$id'";
+//echo $id;
+$result = mysqli_query($connection, $sql);
+while ($student = $result->fetch_assoc()): 		
+?>		
+		
+<h2>Addressing the Request as:  <?= $student['logged_honor_society'];?></h2>
+<a href="changeaccountinfo.php" class ="btn">Change Logged Society</a>
+<br>	
+<br>
+<?php 
+		$society = $student['logged_honor_society'];
+		
+		
+		endwhile ?>		
 <form method="POST">
-		<label for=""> Type "I accept" in the designated box to accept this request</label>
+		<label for=""> Type "I ACCEPT", in caps, in the designated box to accept this request</label>
 		<input type="text" name="confirm" id="" class= "form-control" placeholder = "Type it"  required >
 	<br>
 	<button type="submit" name = "accept" class = "btn btn-success">Submit</button>	
@@ -75,7 +90,7 @@ include 'emailheader.php';
 <br>
 		
 <form method="POST">
-		<label for=""> Type "reject" in the designated box to delete this request. </label>
+		<label for=""> Type "REJECT", in caps, in the designated box to delete this request. </label>
 		<input type="text" name="deny" id="" class= "form-control" placeholder = "Type it"  required >
 		<br>
 		<label for="">Enter reason for rejecting</label>
@@ -96,12 +111,27 @@ include 'emailheader.php';
 <?php
 if(isset($_POST['accept']) & !empty(isset($_POST['accept']))){
 	$confirm = mysqli_real_escape_string($connection, $_POST["confirm"]);
-	if ($confirm == "I accept") {
+	if ($confirm == "I ACCEPT") {
+		
+		if ($society == "NHS") {
 		
 		$teacher_contact = 'Jennifer.chapman@concordiashanghai.org';
 		$teacher_name = 'Jennifer Chapman';
 		$affiliated_group = 'NHS';
 		$project_description = 'This is an NHS Tutoring Request';
+		$officercontact = $NHS_requestofficeremail;	
+		}
+		
+		if ($society == "SNHS") {
+			
+		$teacher_contact = 'todd.gordon@concordiashanghai.org';
+		$teacher_name = 'Todd Gordon';
+		$affiliated_group = 'SNHS';
+		$project_description = 'This is an SNHS Tutoring Request';
+		$officercontact = $SNHS_requestofficeremail;
+			
+		}
+		
 		
 		$addsql = "INSERT INTO project_list (project_name, teacher_name, teacher_contact, datetime_start, datetime_end, affiliated_group, entered_by, project_description, requestee, requestee_email, type) VALUES ('Tutoring Request', '$teacher_name', '$teacher_contact' , '$datetime_start' , '$datetime_end', '$affiliated_group', '$id', '$project_description', '$requestee', '$requestee_email', 'tutor');";
 		
@@ -198,8 +228,8 @@ if(isset($_POST['accept']) & !empty(isset($_POST['accept']))){
 							
 
 		
-$to = $vpemail;
-$subject = "EMAIL TO VP";
+$to = $officercontact;
+$subject = "EMAIL TO OFFICER IN $society";
 $message = "A new Request has been submitted \r\nRequestee name: '$requestee' \r\nThey are requesting for the time starting at '$datetime_start'";
 
 $headers = 'From: NHS Database <NHS@database.com>' . PHP_EOL .
@@ -214,7 +244,7 @@ echo "<br>email to Project Manager sent";
 			
 			
 $to = $studentcontact;
-$subject = "EMAIL TO STUDENT CONTACT";
+$subject = "EMAIL TO STUDENT CONTACT IN $society";
 $message = "You have confirmed the tutor request! Here is an email of the info \r\nRequestee name: $requestee \r\n\r\nThey are requesting for the time starting at $datetime_start to $datetime_end \r\nLog into the NHS database to verify this request";
 $headers = 'From: NHS Database <NHS@database.com>' . PHP_EOL .
     'Reply-To: NHS <NHS@database.com>' . PHP_EOL .
@@ -225,7 +255,7 @@ echo "<br>email to student tutor sent";
 
 		
 $to = $requestee_email;
-$subject = "EMAIL TO REQUESTEE";
+$subject = "EMAIL TO REQUESTEE IN $society";
 $message = "Your Request has been received! \r\ntutor name: $studentname \r\n\r\nYou will be starting at for the time starting at $datetime_start to $datetime_end<p> ";
 
 $headers = 'From: NHS Database <NHS@database.com>' . PHP_EOL .
@@ -238,8 +268,8 @@ echo "<br>email to requestee  sent";
 			
 			
 	
-$to = $chapmanemail;
-$subject = "EMAIL TO CHAPMAN";
+$to = $teacher_contact;
+$subject = "EMAIL TO TEACHER IN $society";
 $message = "Email to chapman \r\n$studentname has accepted and verified the tutor request to $requestee \r\n\r\nRequestee name: $requestee \r\n\r\nThey are requesting for the time starting at $datetime_start to $datetime_end";
 
 
@@ -248,7 +278,7 @@ $headers = 'From: NHS Database <NHS@database.com>' . PHP_EOL .
     'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
 			
 mail($to, $subject, $message, $headers);
-echo "<br>email to chapman has been sent";
+echo "<br>email to TEACHER has been sent";
 			
 		} else { 
 			echo "Emails failed to send";
@@ -263,7 +293,7 @@ echo "<br>email to chapman has been sent";
 /* Rejection */
 if(isset($_POST['reject']) & !empty(isset($_POST['reject']))){
 	$deny = mysqli_real_escape_string($connection, $_POST["deny"]);
-	if ($deny == "reject") {
+	if ($deny == "REJECT") {
 	
 		$reason = mysqli_real_escape_string($connection, $_POST["reason"]);
 	
