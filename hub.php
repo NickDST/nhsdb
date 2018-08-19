@@ -98,7 +98,7 @@ $color = $student['sidecolor'];
 				<br>
 				<li class="active">
                     <a href="addservicemain.php">
-                        <i class="pe-7s-comment"></i>
+                        <i class="pe-7s-pendrive"></i>
                         <p>Log Service Hours</p>
                     </a>
                 </li>
@@ -118,14 +118,14 @@ $color = $student['sidecolor'];
                 </li>
 				<br>
 				<li class="active">
-                    <a href="myprojects.php">
+                    <a href="searchproject.php">
                         <i class="pe-7s-graph1"></i>
                         <p>Look Up Project</p>
                     </a>
                 </li>
 				<br>
 				<li class="active">
-                    <a href="myprojects.php">
+                    <a href="personalcalendar.php">
                         <i class="pe-7s-coffee"></i>
                         <p>Personal Calendar</p>
                     </a>

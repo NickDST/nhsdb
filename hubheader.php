@@ -79,14 +79,14 @@ $color = $student['sidecolor']
                     NHS HUB
                 </a>
             </div>
-				<ul class="nav">
+			<ul class="nav">
                 <li class="active">
                     <a href="hub.php">
                         <i class="pe-7s-global"></i>
                         <p>Hub Home</p>
                     </a>
                 </li>
-				<br>
+				
             <ul class="nav">
                 <li class="active">
                     <a href="activatepending.php">
@@ -97,22 +97,36 @@ $color = $student['sidecolor']
 				<br>
 				<li class="active">
                     <a href="addservicemain.php">
-                        <i class="pe-7s-comment"></i>
+                        <i class="pe-7s-pendrive"></i>
                         <p>Log Service Hours</p>
                     </a>
                 </li>
 				<br>
 				<li class="active">
                     <a href="availability.php">
-                        <i class="pe-7s-network"></i>
+                        <i class="pe-7s-date"></i>
                         <p>Tutoring Availability</p>
                     </a>
                 </li>
 				<br>
 				<li class="active">
                     <a href="myprojects.php">
-                        <i class="pe-7s-graph"></i>
+                        <i class="pe-7s-rocket"></i>
                         <p>My Projects</p>
+                    </a>
+                </li>
+				<br>
+				<li class="active">
+                    <a href="searchproject.php">
+                        <i class="pe-7s-graph1"></i>
+                        <p>Look Up Project</p>
+                    </a>
+                </li>
+				<br>
+				<li class="active">
+                    <a href="personalcalendar.php">
+                        <i class="pe-7s-coffee"></i>
+                        <p>Personal Calendar</p>
                     </a>
                 </li>
 
