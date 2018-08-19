@@ -157,7 +157,8 @@ while ($tutor = $result->fetch_assoc()): ?>
 		$datetime_start = $tutor['datetime_start'];
 		$datetime_end = $tutor['datetime_end'];
 		$studentid = $tutor['studentid'];
-					
+		$grouporone = $tutor['grouporone'];
+		$affiliated = $tutor['affiliated'];			
 	
 	endwhile; ?> 
 
@@ -189,6 +190,49 @@ if(isset($_POST['submitbtn']) & !empty(isset($_POST['submitbtn']))){
 	$age = mysqli_real_escape_string($connection, $_POST["age"]);
 
 	$subject = "$subjectname";
+	
+	
+	
+//check here	
+if($grouporone == "group study"){
+
+	if($affiliated == "NHS") {
+	
+$to = $vpemail;
+$subject = "NHS JOINING GROUP SESSION";
+$message = "A new Request has been submitted \r\nRequestee name: '$requestee' \r\nThey are joining the for the time starting at '$datetime_start'";
+				
+$headers = 'From: NHS  <NHS@database.com>' . PHP_EOL .
+    'Reply-To: NHS <NHS@database.com>' . PHP_EOL .
+    'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
+				
+//$headers = "Content-type: text/html\r\n";
+mail($to, $subject, $message, $headers);
+echo "email to Project Manager sent";
+	}
+	
+	
+	if($affiliated == "SNHS") {
+	
+$to = $snhsemail;
+$subject = "SNHS JOINING GROUP SESSION";
+$message = "A new Request has been submitted \r\nRequestee name: '$requestee' \r\nThey are joining the for the time starting at '$datetime_start'";
+				
+$headers = 'From: SNHS  <SNHS@database.com>' . PHP_EOL .
+    'Reply-To: SNHS <SNHS@database.com>' . PHP_EOL .
+    'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
+				
+//$headers = "Content-type: text/html\r\n";
+mail($to, $subject, $message, $headers);
+echo "email to Project Manager sent";
+	}
+unset($_SESSION["tutortime"]);
+	echo '<script>window.location.href = "tutorrequest.php?message=success";</script>';	
+					
+	
+}	else {
+	
+
 	
 	/*
 	$datetime_start = mysqli_real_escape_string($connection, $_POST["date_time"]);
@@ -298,7 +342,7 @@ unset($_SESSION["tutortime"]);
 ?>
 
 	 
-	 
+<?php } ?>		 
 	 
 	 
 	 
@@ -417,7 +461,7 @@ unset($_SESSION["tutortime"]);
 
 
 
-	
+
 
 
 	

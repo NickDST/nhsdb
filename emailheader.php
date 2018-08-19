@@ -11,7 +11,7 @@ $presidentemail = "";
 
 $tutormanageremail = "";
 
-
+$snhsemail = "nicholas2019108@concordiashanghai.org";
 
 
 ?>
