@@ -34,7 +34,7 @@
 			
 		}
 		
-		$studentidsql = "SELECT * FROM `students` WHERE studentid = '$studentid'";
+		$studentidsql = "SELECT * FROM `login` WHERE studentid = '$studentid'";
 		$studentidsqlres = mysqli_query($connection, $studentidsql);
 		$count = mysqli_num_rows($studentidsqlres);
 
@@ -44,7 +44,17 @@
 			
 		}
 		
-		if ($error != "true") {
+			$studentidsql = "SELECT * FROM `students` WHERE studentid = '$studentid'";
+		$studentidsqlres = mysqli_query($connection, $studentidsql);
+		$count = mysqli_num_rows($studentidsqlres);
+
+		if ($count == 1) {
+			$csmsg .= "Connection established to a student account!";
+			$studentexists = "true";
+			
+		}
+		
+		if ($error != "true" and $studentexists = "true") {
 
 		$sql = "INSERT INTO login (username, contact, password, studentid) VALUES ('$username', '$email', '$password', '$studentid');";
 		
@@ -58,7 +68,9 @@
 			
 
 		} else {
-			$fmsg = "User Registration Failed";
+			$fmsg = "User Registration Failed <br><br> Make sure you are already checked inside the database!";
+			
+
 		} }
 		
 		
@@ -93,8 +105,13 @@
 </head>
 <body>
 	
-	<?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert" style = "margin-top: 100px;"> <?php echo $smsg; ?> </div><?php } ?>
-    <?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert" style = "margin-top: 100px;"> <?php echo $fmsg; ?> </div><?php } ?>
+	<?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert" style = "margin-top: 20px;"> <?php echo $smsg; ?> </div><?php } ?>
+	
+		<?php if(isset($csmsg)){ ?><div class="alert alert-success" role="alert" style = "margin-top: 20px;"> <?php echo $csmsg; ?> </div><?php } ?>
+	
+    <?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert" style = "margin-top: 20px;"> <?php echo $fmsg; ?> </div><?php } ?>
+	
+
 	
 		 
 
@@ -103,12 +120,12 @@
 	
 
     <form class="login-form" action="#" method="post">
-      <input type="text" name="username" class="login-input" placeholder="Username" required/>
-      <input type="password" name="password" id="input Password" class= "login-input" placeholder = "Password" required/>
-      <input type="email" name="email" id="inputEmail" class= "login-input" placeholder = "Email address"  required />
-		<input type="text" name="studentid" class= "login-input" placeholder = "Student ID" required/>
+      <input type="text" name="username" class="login-input" placeholder="Username" maxlength="100" required/>
+      <input type="password" name="password" id="input Password" class= "login-input" placeholder = "Password" maxlength="100" required/>
+      <input type="email" name="email" id="inputEmail" class= "login-input" placeholder = "Email address" maxlength="100"  required />
+		<input type="text" name="studentid" class= "login-input" placeholder = "Student ID" maxlength="100" required/>
 		
-	<input type="password" name="passwordAgain" id="input Password" class= "login-input" placeholder = "Password Again" required>
+	<input type="password" name="passwordAgain" id="input Password" class= "login-input" maxlength="100" placeholder = "Password Again" required>
       <button class = "btn btn-success">create</button>
 		
 		  </form>

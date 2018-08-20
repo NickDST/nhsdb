@@ -1,10 +1,38 @@
-<?php include 'hubheader.php';
+<?php include 'hubheader.php';?>
+<?php
+
+//echo $id;
+//Checking whether this student is in NHS
+$NHSchecksql = "SELECT students_in_societies.*, students.* from students, students_in_societies WHERE students.studentid = students_in_societies.studentid AND students_in_societies.honor_society = 'NHS' AND students.studentid = '$id'";
+
+$result = mysqli_query( $connection, $NHSchecksql );
 
 
+	$resultCheck = mysqli_num_rows( $result );
+		if ( $resultCheck > 0 ) {
+			$in_NHS = "true";
+			
+		} 
 
 
+//Checking whether or not this student is in SNHS
+$SNHSchecksql = "SELECT students_in_societies.*, students.* from students, students_in_societies WHERE students.studentid = students_in_societies.studentid AND students_in_societies.honor_society = 'SNHS' AND students.studentid = '$id'";
+
+$SNHSresult = mysqli_query( $connection, $SNHSchecksql );
+
+
+	$SNHSresultCheck = mysqli_num_rows( $SNHSresult );
+		if ( $SNHSresultCheck > 0 ) {
+			$in_SNHS = "true";
+			
+		} 
+
+
+//echo $in_SNHS;
+//echo $in_NHS;
 
 ?>
+
 
 
 <div class="content">
@@ -22,8 +50,23 @@
 								
 								<form method="POST">
 									<select name="logged_honor_society" id="">
-										  <option value="NHS">NHS</option>
-										  <option value="SNHS">SNHS</option>
+										
+										<?php
+										if($in_NHS == "true") {
+											echo "<option value='NHS'>NHS</option>";
+										}
+										
+										?>
+										
+										<?php
+										
+										if($in_SNHS == "true") {
+											echo "<option value='SNHS'>SNHS</option>";
+										}
+										
+										?>
+<!--										  <option value="NHS">NHS</option>-->
+<!--										  <option value="SNHS">SNHS</option>-->
 
 										 
 									</select>
