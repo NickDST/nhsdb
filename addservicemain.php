@@ -22,13 +22,13 @@ include 'hubheader.php'
                         <div class="card">
 
                             <div class="header">
-                                <h2 class="title">All Projects</h2>
+                                <h2 class="title"><strong>Add Me to a Project!</strong></h2>
                                 <h3 class="category">Search for the project you want to add yourself to</h3>
                             </div>
 							<br>
                             <div class = "" style= "padding-left:15px;">
 	<form action="addservicesearch.php" method = "POST">
-		<input type="text" name="search" placeholder="Search">
+		<input type="text" name="search" placeholder="Search" maxlength = 50>
 		<button type="submit" name = "submit-search">Submit</button>
 	</form>
 	

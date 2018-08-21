@@ -75,13 +75,13 @@ include 'hubheader.php';
 												
 												<form method="post">
 													<br>
-													<input type="INT" name="service_hours" class="form-control" placeholder="Number of Service Hours" required>
+													<input type="number" name="service_hours" class="form-control" placeholder="Number of Service Hours" required maxlength = 100>
 													<br>
-													<input type="text" name="role" class="form-control" placeholder="My Role" required>
+													<input type="text" name="role" class="form-control" placeholder="My Role" required maxlength = 100>
 													<br>
 													
 													<select name="affiliated_group_for_servicehours" id="">
-													<option>Select affiliated group you want service hours to count towards</option>
+													<option>Select affiliated Honor Society you want service hours to count towards</option>
 										 			<option value="NHS">NHS</option>
 										  			<option value="SNHS">SNHS</option>
 														
@@ -120,6 +120,10 @@ include 'hubheader.php';
 														$addstudentresult = mysqli_query( $connection, $addstudentsql );
 														if ( $addstudentresult ) {
 															echo "Entry successfully added";
+															
+															if ($_POST[ "service_hours" ] > 100) {
+																echo " Wow! That's a lot of service hours! An email has been sent to Chapman/Gordon to confirm this.";
+															}
 
 
 														} else {
@@ -130,7 +134,7 @@ include 'hubheader.php';
 													} else {
 														echo "student is already in the project";
 													}
-
+													
 												}
 												?>
 											</div>

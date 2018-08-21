@@ -283,13 +283,7 @@ include 'emailheader.php';
 		} else {
 			
 			
-			
-			
-
-
-			
-
-
+	
 
 
 			//Inserting the data into the projects...

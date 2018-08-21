@@ -179,9 +179,11 @@ endwhile;
 					<?php echo "Datetime ended: ".$projectinfo['datetime_end'];?> <br><br>
 					<?php echo "Requestee: ".$projectinfo['requestee'];?> <br>
 					<?php echo "Requestee Email: ".$projectinfo['requestee_email'];?> <br><br>			
-					<?php echo "Affiliated Group: ".$projectinfo['affiliated_group'];?> <br><br>			
+					<?php echo "Affiliated Group: ".$projectinfo['affiliated_group'];?> <br><br>	
+					<?php echo "Service Hours Count towards: ".$projectinfo['affiliated_group_for_servicehours'];?> <br>	
 					<?php echo $projectinfo['service_hours'];?> hours - 
 					<?php echo nl2br($projectinfo['role']."\r\n");?> 
+								
 
 
 

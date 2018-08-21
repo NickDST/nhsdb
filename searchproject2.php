@@ -14,8 +14,9 @@ include 'hubheader.php';
 </head>
 
 <body>
+	<div style = "padding-left:30px;">
 	<h1>Search Page</h1>
-	
+	</div>
 		 <div class="content">
             <div class="container-fluid">
                 <div class="row">
