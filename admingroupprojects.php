@@ -173,22 +173,74 @@ endwhile;
 
                             <div class="header" style = "margin-left:20px; margin-top:10px;">
                                 <h2 class="title">Create a Group Session</h2>
-                                <p class="category">Click a cell to set a time where you are available</p>
+                                <p class="category">Click a cell to set a time where you want the group project available</p>
                             </div>
                        <div class = "" style= "padding-left:15px; padding-bottom:20px;">
-							<!--  Insert other things here				-->
 						   
-						   <p>Click "week" to drag the box to the specific time you want to be set to available.</p>
+						   <form method="POST">
+							   
+							 <select name="group_subject" id="">
+									<option>Choose a Subject</option>
+									<option value="Biology">Biology</option>
+									<option value="Physics">Physics</option>
+									<option value="Chemistry">Chemistry</option>
+									<option value="English">English</option>
+									<option value="Reading">Reading</option>
+									<option value="World History">World History</option>
+									<option value="Writing">Writing</option>
+									<option value="Precalculus">Precalculus</option>
+									<option value="Algebra 2">Algebra 2</option>
+									<option value="Geometry or Lower">Geometry or Lower</option>
+							</select>
+							   
+						   <br>
+						   <br>	   
+							   
+						 	    <label for="">Enter a description of what will be the focus of the group session</label>
+											<div class="form-group">
+												<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="group_description" placeholder="i.e. Group Study Session on Meiosis and Mitosis" required maxlength=500 style = "resize:none;" ></textarea>
+											</div>
+							   <button class="btn btn-success" type="submit" name = "groupinfo">This is the information to Set</button>
 						   
-						   <p>Those who look for requests under your subject fields will see these times.</p>
+						
+						   </form>
 						   
-						   <p>Click on the event time to delete it.</p>
+						   <?php 
 						   
-						   <p>Student IDs will appear on the dates.</p>
-					
+						   if(isset($_POST['groupinfo']) & !empty(isset($_POST['groupinfo']))){
+							   $group_subject = mysqli_real_escape_string($connection, $_POST["group_subject"]);
+							   $group_desc = mysqli_real_escape_string($connection, $_POST["group_description"]);
+							   
+							   
+							   
+							   //echo $group_subject;
+							   $_SESSION[ 'group_subject'] = $group_subject;
+							   //echo "<br>";
+							   //echo $group_desc;
+							   $_SESSION[ 'group_desc'] = $group_desc;
+							   //echo "<br>";
+							   echo '<script>window.location.href = "admingroupprojects.php";</script>';
+
+						   }
+						   
+						   
+						   if (isset($_SESSION['group_subject'])){
+							echo "Group subject: ". $_SESSION['group_subject'];
+						   		}
+						    echo "<br>";
+
+						   	if (isset($_SESSION['group_desc'])){
+								echo "Current Description: ". $_SESSION['group_desc'];
+								echo "<br>";
+							echo "Now you can click on a date to set a group session!";
+								}
+						   
+						   
+		
+					?>
 			    <br>
 				<br>		   
-				<a href="changeaccountinfo.php" class ="btn btn-warning">Change these subjects</a>
+
 			    <br>
 				<br>		   
 				<a href="adminhub.php" class ="btn btn-info">Back to Officer Hub</a>

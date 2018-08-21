@@ -7,6 +7,14 @@ if (!isset($_SESSION['studentid'])) {
   exit;
 }
 
+if (isset($_SESSION['group_subject'])){
+	//$_SESSION['group_subject'];
+}
+
+if (isset($_SESSION['group_desc'])){
+	//$_SESSION['group_subject'];
+}
+
 include "includes/dbh.inc.php";
 $sql = "SELECT * FROM students WHERE studentid = ".$_SESSION['studentid'];
 $result = mysqli_query($connection, $sql);
@@ -25,8 +33,8 @@ if(isset($_POST["title"]))
 {
  $query = "
  INSERT INTO available_times
- (title, datetime_start, datetime_end, studentid, grouporone, affiliated)
- VALUES (:title, :start_event, :end_event, :studentid, :grouporone, :affiliated)
+ (title, datetime_start, datetime_end, studentid, grouporone, affiliated, group_subject, group_desc)
+ VALUES (:title, :start_event, :end_event, :studentid, :grouporone, :affiliated, :group_subject, :group_desc)
  ";
  $statement = $connect->prepare($query);
  $statement->execute(
@@ -34,9 +42,11 @@ if(isset($_POST["title"]))
    ':title'  => $_POST['title'],
    ':start_event' => $_POST['start'],
    ':end_event' => $_POST['end'],
-   ':studentid' => $_SESSION['studentid'],
+   ':studentid' => "1111111",
    ':grouporone' => "group study",
    ':affiliated' => "$view_society",
+   ':group_subject' => $_SESSION['group_subject'],
+   ':group_desc' => $_SESSION['group_desc'],
    
   )
  );

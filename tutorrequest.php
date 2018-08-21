@@ -76,6 +76,7 @@ include 'emailheader.php';
 							<form method="POST">
 								<select name="subjectname" id="">
 									<option>Choose a Subject</option>
+									<option value="Group Study">Group Study</option>
 									<option value="Biology">Biology</option>
 									<option value="Physics">Physics</option>
 									<option value="Chemistry">Chemistry</option>
@@ -86,6 +87,7 @@ include 'emailheader.php';
 									<option value="Precalculus">Precalculus</option>
 									<option value="Algebra 2">Algebra 2</option>
 									<option value="Geometry or Lower">Geometry or Lower</option>
+									
 
 
 								</select>
@@ -160,6 +162,8 @@ include 'emailheader.php';
 										}
 
 
+									
+									
 							$sql1 = "SELECT * FROM available_times WHERE id = $id ";
 							$result = mysqli_query( $connection, $sql1 );
 							while ( $tutor = $result->fetch_assoc() ): ?>
@@ -174,6 +178,24 @@ include 'emailheader.php';
 								?>
 
 								<h2 class="">Send in a tutoring request!</h2>
+								
+								<?php
+									
+								if ($tutor['grouporone'] = "group study") {
+									echo "This is a group study session: ".$tutor['group_subject'] ;
+									echo "<br>Desc: ".$tutor['group_desc'] ;	
+									echo "<br>";
+									echo "<br>Affiliated: ".$tutor['affiliated'] ;	
+								}
+									
+									
+								
+									
+									
+								?>
+								
+								
+								
 
 								<input type="text" name="requestee" id="" class="form-control" placeholder="Your Name" maxlength="100">
 								<br>
