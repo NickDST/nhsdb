@@ -1,6 +1,22 @@
 <?php
 //index.php
 session_start();
+if ( !isset( $_SESSION[ 'username' ] ) ) {
+	header( 'Location: requestlogin.php' );
+	exit;
+}
+
+if ( isset( $_SESSION[ 'username' ] ) ) {
+	$username = $_SESSION[ 'username' ];
+
+	?>
+	<?php
+} else {
+	//echo "nothing yet";
+}
+
+session_start();
+
 require_once( 'includes/dbh.inc.php' );
 include 'emailheader.php';
 ?>
@@ -98,7 +114,7 @@ include 'emailheader.php';
 								<br>
 								<br>
 								<p>Then click on the date you want</p>
-								<a href="index.php">or go back</a>
+								<a href="requesthub.php">or go back</a>
 								<hr>
 								<!--                                <p class="category">Click a cell to set a time where you are available</p>-->
 						</div>
@@ -311,7 +327,7 @@ include 'emailheader.php';
 
 
 			//Inserting the data into the projects...
-			$sql = "INSERT INTO request (requestee, contact, datetime_start, datetime_end, subject, tutor_diff, type, studentid, age) VALUES ('$requestee', '$contact', '$datetime_start' , '$datetime_end' , '$subjectname', '$subject_level', 'tutor', '$studentid', '$age');";
+			$sql = "INSERT INTO request (requestee, contact, datetime_start, datetime_end, subject, tutor_diff, type, studentid, age, request_username) VALUES ('$requestee', '$contact', '$datetime_start' , '$datetime_end' , '$subjectname', '$subject_level', 'tutor', '$studentid', '$age', '$username');";
 
 			echo $sql;
 

@@ -133,6 +133,19 @@ if(isset($_POST['accept']) & !empty(isset($_POST['accept']))){
 		}
 		
 		
+		$activatesql = "UPDATE request set status = 'active',  affiliated_for_service_hours = '$society' WHERE requestid = '$requestid'";
+		//UPDATE request set status = 'active', affiliated_for_service_hours = 'NHS' WHERE requestid = '13'
+		$activateresult = mysqli_query($connection, $activatesql);
+		if ($activateresult) {
+			echo "thing successfully updated ";
+
+		} else {
+		
+			echo "thing failed to be updated";
+		}
+		
+		
+	/*	
 		$addsql = "INSERT INTO project_list (project_name, teacher_name, teacher_contact, datetime_start, datetime_end, affiliated_group, entered_by, project_description, requestee, requestee_email, type) VALUES ('Tutoring Request', '$teacher_name', '$teacher_contact' , '$datetime_start' , '$datetime_end', '$affiliated_group', '$id', '$project_description', '$requestee', '$requestee_email', 'tutor');";
 		
 		$addresult = mysqli_query($connection, $addsql);
@@ -205,7 +218,7 @@ if(isset($_POST['accept']) & !empty(isset($_POST['accept']))){
 			echo "Entry failed to be removed";
 		}	
 
-			
+	*/		
 			
 	//querying to look for the student email		
 	$sql3 = "SELECT * FROM students WHERE studentid = '$id'";
@@ -249,7 +262,7 @@ $message = "You have confirmed the tutor request! Here is an email of the info \
 $headers = 'From: NHS Database <NHS@database.com>' . PHP_EOL .
     'Reply-To: NHS <NHS@database.com>' . PHP_EOL .
     'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
-mail($to, $subject, $message, $headers);
+//mail($to, $subject, $message, $headers);
 echo "<br>email to student tutor sent";
 			
 
@@ -262,7 +275,7 @@ $headers = 'From: NHS Database <NHS@database.com>' . PHP_EOL .
     'Reply-To: NHS <NHS@database.com>' . PHP_EOL .
     'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
 			
-mail($to, $subject, $message, $headers);
+//mail($to, $subject, $message, $headers);
 echo "<br>email to requestee  sent";			
 		
 			
@@ -277,7 +290,7 @@ $headers = 'From: NHS Database <NHS@database.com>' . PHP_EOL .
     'Reply-To: NHS <NHS@database.com>' . PHP_EOL .
     'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
 			
-mail($to, $subject, $message, $headers);
+//mail($to, $subject, $message, $headers);
 echo "<br>email to TEACHER has been sent";
 			
 		} else { 
@@ -288,7 +301,7 @@ echo "<br>email to TEACHER has been sent";
 		
 	}
 
-}
+//}
 
 /* Rejection */
 if(isset($_POST['reject']) & !empty(isset($_POST['reject']))){

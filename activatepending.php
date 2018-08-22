@@ -34,7 +34,7 @@ include 'hubheader.php';
 		
 		<?php
 			//$search = mysqli_real_escape_string($connection, $_POST['search']);
-			$sql = "SELECT * FROM request WHERE datetime_start > NOW() AND studentid = '$id' ORDER BY datetime_start";
+			$sql = "SELECT * FROM request WHERE datetime_start > NOW() AND studentid = '$id'  AND status = 'inactive' ORDER BY datetime_start";
 			
 			$result = mysqli_query($connection, $sql);
 			$queryResult = mysqli_num_rows($result);
