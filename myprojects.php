@@ -107,12 +107,12 @@ $sqlhours = "SELECT SUM(service_hours) FROM students_in_projects WHERE studentid
 $resulthours = mysqli_query($connection, $sqlhours);
 	
 $numCheck = mysqli_num_rows($resulthours);
-while ($snhstotalhours = $resulthours->fetch_assoc()): 		
+while ($nhstotalhours = $resulthours->fetch_assoc()): 		
 			
 if (isset($nhstotalhours['SUM(service_hours)'])) {?>							
 								
 								
-<h3>Total Hours for SNHS: <?=$nhstotalhours['SUM(service_hours)'];?></h3>
+<h3>Total Hours for NHS: <?=$nhstotalhours['SUM(service_hours)'];?></h3>
 							
 								
 <?php } else {

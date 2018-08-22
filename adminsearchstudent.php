@@ -71,7 +71,9 @@
 
 							if ( $in_group == 'yes' ) {
 
-								$studentsql = "SELECT students_in_subjects.*, students.* FROM students_in_subjects, students WHERE students.studentid = students_in_subjects.studentid AND students.studentid = '$studentid' LIMIT 1";
+								//$studentsql = "SELECT students_in_subjects.*, students.* FROM students_in_subjects, students WHERE students.studentid = students_in_subjects.studentid AND students.studentid = '$studentid' LIMIT 1";
+								$studentsql = "SELECT * FROM students WHERE studentid = '$studentid' LIMIT 1";
+								
 								$resultsql = mysqli_query( $connection, $studentsql );
 
 								$resultCheck = mysqli_num_rows( $resultsql );
@@ -267,7 +269,7 @@ endwhile;
 							<?php echo "Datetime ended: ".$projectinfo['datetime_end'];?> <br><br>
 							<?php echo "Requestee: ".$projectinfo['requestee'];?> <br>
 							<?php echo "Requestee Email: ".$projectinfo['requestee_email'];?> <br><br>
-							<?php echo "Affiliated Group: ".$projectinfo['affiliated_group'];?> <br><br>
+							<?php echo "Project's Affiliated Group: ".$projectinfo['affiliated_group'];?> <br><br>
 							<?php echo $projectinfo['service_hours'];?> hours -
 							<?php echo nl2br($projectinfo['role']."\r\n");?>
 

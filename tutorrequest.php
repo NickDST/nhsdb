@@ -44,13 +44,13 @@ include 'emailheader.php';
 
 
 						<div class="header" style="margin-left:20px; margin-top:10px;">
-							
+
 						<?php 	if ( isset( $_GET[ 'error' ] ) ) {
 									$fmsg = $_GET[ 'error' ]; }
-							
-							?>	
-							
-							
+
+							?>
+
+
 							<?php if(isset($smsg)){ ?>
 							<div class="alert alert-success" role="alert" style="margin-top: 20px;">
 								<?php echo $smsg; ?> </div>
@@ -61,14 +61,14 @@ include 'emailheader.php';
 							<?php } ?>
 
 
-						
-							
+
+
 
 							<!--                                <h2 class="title"></h2>-->
 							<!--								<br>-->
-							<?php 
-								if(isset($_SESSION['subjectname'])) {						   
-	echo "<h4>Currently displaying open dates for: </h4><br><h3>".$_SESSION['subjectname']."</h3>";	
+							<?php
+								if(isset($_SESSION['subjectname'])) {
+	echo "<h4>Currently displaying open dates for: </h4><br><h3>".$_SESSION['subjectname']."</h3>";
 								}
 								?>
 							<br>
@@ -87,7 +87,7 @@ include 'emailheader.php';
 									<option value="Precalculus">Precalculus</option>
 									<option value="Algebra 2">Algebra 2</option>
 									<option value="Geometry or Lower">Geometry or Lower</option>
-									
+
 
 
 								</select>
@@ -130,25 +130,27 @@ include 'emailheader.php';
 
 
 								if ( isset( $_GET[ 'message' ] ) ) {
-									$smsg = "Your project has been sent in! Thank you!"; 
+									$smsg = "Your project has been sent in! Thank you!";
 							if(isset($smsg)){ ?>
 							<div class="alert alert-success" role="alert" style="margin-top: 20px;">
 								<?php echo $smsg; ?> </div>
 							<?php } ?>
-								
-								<?php 	
+
+								<?php
 
 								} else {
 									//		echo "Please Click on a Date<br>";
 								}
-								
-								
+
+
 
 							} else {
-								
-								
+
+
 
 								if ( isset( $_SESSION[ 'subjectname' ] ) ) {
+									 $subjectname = $_SESSION[ 'subjectname' ];
+									 echo "THIS IS SUBJECTNAME".$subjectname;
 									//echo "Please Click on a Date";
 
 									if ( isset( $_SESSION[ 'tutortime' ] ) ) {
@@ -162,8 +164,8 @@ include 'emailheader.php';
 										}
 
 
-									
-									
+
+
 							$sql1 = "SELECT * FROM available_times WHERE id = $id ";
 							$result = mysqli_query( $connection, $sql1 );
 							while ( $tutor = $result->fetch_assoc() ): ?>
@@ -178,24 +180,24 @@ include 'emailheader.php';
 								?>
 
 								<h2 class="">Send in a tutoring request!</h2>
-								
+
 								<?php
-									
-								if ($tutor['grouporone'] = "group study") {
+
+								if ($tutor['grouporone'] == "group study") {
 									echo "This is a group study session: ".$tutor['group_subject'] ;
-									echo "<br>Desc: ".$tutor['group_desc'] ;	
+									echo "<br>Desc: ".$tutor['group_desc'] ;
 									echo "<br>";
-									echo "<br>Affiliated: ".$tutor['affiliated'] ;	
+									echo "<br>Affiliated: ".$tutor['affiliated'] ;
 								}
-									
-									
-								
-									
-									
+
+
+
+
+
 								?>
-								
-								
-								
+
+
+
 
 								<input type="text" name="requestee" id="" class="form-control" placeholder="Your Name" maxlength="100">
 								<br>
@@ -209,13 +211,13 @@ include 'emailheader.php';
 								<h5>Time End: <?= $tutor['datetime_end'] ?></h5>
 								<!--				<h5>Student: <?= $tutor['studentid'] ?></h5>-->
 
-								<?php 
+								<?php
 		$datetime_start = $tutor['datetime_start'];
 		$datetime_end = $tutor['datetime_end'];
 		$studentid = $tutor['studentid'];
 		$grouporone = $tutor['grouporone'];
-		$affiliated = $tutor['affiliated'];			
-	
+		$affiliated = $tutor['affiliated'];
+
 	endwhile; ?>
 
 
@@ -228,8 +230,8 @@ include 'emailheader.php';
 								<button class="btn btn-success" type="submit" name="submitbtn">submit</button>
 
 							</form>
-							
-							
+
+
 
 						</div>
 					</div>
@@ -242,30 +244,30 @@ include 'emailheader.php';
 	<?php
 
 	if ( isset( $_POST[ 'submitbtn' ] ) & !empty( isset( $_POST[ 'submitbtn' ] ) ) ) {
-		
+
 		//if ( !empty(isset( $_POST[ 'requestee' ] )) & !empty(isset( $_POST[ 'contact' ] ) ) & !empty(isset( $_POST[ 'subject_level' ] ) ) & !empty(isset( $_POST[ 'age' ] ) ) ) {
-		
+
 		if($_POST['age'] > 18) {
 			echo '<script>window.location.href = "tutorrequest.php?error=Sorry We only tutor individuals up to 18 years old";</script>';
-			
-			
+
+
 		} else {
-		
-		
+
+
 		if ( !( $_POST[ 'requestee' ]=="" ) or !( $_POST[ 'contact' ]=="" ) or !( $_POST[ 'subject_level' ]=="" ) or !( $_POST[ 'age' ]=="" )) {
-		
+
 		$requestee = mysqli_real_escape_string( $connection, $_POST[ "requestee" ] );
 		$contact = mysqli_real_escape_string( $connection, $_POST[ "contact" ] );
 		$subject_level = mysqli_real_escape_string( $connection, $_POST[ "subject_level" ] );
 		$age = mysqli_real_escape_string( $connection, $_POST[ "age" ] );
-			
-			
-
-		$subject = "$subjectname";
 
 
 
-		//check here	
+		//$subject = "$subjectname";
+
+
+
+		//check here
 		if ( $grouporone == "group study" ) {
 
 			if ( $affiliated == "NHS" ) {
@@ -303,13 +305,13 @@ include 'emailheader.php';
 
 
 		} else {
-			
-			
-	
+
+
+
 
 
 			//Inserting the data into the projects...
-			$sql = "INSERT INTO request (requestee, contact, datetime_start, datetime_end, subject, tutor_diff, type, studentid, age) VALUES ('$requestee', '$contact', '$datetime_start' , '$datetime_end' , '$subject', '$subject_level', 'tutor', '$studentid', '$age');";
+			$sql = "INSERT INTO request (requestee, contact, datetime_start, datetime_end, subject, tutor_diff, type, studentid, age) VALUES ('$requestee', '$contact', '$datetime_start' , '$datetime_end' , '$subjectname', '$subject_level', 'tutor', '$studentid', '$age');";
 
 			echo $sql;
 
@@ -352,7 +354,7 @@ include 'emailheader.php';
 
 
 
-					//Automated Email Test. The email variables are in the emailheader.php	
+					//Automated Email Test. The email variables are in the emailheader.php
 
 					$to = $vpemail;
 					$subject = "A Project Request has been submitted!!";
@@ -401,20 +403,20 @@ include 'emailheader.php';
 		}
 
 	} else {
-			
+
 			echo '<script>window.location.href = "tutorrequest.php?error=Please fill out the fields";</script>';
-			
+
 		}
 
 	}
 }
-								}
+}
 	?>
 
 
 	<?php } ?>
 
-			
+
 
 
 

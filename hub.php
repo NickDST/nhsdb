@@ -291,7 +291,7 @@ if (isset($_SESSION['snhs_officer_rights'])) {
 
 								<?php echo "Name: ".$pendingrequest['requestee'];?> <br>
 
-								<?php echo $pendingrequest['contact'];?> hours -
+								<?php echo $pendingrequest['contact'];?> 
 								<?php echo nl2br($pendingrequest['subject']."\r\n");?>
 								<hr>
 
