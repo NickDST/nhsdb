@@ -1,9 +1,9 @@
 <?php include 'requesthubheader.php';?>
 		<div style="padding-left:30px; ">
+<!--Includes header to the layout and sessions-->
 
 
-
-			
+<!--	HTML for the form		-->
 			<hr>
 
 		</div>
@@ -21,17 +21,20 @@
 							<div class="" style="padding-left:15px; padding-bottom:20px;">
 								<br>
                 <p>Make sure the tutoring event took place</p>
+								
+<!--This generates a list for the requestee to choose out of for active requests-->
 
                 <?php
             			//$search = mysqli_real_escape_string($connection, $_POST['search']);
             			$sql = "SELECT * FROM request WHERE request_username = '$username' AND status = 'active' ORDER BY datetime_start";
-
+//I took out the datetime_start < now() because it made debugging difficult. But this sytem is relatively secure, just requires some integrity on the students part because the moment they verify the request is 'active'
+								
             			$result = mysqli_query($connection, $sql);
             			$queryResult = mysqli_num_rows($result);
 
             			echo "You have ".$queryResult. " tutoring event(s) to verify <hr>";
 
-
+//This will generate info for each active request including a link
             			if ($queryResult > 0) {
             				while ($row = mysqli_fetch_assoc($result)) {
             					echo "
@@ -41,7 +44,7 @@
             					<p>".$row['datetime_start']."</p>
             					<p>".$row['datetime_end']."</p>
             					</div>
-            					<a href = 'verifytutoring2.php?name=".$row['requestee']."&startdate=".$row['datetime_start']."&id=".$row['requestid']."'>More Info
+            					<a href = 'verifytutoring2.php?name=".$row['requestee']."&startdate=".$row['datetime_start']."&id=".$row['requestid']."'>More Info/activate
             					</a>
             					<hr>";
 
@@ -61,7 +64,7 @@
 							</div>
 						</div>
 					</div>
-					<!--					
+					<!--Unused block section					
 
 					<div class="col-md-12">
 						<div class="card">
@@ -85,7 +88,7 @@
 
 
 
-
+<!--Just page footer things-->
 		<footer class="footer">
 			<div class="container-fluid">
 				<nav class="pull-left">

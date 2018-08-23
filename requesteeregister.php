@@ -1,21 +1,22 @@
 <?php
 
-
+//linking to the file that establishes the connection to the database, in the includes folder
 require_once( 'includes/dbh.inc.php' );
 
 
-//print_r($_POST);
+//if there is a POST then this statement activates to submit the registered student info
 if ( isset( $_POST ) & !empty( $_POST ) ) {
 	$username = mysqli_real_escape_string( $connection, $_POST[ "username" ] );
 	$email = mysqli_real_escape_string( $connection, $_POST[ "email" ] );
 	$parent_or_student = mysqli_real_escape_string( $connection, $_POST[ "parent_or_student" ] );
-  $full_name = mysqli_real_escape_string( $connection, $_POST[ "full_name" ] );
+	$full_name = mysqli_real_escape_string( $connection, $_POST[ "full_name" ] );
 	$password = md5( $_POST[ "password" ] );
 	$passwordAgain = md5( $_POST[ "passwordAgain" ] );
 
+//first checkking if the password is the same as the password again.	
 	if ( $password == $passwordAgain ) {
 
-
+//Checking if the username already exists
 		$usernamesql = "SELECT * FROM `requestlogin` WHERE username = '$username'";
 		$usernameres = mysqli_query( $connection, $usernamesql );
 		$count = mysqli_num_rows( $usernameres );
@@ -24,7 +25,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 			$error = "true";
 
 		}
-
+//checking if the email already exists
 		$emailsql = "SELECT * FROM `requestlogin` WHERE contact = '$email'";
 		$emailsqlres = mysqli_query( $connection, $emailsql );
 		$count = mysqli_num_rows( $emailsqlres );
@@ -39,8 +40,9 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 
 
 
-
-		if ( $error != "true") {
+//if any of the errors above, $error will be set to true. If no erros above then it will not be true and thus
+//the statement continues
+		if ( $error != "true" ) {
 
 			$sql = "INSERT INTO requestlogin (username, contact, full_name, password, parent_or_student) VALUES ('$username', '$email', '$full_name', '$password', '$parent_or_student');";
 
@@ -87,11 +89,12 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Untitled Document</title>
+	<title>Register the User!</title>
 </head>
 
 <body>
 
+<!--These are the success and error messages	-->
 	<?php if(isset($smsg)){ ?>
 	<div class="alert alert-success" role="alert" style="margin-top: 20px;">
 		<?php echo $smsg; ?> </div>
@@ -110,7 +113,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 
 
 
-
+<!--This is the HTML for the form-->
 	<div class="login-container">
 		<section class="login" id="login">
 
@@ -118,7 +121,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 			<form class="login-form" action="#" method="post">
 				<input type="text" name="username" class="login-input" placeholder="Username" maxlength="100" required/>
 
-          <input type="text" name="real_name" class="login-input" placeholder="Full Name" maxlength="100" required/>
+				<input type="text" name="real_name" class="login-input" placeholder="Full Name" maxlength="100" required/>
 				<input type="password" name="password" id="input Password" class="login-input" placeholder="Password" maxlength="100" required/>
 				<input type="email" name="email" id="inputEmail" class="login-input" placeholder="Email address" maxlength="100" required/>
 				<!-- <input type="text" name="studentid" class="login-input" placeholder="Student ID" maxlength="100" required/> -->
@@ -127,11 +130,11 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 				<input type="password" name="passwordAgain" id="input Password" class="login-input" maxlength="100" placeholder="Password Again" required>
 
 
-        <select class="login-input" name="parent_or_student">
-          <option >Are you a parent or student</option>
-          <option value="student">Student</option>
-          <option value="parent">Parent</option>
-        </select>
+				<select class="login-input" name="parent_or_student">
+					<option>Are you a parent or student</option>
+					<option value="student">Student</option>
+					<option value="parent">Parent</option>
+				</select>
 
 				<button class="btn btn-success">create</button>
 

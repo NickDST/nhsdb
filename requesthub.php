@@ -1,4 +1,6 @@
 <?php include 'requesthubheader.php';?>
+<!--The requesthubheader.php has all the repetitive session and layout info, to keep consistency and make it easier to change, all request hub interfaces just link to it.-->
+
 
 		<div style="padding-left:30px; ">
 
@@ -25,6 +27,7 @@
 							<div class="" style="padding-left:15px; padding-bottom:20px;">
 								<br>
 
+<!--				This is where you can give some information to the entering tutorers				-->
                 <p>This is where you can make tutor requests and verify tutor events!!</p>
 
 
@@ -32,7 +35,7 @@
 							</div>
 						</div>
 					</div>
-					<!--					New section-->
+					<!--New block section-->
 					
 					<div class="col-md-12">
 						<div class="card">
@@ -43,6 +46,8 @@
 							</div>
 							<div class="" style="padding-left:15px; padding-bottom:20px;">
 								<br>
+								
+<!--Querying to find the information for the user for all their tutor requests -->
 								 <?php
 								/*Pending requests*/
 								$pendingsql = "SELECT * FROM request WHERE request_username = '$username' ORDER BY datetime_start";
@@ -90,6 +95,11 @@
 								<p class="category">Currently Active are displayed</p>
 							</div>
 							<div class="" style="padding-left:15px; padding-bottom: 5px; ">
+<!--There are two kinds of statuses for tutor requests, active or inactive. It is activated when a tutorer goes into their account to verify it. Right now this will generate the list of 'inactive' requests	-->
+								
+								
+								
+								
                 <?php
 								/*Pending requests*/
 								$pendingsql = "SELECT * FROM request WHERE status = 'inactive' AND request_username = '$username' ORDER BY datetime_start";
@@ -152,7 +162,7 @@
 					&copy;
 					<script>
 						document.write( new Date().getFullYear() )
-					</script> NHS DB
+					</script> Honor Help
 				</p>
 			</div>
 		</footer>

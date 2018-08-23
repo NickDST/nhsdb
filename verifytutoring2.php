@@ -1,5 +1,5 @@
 <?php include 'requesthubheader.php'; ?>
-
+<!--Includes header again-->
 		
 		<div class="content">
 			<div class="container-fluid">
@@ -18,11 +18,16 @@
 
 								<hr>
 								<?php
+								//This page loads the information linked from verifytutoring.php. The _GET gets the information out of the link URL
+								
 								$name = mysqli_real_escape_string( $connection, $_GET[ 'name' ] );
 								$startdate = mysqli_real_escape_string( $connection, $_GET[ 'startdate' ] );
 								$requestid = mysqli_real_escape_string( $connection, $_GET[ 'id' ] );
 								//echo $projectid;
 								$sql = "SELECT * FROM request WHERE requestid = '$requestid'";
+								//The requestid is unique, and thus it unpacks the information from the request id
+								
+								//Displays the information
 								$result = mysqli_query( $connection, $sql );
 								$queryResults = mysqli_num_rows( $result );
 								if ( $queryResults > 0 ) {
@@ -36,11 +41,14 @@
 
                     </div>
                     <hr>";
-
+//establishes a lot of variables here that will be used when entering the information
 										$requestee = $row[ 'requestee' ];
 										$datetime_start = $row[ 'datetime_start' ];
 										$datetime_end = $row[ 'datetime_end' ];
 										$requestee_email = $row[ 'contact' ];
+										
+										
+										//The society that these hours will be entered into. Specified by the student when they accepted the request
 										$society = $row[ 'affiliated_for_service_hours' ];
 										echo $studentid = $row[ 'studentid' ];
 									}
@@ -49,7 +57,7 @@
 								}
 								?>
 
-
+<!--This is the HTML form for verification-->
 								<form method="POST">
 									<label for=""> Type "VERIFY", in caps, in the designated box to verify this request</label>
 									<input type="text" name="confirm" id="" class="form-control" placeholder="Type it" required>
@@ -62,6 +70,7 @@
 								</form>
 
 								<br>
+<!--This delete part was moved to somewhere else for inactive requests. We dont want people just deleting tutoring-->
 <!--
 								<form method="POST">
 									<label for=""> Type "DELETE", in caps, in the designated box to delete this request. </label>
@@ -82,6 +91,8 @@
 					<!--php code  -->
 
 					<?php
+					//If there is the 'post' verify and the post isnt empty and the confirmation text is correct.
+					
 					if ( isset( $_POST[ 'verify' ] ) & !empty( isset( $_POST[ 'verify' ] ) ) ) {
 						$confirm = mysqli_real_escape_string( $connection, $_POST[ "confirm" ] );
 						$feedback = mysqli_real_escape_string( $connection, $_POST[ "feedback" ] );
@@ -96,6 +107,8 @@
 							$studentemail = $student['contact'];
 
 							endwhile;
+							
+							//Checking which society the student wanted these service hours to be entered under
 
 
 
@@ -119,7 +132,7 @@
 							}
 
 
-
+//This officially adds the project into the master project list with all the appropriate fields from either NHS or SNSH
 							$addsql = "INSERT INTO project_list (project_name, teacher_name, teacher_contact, datetime_start, datetime_end, affiliated_group, entered_by, project_description, requestee, requestee_email, type) VALUES ('Tutoring Request', '$teacher_name', '$teacher_contact' , '$datetime_start' , '$datetime_end', '$affiliated_group', '$studentid', '$project_description', '$requestee', '$requestee_email', 'tutor');";
 
 							$addresult = mysqli_query( $connection, $addsql );
@@ -144,12 +157,13 @@
 								}
 
 								date_default_timezone_set( 'Asia/Hong_Kong' );
-
+								
+//This finds the service hours by taking the difference between the datetime_start and datetime_end of the tutor event
 								$diff = strtotime( $datetime_end ) - strtotime( $datetime_start );
 								$diff_in_hrs = $diff / 3600;
 
 
-
+//including the student in this "project" with the appropriate number of service hours entered as well. In order for a student to be associated with a project they need to be entered into this table
 								$addsql2 = "INSERT INTO students_in_projects (projectid, studentid, service_hours, role) VALUES ('$projectid', '$studentid', '$diff_in_hrs' , 'Tutorer');";
 
 								$addresult2 = mysqli_query( $connection, $addsql2 );
@@ -162,6 +176,7 @@
 									echo "studentinproject failed to be added";
 								}
 								
+//Submitting any possible feedback into the feedback table with the request id								
 								$sql6 = "INSERT INTO feedback (requestid, description) VALUES ('$requestid', '$feedback');";
 
 								$result6 = mysqli_query( $connection, $sql6 );
@@ -175,7 +190,7 @@
 								}
 								
 
-
+//Removing the original request from the request table now that it is officially in the project list
 
 								$sql2 = "DELETE FROM request WHERE studentid = '$studentid' AND requestid = '$requestid'";
 
@@ -189,7 +204,7 @@
 									echo "Entry failed to be removed";
 								}
 
-
+//Deleting the original set time from the available_times table to avoid confusion
 								$sql5 = "DELETE FROM available_times WHERE studentid = '$studentid' AND datetime_start = '$datetime_start' AND datetime_end = '$datetime_end'";
 
 								$result5 = mysqli_query( $connection, $sql5 );
@@ -204,7 +219,7 @@
 								
 								
 								
-
+//Emails the student that they have received their service horus
 								
 										
 $to = $studentemail;
@@ -244,7 +259,7 @@ echo "<br>email to requestee  sent";
 
 
 
-
+<!--footer stuff-->
 		<footer class="footer">
 			<div class="container-fluid">
 				<nav class="pull-left">

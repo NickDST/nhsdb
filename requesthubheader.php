@@ -1,11 +1,14 @@
 <?php
-
 session_start();
+//creating the session
+
+//If the person isn't logged in, they are automatically redirected to the login page
 if ( !isset( $_SESSION[ 'username' ] ) ) {
 	header( 'Location: requestlogin.php' );
 	exit;
 }
 
+//if the person is logged in, then the variable $username holds the username of the logged in individual
 if ( isset( $_SESSION[ 'username' ] ) ) {
 	$username = $_SESSION[ 'username' ];
 
@@ -15,7 +18,10 @@ if ( isset( $_SESSION[ 'username' ] ) ) {
 	//echo "nothing yet";
 }
 
+//connecting to the file that establishes the connection to the database
 require_once( 'includes/dbh.inc.php' );
+
+//loading the information of the requestee who just logged in based on the username, which is unique
 $sql = "SELECT * FROM requestlogin WHERE username = '$username'";
 //echo $id;
 $result = mysqli_query( $connection, $sql );
@@ -61,7 +67,7 @@ while ( $requestee = $result->fetch_assoc() ):
 
 
 
-
+<!--This is the sidebar. Currently requestees are set to just permenant green.-->
 	<div class="wrapper">
 
 		<?php
@@ -80,7 +86,7 @@ while ( $requestee = $result->fetch_assoc() ):
 		<div class="sidebar-wrapper">
 			<div class="logo">
 				<a href="index.php" class="simple-text">
-                    Requestee HUB
+                    Honor Help
                 </a>
 
 			</div>
@@ -157,7 +163,8 @@ while ( $requestee = $result->fetch_assoc() ):
 					</ul>
 
 					<ul class="nav navbar-nav navbar-right">
-
+						
+<!--This really doesn't need to be here. But it doesn't really matter unless you are an officer-->
 						<?php
 						if ( isset( $_SESSION[ 'admin_rights' ] )OR isset( $_SESSION[ 'nhs_officer_rights' ] )OR isset( $_SESSION[ 'snhs_officer_rights' ] ) ) {
 							?>
@@ -202,6 +209,9 @@ while ( $requestee = $result->fetch_assoc() ):
 			</div>
 		</nav>
 		
+		
+		
+<!--A lot of possible plugins not used here		-->
 		
 		
 		

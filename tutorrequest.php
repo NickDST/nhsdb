@@ -1,11 +1,15 @@
 <?php
 //index.php
 session_start();
+//starting a session
+
+//making user is logged in
 if ( !isset( $_SESSION[ 'username' ] ) ) {
 	header( 'Location: requestlogin.php' );
 	exit;
 }
 
+//takes variable from session
 if ( isset( $_SESSION[ 'username' ] ) ) {
 	$username = $_SESSION[ 'username' ];
 
@@ -42,7 +46,7 @@ include 'emailheader.php';
 
 						<div class="header" style="margin-left:20px; margin-top:10px;">
 
-
+<!--this is the HTML for the calendar. The calendar is where the id = calendar-->
 							<h2 class="title"></h2>
 							<h4 class="category"></h4>
 						</div>
@@ -61,6 +65,7 @@ include 'emailheader.php';
 
 						<div class="header" style="margin-left:20px; margin-top:10px;">
 
+<!--	error messages when i redirect people to the page with the appropriate error message						-->
 						<?php 	if ( isset( $_GET[ 'error' ] ) ) {
 									$fmsg = $_GET[ 'error' ]; }
 
@@ -88,10 +93,10 @@ include 'emailheader.php';
 								}
 								?>
 							<br>
-							<p>Select Subject:</p>
+							<p>Select a Field:</p>
 							<form method="POST">
 								<select name="subjectname" id="">
-									<option>Choose a Subject</option>
+									<option>Choose a Field</option>
 									<option value="Group Study">Group Study</option>
 									<option value="Biology">Biology</option>
 									<option value="Physics">Physics</option>

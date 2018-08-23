@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+//starting a session in order to allow the user to log in
 
 require_once( 'includes/dbh.inc.php' );
 
@@ -9,7 +10,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 	//$studentid = mysqli_real_escape_string( $connection, $_POST[ 'studentid' ] );
 	$password = md5( $_POST[ 'password' ] );
 
-	//Querying to create sessions for each of the officers/admins
+	//selecting from the table requestlogin for the username and the password. If there is a match then it allows them through
 
 
 
@@ -17,10 +18,13 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 	$result = mysqli_query( $connection, $sql );
 	$count = mysqli_num_rows( $result );
 	if ( $count == 1 ) {
-
+		
+//automatically creating the session the student can go into
 		$_SESSION[ 'username' ] = $username;
 		//	echo $_SESSION['studentid'];
-
+		
+		
+//redirecting user to the hub automatically
 		echo '<script>window.location.href = "requesthub.php";</script>';
 
 
@@ -43,7 +47,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 </head>
 <head>
 	<meta charset="UTF-8">
-	<title>Login </title>
+
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
@@ -53,7 +57,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 
 
 
-
+<!--This is the HTML... If you are already logged in then it'll try to just redirect you.-->
 
 	<body>
 
@@ -82,6 +86,8 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 
 						<?php }?>
 
+						
+<!--Here is the HTML form						-->
 					</header>
 
 					<form class="login-form" action="#" method="post">
@@ -103,7 +109,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 
 		<?php
 
-  ?>
+		?>
 	</body>
 	<script src="js/loginindex.js"></script>
 
