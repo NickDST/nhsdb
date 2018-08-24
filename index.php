@@ -129,7 +129,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
       <div class="strip__inner-text">
         <h2>Members Login</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia sapiente deserunt consectetur, quod reiciendis corrupti quo ea aliquid! Repellendus numquam quo, voluptate. Suscipit soluta omnis quibusdam facilis, illo voluptates odit!</p>
-		  <a href="login.php"><button class="btn">login</button></a>
+		  <a href="login.php"><button class="btn">Login</button></a>
         <p>
 <!--          <a href="https://twitter.com/ettrics" target="_blank"><i class="fa fa-twitter"></i></a>-->
         </p>
