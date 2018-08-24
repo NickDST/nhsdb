@@ -1,11 +1,15 @@
 <?php
 
 session_start();
+//Loads a session
+
+//Checks whether or not the person is logged in with their student ID
 if ( !isset( $_SESSION[ 'studentid' ] ) ) {
 	header( 'Location: login.php' );
 	exit;
 }
 
+//If they are logged in, take the variable $id and store the studentid in that
 if ( isset( $_SESSION[ 'studentid' ] ) ) {
 	$id = $_SESSION[ 'studentid' ];
 
@@ -61,7 +65,7 @@ while ( $student = $result->fetch_assoc() ):
 
 
 
-
+<!--This sets the color of the sidebar to whatever the student wants it to be-->
 	<div class="wrapper">
 
 		<?php 
@@ -259,6 +263,7 @@ if (isset($_SESSION['snhs_officer_rights'])) {
 			</div>
 			<hr>
 			<h2>Currently logged in as: <?= $student['logged_honor_society'];?></h2>
+<!--Links to somewhere they can changed the honor society that they are currently logged in as-->
 			<a href="changeaccountinfo.php" class="btn">Change Logged Society</a>
 		</div>
 		<div class="content">
@@ -275,6 +280,7 @@ if (isset($_SESSION['snhs_officer_rights'])) {
 							<div class="" style="padding-left:15px; padding-bottom:20px;">
 								<br>
 								<?php
+								//Displays all the pending requests that the student has
 								/*Pending requests*/
 								$pendingsql = "SELECT * FROM request WHERE datetime_start > NOW() AND studentid = '$id' ORDER BY datetime_start";
 								$Presultsql = mysqli_query( $connection, $pendingsql );
@@ -321,6 +327,7 @@ if (isset($_SESSION['snhs_officer_rights'])) {
 							<div class="" style="padding-left:15px; padding-bottom: 5px; ">
 								<?php
 								/*Projects where status = ongoing*/
+								//Displays all the ongoing projects the student is involved in
 								$studentsql = "SELECT project_list.*, students_in_projects.*, students.* FROM project_list, students_in_projects, students WHERE students.studentid = students_in_projects.studentid AND students_in_projects.projectid = project_list.projectid AND students.studentid = '$id' AND datetime_end > NOW()";
 								$resultsql = mysqli_query( $connection, $studentsql );
 
@@ -367,6 +374,7 @@ if (isset($_SESSION['snhs_officer_rights'])) {
 							<div class="" style="padding-left:15px; padding-bottom: 10px;">
 								<?php
 								/*For all previous service hours and projects*/
+								//Displays all projects and service hours entered in for the student
 								$studentsql = "SELECT project_list.*, students_in_projects.*, students.* FROM project_list, students_in_projects, students WHERE students.studentid = students_in_projects.studentid AND students_in_projects.projectid = project_list.projectid AND students.studentid = '$id'";
 								$resultsql = mysqli_query( $connection, $studentsql );
 

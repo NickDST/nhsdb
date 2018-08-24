@@ -88,6 +88,8 @@ include 'emailheader.php';
 							<!--                                <h2 class="title"></h2>-->
 							<!--								<br>-->
 							<?php
+					
+							
 								if(isset($_SESSION['subjectname'])) {
 	echo "<h4>Currently displaying open dates for: </h4><br><h3>".$_SESSION['subjectname']."</h3>";
 								}
@@ -126,6 +128,8 @@ include 'emailheader.php';
 						<div class="" style="padding-left:15px; padding-bottom:20px;">
 							<!--								-->
 
+							
+<!--	Set the subject the student wants to look for. Then it reloads the page. to load the information on the current session for subject.			-->
 							<?php
 							if ( isset( $_POST[ 'setsubject' ] ) & !empty( isset( $_POST[ 'setsubject' ] ) ) ) {
 								$subjectname = $_POST[ "subjectname" ];
@@ -138,7 +142,7 @@ include 'emailheader.php';
 
 							?>
 
-
+<!--Only if the student has clicked on a time from available subjects that the student can advance beyond this point-->
 
 
 
@@ -171,7 +175,7 @@ include 'emailheader.php';
 
 								if ( isset( $_SESSION[ 'subjectname' ] ) ) {
 									 $subjectname = $_SESSION[ 'subjectname' ];
-									 echo "THIS IS SUBJECTNAME".$subjectname;
+									 //echo "THIS IS SUBJECTNAME".$subjectname;
 									//echo "Please Click on a Date";
 
 									if ( isset( $_SESSION[ 'tutortime' ] ) ) {
@@ -203,7 +207,8 @@ include 'emailheader.php';
 								<h2 class="">Send in a tutoring request!</h2>
 
 								<?php
-
+//If it is a group session, then information regarding the group session will be displayed
+									
 								if ($tutor['grouporone'] == "group study") {
 									echo "This is a group study session: ".$tutor['group_subject'] ;
 									echo "<br>Desc: ".$tutor['group_desc'] ;
@@ -227,12 +232,14 @@ include 'emailheader.php';
 								<input type="number" name="age" id="" class="form-control" placeholder="Age">
 								<br>
 
-
+<!--Displaying start and ending information for the student-->
+								
 								<h5>Time Start: <?= $tutor['datetime_start'] ?></h5>
 								<h5>Time End: <?= $tutor['datetime_end'] ?></h5>
 								<!--				<h5>Student: <?= $tutor['studentid'] ?></h5>-->
 
 								<?php
+		//setting up variables that will be used later since the while loop ends after the variables are set							
 		$datetime_start = $tutor['datetime_start'];
 		$datetime_end = $tutor['datetime_end'];
 		$studentid = $tutor['studentid'];
@@ -242,7 +249,7 @@ include 'emailheader.php';
 	endwhile; ?>
 
 
-
+<!--continuing the HTML form-->
 								<br>
 								<input type="text" name="subject_level" id="" class="form-control" placeholder="Topic i.e Fractions" maxlength="100">
 
@@ -262,12 +269,16 @@ include 'emailheader.php';
 	</div>
 	</div>
 
+	
+	
+<!--Only after the student has pressed the submit butten that they can advance after this	-->
 	<?php
 
 	if ( isset( $_POST[ 'submitbtn' ] ) & !empty( isset( $_POST[ 'submitbtn' ] ) ) ) {
 
 		//if ( !empty(isset( $_POST[ 'requestee' ] )) & !empty(isset( $_POST[ 'contact' ] ) ) & !empty(isset( $_POST[ 'subject_level' ] ) ) & !empty(isset( $_POST[ 'age' ] ) ) ) {
 
+	//This is how warning messages are currently set. This one is for age	
 		if($_POST['age'] > 18) {
 			echo '<script>window.location.href = "tutorrequest.php?error=Sorry We only tutor individuals up to 18 years old";</script>';
 
@@ -277,6 +288,8 @@ include 'emailheader.php';
 
 		if ( !( $_POST[ 'requestee' ]=="" ) or !( $_POST[ 'contact' ]=="" ) or !( $_POST[ 'subject_level' ]=="" ) or !( $_POST[ 'age' ]=="" )) {
 
+		//Setting up mysqli_real_escape_string to attempt to avoid SQL injections...	
+		//Putting the POSTs into variables	
 		$requestee = mysqli_real_escape_string( $connection, $_POST[ "requestee" ] );
 		$contact = mysqli_real_escape_string( $connection, $_POST[ "contact" ] );
 		$subject_level = mysqli_real_escape_string( $connection, $_POST[ "subject_level" ] );
@@ -288,7 +301,7 @@ include 'emailheader.php';
 
 
 
-		//check here
+		//checking if the affiliated group session is with NHS or SNHS. It will notify the party. This won't be entered into the database, emails should suffice for group events.
 		if ( $grouporone == "group study" ) {
 
 			if ( $affiliated == "NHS" ) {
@@ -334,9 +347,10 @@ include 'emailheader.php';
 			//Inserting the data into the projects...
 			$sql = "INSERT INTO request (requestee, contact, datetime_start, datetime_end, subject, tutor_diff, type, studentid, age, request_username) VALUES ('$requestee', '$contact', '$datetime_start' , '$datetime_end' , '$subjectname', '$subject_level', 'tutor', '$studentid', '$age', '$username');";
 
-			echo $sql;
+			//echotest
+			//echo $sql;
 
-			//INSERT INTO tutor_request (requestee, contact, date_time_start, date_time_end, subject_english, subject_humanities, subject_math, number_of_needed_students, subject_level) VALUES ('nick', 'nick@gmail.com', '2018-08-13T14:22' , '2018-08-14T15:22' , '0' , '1' , '0', '5', 'Precalculus');
+	
 
 			$result = mysqli_query( $connection, $sql );
 			if ( $result ) {
@@ -372,13 +386,13 @@ include 'emailheader.php';
 
 
 
-
-
+//emailing the student and the vice president so far. Will add emailing the requestee as notifying.
+//email echotest
 
 					//Automated Email Test. The email variables are in the emailheader.php
 
 					$to = $vpemail;
-					$subject = "A Project Request has been submitted!!";
+					$subject = "A tutor Request has been submitted!!";
 					$message = "A new Request has been submitted \r\nRequestee name: '$requestee' \r\nThey are requesting for the time starting at '$datetime_start'";
 
 					$headers = 'From: NHS  <NHS@database.com>' . PHP_EOL .
@@ -399,8 +413,8 @@ include 'emailheader.php';
 				$subject = "";
 				$message = "<h1> Someone has requested for you to tutor them in $subject </h1> <p> Requestee name: $requestee <br> They are requesting for the time starting at $datetime_start to $datetime_end<p> <h3>Log into the NHS database to verify this request They are $age years old</h3>";
 
-				$headers = 'From: NHS  <NHS@database.com>' . PHP_EOL .
-				'Reply-To: NHS <NHS@database.com>' . PHP_EOL .
+				$headers = 'From: Honor Help  <system@honorhelp.com>' . PHP_EOL .
+				'Reply-To: Honor Help <reply@honorhelp.com>' . PHP_EOL .
 				'X-Mailer: PHP/' . phpversion() . 'Content-type: text/html; charset: utf8\r\n' . 'MIME-Version: 1.0';
 
 				mail( $to, $subject, $message, $headers );
@@ -440,7 +454,7 @@ include 'emailheader.php';
 
 
 
-
+<!--This is the javascript for the calendar-->
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css"/>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.css"/>
@@ -459,6 +473,7 @@ include 'emailheader.php';
 				},
 				events: 'tutorload.php',
 				//select a particular cell, dragging events and stuff
+				//loads the things from the database
 				selectable: false,
 				selectHelper: false,
 				select: function ( start, end, allDay ) {
@@ -468,6 +483,7 @@ include 'emailheader.php';
 						var end = $.fullCalendar.formatDate( end, "Y-MM-DD HH:mm:ss" );
 						$.ajax( {
 							url: "insert.php",
+							//This inserts
 							type: "POST",
 							data: {
 								title: title,

@@ -50,7 +50,7 @@ $SNHSresult = mysqli_query( $connection, $SNHSchecksql );
 								
 								<form method="POST">
 									<select name="logged_honor_society" id="">
-										
+<!--	This will display information and allow the student to choose what society they want to be registered as. It will only display it if the student is in that honor society.	-->
 										<?php
 										if($in_NHS == "true") {
 											echo "<option value='NHS'>NHS</option>";
@@ -83,7 +83,8 @@ $SNHSresult = mysqli_query( $connection, $SNHSchecksql );
 
       			</div>
          </div>
-    
+   
+<!--If the post is made, the following php executes-->
 <?php
 	if(isset($_POST['change_society']) & !empty(isset($_POST['change_society']))){		
 			$logged_honor_society = $_POST["logged_honor_society"];	
@@ -109,7 +110,7 @@ $SNHSresult = mysqli_query( $connection, $SNHSchecksql );
 ?>
 
 
-
+<!--Where students can change what fields they are willing to teach-->
 
             <div class="container-fluid">
                 <div class="row">
@@ -147,7 +148,7 @@ $SNHSresult = mysqli_query( $connection, $SNHSchecksql );
 								</form>
 								
 								<br>
-								
+<!--echotest							-->
 <?php 
 if(isset($_POST['updatefields']) & !empty(isset($_POST['updatefields']))){			
 
@@ -155,11 +156,11 @@ if(isset($_POST['updatefields']) & !empty(isset($_POST['updatefields']))){
 	$deletefields = "DELETE FROM students_in_subjects WHERE studentid = '$id'";
 	$deleteresult = mysqli_query( $connection, $deletefields );	
 		if ($deleteresult) {
-			echo "everything deleted successfully";
+			//echo "everything deleted successfully";
 
 		} else {
 			//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-			echo "Entry failed to be DELETED";
+			//echo "Entry failed to be DELETED";
 		}
 				
 		
@@ -176,19 +177,19 @@ if(isset($_POST['updatefields']) & !empty(isset($_POST['updatefields']))){
 				$updateCheck = mysqli_num_rows($updatesql);
 
 				if ($updateCheck > 0) {
-					echo "Already in $field"; 
+					//echo "Already in $field"; 
 					
 				} else {
 						$sql = "INSERT INTO students_in_subjects (studentid, subject) VALUES ('$id', '$field');";
-					echo $sql;
+					//echo $sql;
 
 						$result = mysqli_query($connection, $sql);
 		if ($result) {
-			echo "$field successfully added";
+			//echo "$field successfully added";
 
 		} else {
 			//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-			echo "Entry failed to be added";
+			//echo "Entry failed to be added";
 		}
 				
 		}
@@ -207,19 +208,19 @@ if(isset($_POST['updatefields']) & !empty(isset($_POST['updatefields']))){
 				$updateCheck = mysqli_num_rows($updatesql);
 
 				if ($updateCheck > 0) {
-					echo "Already in $field"; 
+					//echo "Already in $field"; 
 					
 				} else {
 						$sql = "INSERT INTO students_in_subjects (studentid, subject) VALUES ('$id', '$field');";
-					echo $sql;
+					//echo $sql;
 
 						$result = mysqli_query($connection, $sql);
 		if ($result) {
-			echo "$field successfully added";
+			//echo "$field successfully added";
 
 		} else {
 			//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-			echo "Entry failed to be added";
+			//echo "Entry failed to be added";
 		}
 				
 		}
@@ -237,19 +238,19 @@ if(isset($_POST['updatefields']) & !empty(isset($_POST['updatefields']))){
 				$updateCheck = mysqli_num_rows($updatesql);
 
 				if ($updateCheck > 0) {
-					echo "Already in $field"; 
+					//echo "Already in $field"; 
 					
 				} else {
 						$sql = "INSERT INTO students_in_subjects (studentid, subject) VALUES ('$id', '$field');";
-					echo $sql;
+					//echo $sql;
 
 						$result = mysqli_query($connection, $sql);
 		if ($result) {
-			echo "$field successfully added";
+			//echo "$field successfully added";
 
 		} else {
 			//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-			echo "Entry failed to be added";
+			//echo "Entry failed to be added";
 		}
 				
 		}
@@ -268,19 +269,19 @@ if(isset($_POST['updatefields']) & !empty(isset($_POST['updatefields']))){
 				$updateCheck = mysqli_num_rows($updatesql);
 
 				if ($updateCheck > 0) {
-					echo "Already in $field"; 
+					//echo "Already in $field"; 
 					
 				} else {
 						$sql = "INSERT INTO students_in_subjects (studentid, subject) VALUES ('$id', '$field');";
-					echo $sql;
+					//echo $sql;
 
 						$result = mysqli_query($connection, $sql);
 		if ($result) {
-			echo "$field successfully added";
+			//echo "$field successfully added";
 
 		} else {
 			//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-			echo "Entry failed to be added";
+			//echo "Entry failed to be added";
 		}
 				
 		}
@@ -299,19 +300,19 @@ if(isset($_POST['updatefields']) & !empty(isset($_POST['updatefields']))){
 				$updateCheck = mysqli_num_rows($updatesql);
 
 				if ($updateCheck > 0) {
-					echo "Already in $field"; 
+					//echo "Already in $field"; 
 					
 				} else {
 						$sql = "INSERT INTO students_in_subjects (studentid, subject) VALUES ('$id', '$field');";
-					echo $sql;
+					//echo $sql;
 
 						$result = mysqli_query($connection, $sql);
 		if ($result) {
-			echo "$field successfully added";
+			//echo "$field successfully added";
 
 		} else {
 			//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-			echo "Entry failed to be added";
+			//echo "Entry failed to be added";
 		}
 				
 		}
@@ -330,19 +331,19 @@ if(isset($_POST['updatefields']) & !empty(isset($_POST['updatefields']))){
 				$updateCheck = mysqli_num_rows($updatesql);
 
 				if ($updateCheck > 0) {
-					echo "Already in $field"; 
+					//echo "Already in $field"; 
 					
 				} else {
 						$sql = "INSERT INTO students_in_subjects (studentid, subject) VALUES ('$id', '$field');";
-					echo $sql;
+					//echo $sql;
 
 						$result = mysqli_query($connection, $sql);
 		if ($result) {
-			echo "$field successfully added";
+			//echo "$field successfully added";
 
 		} else {
 			//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-			echo "Entry failed to be added";
+			//echo "Entry failed to be added";
 		}
 				
 		}
@@ -360,19 +361,19 @@ if(isset($_POST['updatefields']) & !empty(isset($_POST['updatefields']))){
 				$updateCheck = mysqli_num_rows($updatesql);
 
 				if ($updateCheck > 0) {
-					echo "Already in $field"; 
+					//echo "Already in $field"; 
 					
 				} else {
 						$sql = "INSERT INTO students_in_subjects (studentid, subject) VALUES ('$id', '$field');";
-					echo $sql;
+					//echo $sql;
 
 						$result = mysqli_query($connection, $sql);
 		if ($result) {
-			echo "$field successfully added";
+			//echo "$field successfully added";
 
 		} else {
 			//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-			echo "Entry failed to be added";
+			//echo "Entry failed to be added";
 		}
 				
 		}
@@ -390,19 +391,19 @@ if(isset($_POST['updatefields']) & !empty(isset($_POST['updatefields']))){
 				$updateCheck = mysqli_num_rows($updatesql);
 
 				if ($updateCheck > 0) {
-					echo "Already in $field"; 
+					//echo "Already in $field"; 
 					
 				} else {
 						$sql = "INSERT INTO students_in_subjects (studentid, subject) VALUES ('$id', '$field');";
-					echo $sql;
+					//echo $sql;
 
 						$result = mysqli_query($connection, $sql);
 		if ($result) {
-			echo "$field successfully added";
+			//echo "$field successfully added";
 
 		} else {
 			//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-			echo "Entry failed to be added";
+			//echo "Entry failed to be added";
 		}
 				
 		}
@@ -420,19 +421,19 @@ if(isset($_POST['updatefields']) & !empty(isset($_POST['updatefields']))){
 				$updateCheck = mysqli_num_rows($updatesql);
 
 				if ($updateCheck > 0) {
-					echo "Already in $field"; 
+					//echo "Already in $field"; 
 					
 				} else {
 						$sql = "INSERT INTO students_in_subjects (studentid, subject) VALUES ('$id', '$field');";
-					echo $sql;
+					//echo $sql;
 
 						$result = mysqli_query($connection, $sql);
 		if ($result) {
-			echo "$field successfully added";
+			//echo "$field successfully added";
 
 		} else {
 			//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-			echo "Entry failed to be added";
+			//echo "Entry failed to be added";
 		}
 				
 		}
@@ -450,27 +451,29 @@ if(isset($_POST['updatefields']) & !empty(isset($_POST['updatefields']))){
 				$updateCheck = mysqli_num_rows($updatesql);
 
 				if ($updateCheck > 0) {
-					echo "Already in $field"; 
+					//echo "Already in $field"; 
 					
 				} else {
 						$sql = "INSERT INTO students_in_subjects (studentid, subject) VALUES ('$id', '$field');";
-					echo $sql;
+					//echo $sql;
 
 						$result = mysqli_query($connection, $sql);
 		if ($result) {
-			echo "$field successfully added";
+			//echo "$field successfully added";
+			
 
 		} else {
 			//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-			echo "Entry failed to be added";
+			//echo "Entry failed to be added";
 		}
+					
 				
 		}
 	
 }
 //algebra 2		
 	
-
+echo "success";
 	
 	
 	
@@ -495,7 +498,7 @@ if(isset($_POST['updatefields']) & !empty(isset($_POST['updatefields']))){
 
                             <div class="header">
                                 <h4 class="title">Change Sidebar Color</h4>
-                                <p class="category">Nick actually programmed this feature in. Appreciate it.</p>
+                                <p class="category">Nick actually programmed this feature in. Why? All the colors look so nice~ plz appreciate it.</p>
                             </div>
                             <div class = "" style= "padding-left:15px; padding-bottom:15px;">
 								
@@ -523,7 +526,7 @@ if(isset($_POST['updatefields']) & !empty(isset($_POST['updatefields']))){
 
       			</div>
          </div>
-    
+<!--  This code executes if the person wants to change their sidebar color -->
 <?php
 	if(isset($_POST['changecolor']) & !empty(isset($_POST['changecolor']))){		
 			$sidecolor = $_POST["sidecolor"];	
@@ -538,7 +541,7 @@ if(isset($_POST['updatefields']) & !empty(isset($_POST['updatefields']))){
 
 		} else {
 			//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-			echo "Entry failed to be absidlkfj";
+			//echo "Entry failed to be absidlkfj";
 		}
 				
 	
