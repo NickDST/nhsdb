@@ -286,7 +286,8 @@ endwhile;
 
 							<?php//endwhile; ?>
 							<?php  } else {
-									echo "Student not registered in this honor society";
+									//echo "Student not registered in this honor society";
+								echo '<script>window.location.href = "adminsearchstudent.php?error=Student not registered in this honor society";</script>';	
 								}
 								
 								} ?>

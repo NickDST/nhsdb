@@ -8,11 +8,11 @@ $NHSchecksql = "SELECT students_in_societies.*, students.* from students, studen
 $result = mysqli_query( $connection, $NHSchecksql );
 
 
-	$resultCheck = mysqli_num_rows( $result );
-		if ( $resultCheck > 0 ) {
-			$in_NHS = "true";
-			
-		} 
+$resultCheck = mysqli_num_rows( $result );
+if ( $resultCheck > 0 ) {
+	$in_NHS = "true";
+
+}
 
 
 //Checking whether or not this student is in SNHS
@@ -21,11 +21,11 @@ $SNHSchecksql = "SELECT students_in_societies.*, students.* from students, stude
 $SNHSresult = mysqli_query( $connection, $SNHSchecksql );
 
 
-	$SNHSresultCheck = mysqli_num_rows( $SNHSresult );
-		if ( $SNHSresultCheck > 0 ) {
-			$in_SNHS = "true";
-			
-		} 
+$SNHSresultCheck = mysqli_num_rows( $SNHSresult );
+if ( $SNHSresultCheck > 0 ) {
+	$in_SNHS = "true";
+
+}
 
 
 //echo $in_SNHS;
@@ -36,120 +36,122 @@ $SNHSresult = mysqli_query( $connection, $SNHSchecksql );
 
 
 <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-					
-                    <div class="col-md-12">
-                        <div class="card">
+	<div class="container-fluid">
+		<div class="row">
 
-                            <div class="header">
-                                <h4 class="title">Change Logged Honor Society</h4>
-                                <p class="category">Select the Honor Society you want to be logged in as</p>
-                            </div>
-                            <div class = "" style= "padding-left:15px; padding-bottom:15px;">
-								
-								<form method="POST">
-									<select name="logged_honor_society" id="">
-<!--	This will display information and allow the student to choose what society they want to be registered as. It will only display it if the student is in that honor society.	-->
-										<?php
-										if($in_NHS == "true") {
-											echo "<option value='NHS'>NHS</option>";
-										}
-										
-										?>
-										
-										<?php
-										
-										if($in_SNHS == "true") {
-											echo "<option value='SNHS'>SNHS</option>";
-										}
-										
-										?>
-<!--										  <option value="NHS">NHS</option>-->
-<!--										  <option value="SNHS">SNHS</option>-->
+			<div class="col-md-12">
+				<div class="card">
 
-										 
-									</select>
-									<br>
-									<br>
-								 <button type="submit" name = "change_society" class = "btn btn">Set my logged in society as this</button>
-								
-								</form>
-				
-                           
-                            </div>
-                        </div>
-                    </div>
+					<div class="header">
+						<h4 class="title">Change Logged Honor Society</h4>
+						<p class="category">Select the Honor Society you want to be logged in as</p>
+					</div>
+					<div class="" style="padding-left:15px; padding-bottom:15px;">
 
-      			</div>
-         </div>
-   
-<!--If the post is made, the following php executes-->
-<?php
-	if(isset($_POST['change_society']) & !empty(isset($_POST['change_society']))){		
-			$logged_honor_society = $_POST["logged_honor_society"];	
-		
-			$changehonorsql = "UPDATE students SET logged_honor_society='$logged_honor_society' WHERE studentid = '$id'";
-			$changehonorresult = mysqli_query( $connection, $changehonorsql );	
-		
-		if ($changehonorresult) {
-			echo "everything worked successfully";
+						<form method="POST">
+							<select name="logged_honor_society" id="">
+								<!--	This will display information and allow the student to choose what society they want to be registered as. It will only display it if the student is in that honor society.	-->
+								<?php
+								if ( $in_NHS == "true" ) {
+									echo "<option value='NHS'>NHS</option>";
+								}
+
+								?>
+
+								<?php
+
+								if ( $in_SNHS == "true" ) {
+									echo "<option value='SNHS'>SNHS</option>";
+								}
+
+								?>
+								<!--										  <option value="NHS">NHS</option>-->
+								<!--										  <option value="SNHS">SNHS</option>-->
+
+
+							</select>
+							<br>
+							<br>
+							<button type="submit" name="change_society" class="btn btn">Set my logged in society as this</button>
+
+						</form>
+
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!--If the post is made, the following php executes-->
+	<?php
+	if ( isset( $_POST[ 'change_society' ] ) & !empty( isset( $_POST[ 'change_society' ] ) ) ) {
+		$logged_honor_society = $_POST[ "logged_honor_society" ];
+
+		$changehonorsql = "UPDATE students SET logged_honor_society='$logged_honor_society' WHERE studentid = '$id'";
+		$changehonorresult = mysqli_query( $connection, $changehonorsql );
+
+		if ( $changehonorresult ) {
+			//echo "everything worked successfully";
+			echo '<script>window.location.href = "changeaccountinfo.php?success=Fields Successfully Changed!";</script>';	
 
 		} else {
 			//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-			echo "Entry failed to be absidlkfj";
+			//echo "Entry failed to be absidlkfj";
+			echo '<script>window.location.href = "changeaccountinfo.php?error=Entry failed to be changed";</script>';	
 		}
-				
-	
-	
+
+
+
 	}
-	
-	
-	
-	
-?>
 
 
-<!--Where students can change what fields they are willing to teach-->
 
-            <div class="container-fluid">
-                <div class="row">
-					
-                    <div class="col-md-12">
-                        <div class="card">
 
-                            <div class="header">
-                                <h4 class="title">Change Tutoring Fields</h4>
-                                <p class="category">Select what fields you are willing to tutor</p>
-                            </div>
-                            <div class = "" style= "padding-left:15px;">
-								
-								<br>
-               		
-								<form method="POST">
-									<h3>Select the fields you are willing to tutor in</h3>
-									  <input type="checkbox" name="Biology" value="Biology">Biology<br>
-  									  <input type="checkbox" name="Chemistry" value="Chemistry">Chemistry<br>
-									  <input type="checkbox" name="Physics" value="Physics">Physics<br>
-  									  <input type="checkbox" name="English" value="English">English<br>
-									  <input type="checkbox" name="Writing" value="Writing">Writing<br>
-  									  <input type="checkbox" name="Worldhistory" value="World History">World History<br>	
-									  <input type="checkbox" name="Reading" value="Reading">Reading<br>
-  									  <input type="checkbox" name="Precalculus" value="Precalculus">Precalculus<br>
-									
-									  <input type="checkbox" name="alg2" value="Algebra 2">Algebra 2<br>
-  									  <input type="checkbox" name="geo" value="Geometry or Lower" required>Geometry or Lower<b></b><br><br>
-									  <button type="submit" name = "updatefields" class = "btn btn">Update My Tutoring Fields</button>
-									  
-									
-									
-									
+	?>
 
-								</form>
-								
-								<br>
-<!--echotest							-->
-<?php 
+
+	<!--Where students can change what fields they are willing to teach-->
+
+	<div class="container-fluid">
+		<div class="row">
+
+			<div class="col-md-12">
+				<div class="card">
+
+					<div class="header">
+						<h4 class="title">Change Tutoring Fields</h4>
+						<p class="category">Select what fields you are willing to tutor</p>
+					</div>
+					<div class="" style="padding-left:15px;">
+
+						<br>
+
+						<form method="POST">
+							<h3>Select the fields you are willing to tutor in</h3>
+							<input type="checkbox" name="Biology" value="Biology">Biology<br>
+							<input type="checkbox" name="Chemistry" value="Chemistry">Chemistry<br>
+							<input type="checkbox" name="Physics" value="Physics">Physics<br>
+							<input type="checkbox" name="English" value="English">English<br>
+							<input type="checkbox" name="Writing" value="Writing">Writing<br>
+							<input type="checkbox" name="Worldhistory" value="World History">World History<br>
+							<input type="checkbox" name="Reading" value="Reading">Reading<br>
+							<input type="checkbox" name="Precalculus" value="Precalculus">Precalculus<br>
+
+							<input type="checkbox" name="alg2" value="Algebra 2">Algebra 2<br>
+							<input type="checkbox" name="geo" value="Geometry or Lower" required>Geometry or Lower<b></b><br><br>
+							<button type="submit" name="updatefields" class="btn btn">Update My Tutoring Fields</button>
+
+
+
+
+
+						</form>
+
+						<br>
+						<!--echotest							-->
+						<?php 
 if(isset($_POST['updatefields']) & !empty(isset($_POST['updatefields']))){			
 
 	
@@ -465,6 +467,7 @@ if(isset($_POST['updatefields']) & !empty(isset($_POST['updatefields']))){
 		} else {
 			//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 			//echo "Entry failed to be added";
+			echo '<script>window.location.href = "changeaccountinfo.php?error=Entry failed to be added";</script>';	
 		}
 					
 				
@@ -473,90 +476,89 @@ if(isset($_POST['updatefields']) & !empty(isset($_POST['updatefields']))){
 }
 //algebra 2		
 	
-echo "success";
+echo '<script>window.location.href = "changeaccountinfo.php?success=Success!!";</script>';	
 	
 	
 	
 }
-?>								
-								
-								
+?>
 
-                           
-                            </div>
-                        </div>
-                    </div>
 
-      			</div>
-       </div>
-	
-           <div class="container-fluid">
-                <div class="row">
-					
-                    <div class="col-md-12">
-                        <div class="card">
 
-                            <div class="header">
-                                <h4 class="title">Change Sidebar Color</h4>
-                                <p class="category">Nick actually programmed this feature in. Why? All the colors look so nice~ plz appreciate it.</p>
-                            </div>
-                            <div class = "" style= "padding-left:15px; padding-bottom:15px;">
-								
-								<form method="POST">
-									<select name="sidecolor" id="">
-										  <option value="blue">Blue</option>
-										  <option value="black">Black</option>
-										  <option value="green">Green</option>
-										  <option value="red">Red</option>
-										  <option value="orange">Orange</option>
-										  <option value="purple">Purple</option>
 
-										 
-									</select>
-									<br>
-									<br>
-								 <button type="submit" name = "changecolor" class = "btn btn">Set this as my sidebar color</button>
-								
-								</form>
-				
-                           
-                            </div>
-                        </div>
-                    </div>
+					</div>
+				</div>
+			</div>
 
-      			</div>
-         </div>
-<!--  This code executes if the person wants to change their sidebar color -->
-<?php
-	if(isset($_POST['changecolor']) & !empty(isset($_POST['changecolor']))){		
-			$sidecolor = $_POST["sidecolor"];	
-		
-			$changecolorsql = "UPDATE students SET sidecolor='$sidecolor' WHERE studentid = '$id'";
-		
-			$changecolorresult = mysqli_query( $connection, $changecolorsql );	
-		
-		if ($changecolorresult) {
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<div class="row">
+
+			<div class="col-md-12">
+				<div class="card">
+
+					<div class="header">
+						<h4 class="title">Change Sidebar Color</h4>
+						<p class="category">Nick actually programmed this feature in. Why? All the colors look so nice~ plz appreciate it.</p>
+					</div>
+					<div class="" style="padding-left:15px; padding-bottom:15px;">
+
+						<form method="POST">
+							<select name="sidecolor" id="">
+								<option value="blue">Blue</option>
+								<option value="black">Black</option>
+								<option value="green">Green</option>
+								<option value="red">Red</option>
+								<option value="orange">Orange</option>
+								<option value="purple">Purple</option>
+
+
+							</select>
+							<br>
+							<br>
+							<button type="submit" name="changecolor" class="btn btn">Set this as my sidebar color</button>
+
+						</form>
+
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!--  This code executes if the person wants to change their sidebar color -->
+	<?php
+	if ( isset( $_POST[ 'changecolor' ] ) & !empty( isset( $_POST[ 'changecolor' ] ) ) ) {
+		$sidecolor = $_POST[ "sidecolor" ];
+
+		$changecolorsql = "UPDATE students SET sidecolor='$sidecolor' WHERE studentid = '$id'";
+
+		$changecolorresult = mysqli_query( $connection, $changecolorsql );
+
+		if ( $changecolorresult ) {
 			//echo "everything worked successfully";
-			echo '<script>window.location.href = "changeaccountinfo.php";</script>';		
+			//echo '<script>window.location.href = "changeaccountinfo.php";</script>';
+			echo '<script>window.location.href = "changeaccountinfo.php?success=Enjoy your new background color :)";</script>';	
 
 		} else {
 			//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 			//echo "Entry failed to be absidlkfj";
+			echo '<script>window.location.href = "changeaccountinfo.php?error=Something went wrong!";</script>';	
 		}
-				
-	
-	
+
+
+
 	}
-	
-	
-	
-	
-?>	
-	
-	
-	
-	
-    </div>
 
 
 
+
+	?>
+
+
+
+
+</div>

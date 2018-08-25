@@ -46,6 +46,7 @@
 										$datetime_start = $row[ 'datetime_start' ];
 										$datetime_end = $row[ 'datetime_end' ];
 										$requestee_email = $row[ 'contact' ];
+										$requestee_username = $row['request_username'];
 										
 										
 										//The society that these hours will be entered into. Specified by the student when they accepted the request
@@ -133,7 +134,7 @@
 
 
 //This officially adds the project into the master project list with all the appropriate fields from either NHS or SNSH
-							$addsql = "INSERT INTO project_list (project_name, teacher_name, teacher_contact, datetime_start, datetime_end, affiliated_group, entered_by, project_description, requestee, requestee_email, type) VALUES ('Tutoring Request', '$teacher_name', '$teacher_contact' , '$datetime_start' , '$datetime_end', '$affiliated_group', '$studentid', '$project_description', '$requestee', '$requestee_email', 'tutor');";
+							$addsql = "INSERT INTO project_list (project_name, teacher_name, teacher_contact, datetime_start, datetime_end, affiliated_group, entered_by, project_description, requestee, requestee_email, type, request_username) VALUES ('Tutoring Request', '$teacher_name', '$teacher_contact' , '$datetime_start' , '$datetime_end', '$affiliated_group', '$studentid', '$project_description', '$requestee', '$requestee_email', 'tutor', '$requestee_username');";
 
 							$addresult = mysqli_query( $connection, $addsql );
 							if ( $addresult ) {

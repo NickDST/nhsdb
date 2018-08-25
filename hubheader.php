@@ -76,7 +76,7 @@ $color = $student['sidecolor']
     	<div class="sidebar-wrapper">
             <div class="logo">
                 <a href="index.php" class="simple-text">
-                    NHS HUB
+                    Honor Help
                 </a>
             </div>
 			<ul class="nav">
@@ -209,6 +209,22 @@ $color = $student['sidecolor']
         </nav>
 
 		<?php endwhile ?>
+		
+		
+		<?php 	if ( isset( $_GET[ 'error' ] ) ) {
+			$fmsg = $_GET[ 'error' ]; } ?>
+		<?php 	if ( isset( $_GET[ 'success' ] ) ) {
+			$smsg = $_GET[ 'success' ]; } ?>
+		
+							<?php if(isset($smsg)){ ?>
+							<div class="alert alert-success" role="alert" style="margin-top: 20px;">
+								<?php echo $smsg; ?> </div>
+							<?php } ?>
+							<?php if(isset($fmsg)){ ?>
+							<div class="alert alert-danger" role="alert" style="margin-top: 20px;">
+								<?php echo $fmsg; ?> </div>
+							<?php } ?>
+<!--		echo '<script>window.location.href = "tutorrequest.php?message=success";</script>';-->
 		
 		
 		

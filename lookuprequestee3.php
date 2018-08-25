@@ -50,16 +50,16 @@ include 'adminhubheader.php';
 									<?php echo "Username: ". $row['username'];?>
 								</h5>
 								<hr>
-								
+
 								<h5>
 									<?php echo " ID : ". $row['request_login_id'];?>
 								</h5>
 								<h5>
-								
-								<hr>
-								<h3>Tutor things involved in</h3>
 
-								<?php  } 
+									<hr>
+									<h3>Tutor things involved in</h3>
+
+									<?php  } 
 								
 
 									
@@ -67,7 +67,7 @@ include 'adminhubheader.php';
 									
 									
 									//echotest
-								$sql = "SELECT * from project_list WHERE requestee = '$username'";	
+								$sql = "SELECT * from project_list WHERE request_username = '$username'";	
 									
 									//echo $sql;
 								$result = mysqli_query( $connection, $sql );
@@ -87,18 +87,19 @@ include 'adminhubheader.php';
 										while ( $studentname2 = $studentnameresult->fetch_assoc() ):
 										$tutorname = $studentname2[ 'name' ];
 									
-								endwhile;?> 
+								endwhile;?>
 
-								<?php echo"Tutor name: ". $tutorname;?> <br>
-								<?php echo"Affiliated Group: ". $requestee['affiliated_group'];?> <br>	
-								<?php echo $requestee['datetime_start'];?> <br>	
-								<?php echo $requestee['datetime_end'];?> <br>		
-								<br>
-								<br>	
-								<?php
-								endwhile;
-									
-							} ?>
+									<?php echo"Tutor name: ". $tutorname;?> <br>
+									<?php echo"Affiliated Group: ". $requestee['affiliated_group'];?> <br>
+									<?php echo $requestee['datetime_start'];?> <br>
+									<?php echo $requestee['datetime_end'];?> <br>
+									<br>
+									<br>
+									<?php
+									endwhile;
+
+									}
+									?>
 							</div>
 						</div>
 					</div>

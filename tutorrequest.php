@@ -13,6 +13,7 @@ if ( !isset( $_SESSION[ 'username' ] ) ) {
 if ( isset( $_SESSION[ 'username' ] ) ) {
 	$username = $_SESSION[ 'username' ];
 
+	
 	?>
 	<?php
 } else {
@@ -42,7 +43,7 @@ endwhile;
 
 
 
-?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -476,7 +477,7 @@ endwhile;
 
 
 				unset( $_SESSION[ "tutortime" ] );
-				//echo '<script>window.location.href = "tutorrequest.php?message=success";</script>';
+				echo '<script>window.location.href = "tutorrequest.php?message=success";</script>';
 
 			} else {
 				$fmsg = "Request failed to send";

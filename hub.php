@@ -65,7 +65,7 @@ while ( $student = $result->fetch_assoc() ):
 
 
 
-<!--This sets the color of the sidebar to whatever the student wants it to be-->
+	<!--This sets the color of the sidebar to whatever the student wants it to be-->
 	<div class="wrapper">
 
 		<?php 
@@ -84,9 +84,10 @@ while ( $student = $result->fetch_assoc() ):
 		<div class="sidebar-wrapper">
 			<div class="logo">
 				<a href="index.php" class="simple-text">
-                    NHS HUB
+                    Honor Help
                 </a>
 			
+
 			</div>
 			<ul class="nav">
 				<li class="active">
@@ -95,6 +96,7 @@ while ( $student = $result->fetch_assoc() ):
                         <p>Hub Home</p>
                     </a>
 				
+
 				</li>
 
 				<ul class="nav">
@@ -104,6 +106,7 @@ while ( $student = $result->fetch_assoc() ):
                         <p>Activate Requests</p>
                     </a>
 					
+
 					</li>
 					<br>
 					<li class="active">
@@ -112,6 +115,7 @@ while ( $student = $result->fetch_assoc() ):
                         <p>Log Service Hours</p>
                     </a>
 					
+
 					</li>
 					<br>
 					<li class="active">
@@ -120,6 +124,7 @@ while ( $student = $result->fetch_assoc() ):
                         <p>Tutoring Availability</p>
                     </a>
 					
+
 					</li>
 					<br>
 					<li class="active">
@@ -128,6 +133,7 @@ while ( $student = $result->fetch_assoc() ):
                         <p>My Projects</p>
                     </a>
 					
+
 					</li>
 					<br>
 					<li class="active">
@@ -136,6 +142,7 @@ while ( $student = $result->fetch_assoc() ):
                         <p>Look Up Project</p>
                     </a>
 					
+
 					</li>
 					<br>
 					<li class="active">
@@ -144,6 +151,7 @@ while ( $student = $result->fetch_assoc() ):
                         <p>Personal Calendar</p>
                     </a>
 					
+
 					</li>
 
 				</ul>
@@ -162,6 +170,7 @@ while ( $student = $result->fetch_assoc() ):
 						
                     </button>
 				
+
 					<a class="navbar-brand" href="#">Welcome <?= $student['name'] ?></a>
 				</div>
 				<div class="collapse navbar-collapse">
@@ -172,6 +181,7 @@ while ( $student = $result->fetch_assoc() ):
 								<p class="hidden-lg hidden-md">Dashboard</p>
                             </a>
 						
+
 						</li>
 						<li>
 							<a href="">
@@ -179,6 +189,7 @@ while ( $student = $result->fetch_assoc() ):
 								<p class="hidden-lg hidden-md">Search</p>
                             </a>
 						
+
 						</li>
 					</ul>
 
@@ -263,7 +274,7 @@ if (isset($_SESSION['snhs_officer_rights'])) {
 			</div>
 			<hr>
 			<h2>Currently logged in as: <?= $student['logged_honor_society'];?></h2>
-<!--Links to somewhere they can changed the honor society that they are currently logged in as-->
+			<!--Links to somewhere they can changed the honor society that they are currently logged in as-->
 			<a href="changeaccountinfo.php" class="btn">Change Logged Society</a>
 		</div>
 		<div class="content">
@@ -297,7 +308,7 @@ if (isset($_SESSION['snhs_officer_rights'])) {
 
 								<?php echo "Name: ".$pendingrequest['requestee'];?> <br>
 
-								<?php echo $pendingrequest['contact'];?> 
+								<?php echo $pendingrequest['contact'];?>
 								<?php echo nl2br($pendingrequest['subject']."\r\n");?>
 								<hr>
 
@@ -427,6 +438,7 @@ if (isset($_SESSION['snhs_officer_rights'])) {
                                 Home
                             </a>
 						
+
 						</li>
 
 					</ul>

@@ -3,6 +3,25 @@
 session_start();
 
 require_once( 'includes/dbh.inc.php' );
+?>
+
+		<?php 	if ( isset( $_GET[ 'error' ] ) ) {
+			$fmsg = $_GET[ 'error' ]; } ?>
+		<?php 	if ( isset( $_GET[ 'success' ] ) ) {
+			$smsg = $_GET[ 'success' ]; } ?>
+		
+							<?php if(isset($smsg)){ ?>
+							<div class="alert alert-success" role="alert" style="margin-top: 20px;">
+								<?php echo $smsg; ?> </div>
+							<?php } ?>
+							<?php if(isset($fmsg)){ ?>
+							<div class="alert alert-danger" role="alert" style="margin-top: 20px;">
+								<?php echo $fmsg; ?> </div>
+							<?php } ?>
+
+
+<?php
+
 if ( isset( $_POST ) & !empty( $_POST ) ) {
 	$username = mysqli_real_escape_string( $connection, $_POST[ 'username' ] );
 	$studentid = mysqli_real_escape_string( $connection, $_POST[ 'studentid' ] );
@@ -61,7 +80,8 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 
 
 	} else {
-		echo "Invalid Username/Password";
+		//echo "Invalid Username/Password";
+		echo '<script>window.location.href = "login.php?error=Invalid Username/Password";</script>';	
 
 	}
 
@@ -80,11 +100,17 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 <head>
 	<meta charset="UTF-8">
 	<title>Login </title>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,500' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
 	<link rel="stylesheet" href="css/loginstyle.css">
+	    <!-- Bootstrap core CSS     -->
+<!--    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />-->
 
 
 
@@ -142,6 +168,10 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
   ?>
 	</body>
 	<script src="js/loginindex.js"></script>
+	
+	    <!--   Core JS Files   -->
+    <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
 
 

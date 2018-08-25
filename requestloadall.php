@@ -1,8 +1,8 @@
 <?php
-
+include 'includes/dbhcal.inc.php';
 
 //load.php
-$connect = new PDO('mysql:host=localhost;dbname=nhsdb', 'root', 'sql2019');
+//$connect = new PDO('mysql:host=localhost;dbname=nhsdb', 'root', 'sql2019');
 
 $data = array();
 

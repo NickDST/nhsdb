@@ -209,7 +209,20 @@ while ( $requestee = $result->fetch_assoc() ):
 			</div>
 		</nav>
 		
+		<?php 	if ( isset( $_GET[ 'error' ] ) ) {
+			$fmsg = $_GET[ 'error' ]; } ?>
+		<?php 	if ( isset( $_GET[ 'success' ] ) ) {
+			$smsg = $_GET[ 'success' ]; } ?>
 		
+							<?php if(isset($smsg)){ ?>
+							<div class="alert alert-success" role="alert" style="margin-top: 20px;">
+								<?php echo $smsg; ?> </div>
+							<?php } ?>
+							<?php if(isset($fmsg)){ ?>
+							<div class="alert alert-danger" role="alert" style="margin-top: 20px;">
+								<?php echo $fmsg; ?> </div>
+							<?php } ?>
+<!--		echo '<script>window.location.href = "tutorrequest.php?message=success";</script>';-->		
 		
 <!--A lot of possible plugins not used here		-->
 		
@@ -234,5 +247,15 @@ while ( $requestee = $result->fetch_assoc() ):
 <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 <!--	<script src="assets/js/demo.js"></script>-->
 
+		
+		
+
+		
+		
+		
+		
+		
+		
+		
 
 		

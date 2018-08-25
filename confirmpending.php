@@ -64,6 +64,7 @@ include 'emailheader.php';
 		}
 		?>
 
+		
 <?php 		
 $sql = "SELECT * FROM students WHERE studentid = '$id'";
 //echo $id;
@@ -236,6 +237,7 @@ if(isset($_POST['accept']) & !empty(isset($_POST['accept']))){
 					 endwhile; 
 				} else {
 					echo "Student has no email";
+					
 				}
 				
 							
@@ -251,7 +253,7 @@ $headers = 'From: NHS Database <NHS@database.com>' . PHP_EOL .
 			
 			
 mail($to, $subject, $message, $headers);
-echo "<br>email to Project Manager sent";
+//echo "<br>email to Project Manager sent";
 	
 		
 			
@@ -262,21 +264,21 @@ $message = "You have confirmed the tutor request! Here is an email of the info \
 $headers = 'From: NHS Database <NHS@database.com>' . PHP_EOL .
     'Reply-To: NHS <NHS@database.com>' . PHP_EOL .
     'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
-//mail($to, $subject, $message, $headers);
-echo "<br>email to student tutor sent";
+mail($to, $subject, $message, $headers);
+//echo "<br>email to student tutor sent";
 			
 
 		
 $to = $requestee_email;
 $subject = "EMAIL TO REQUESTEE IN $society";
-$message = "Your Request has been received! \r\ntutor name: $studentname \r\n\r\nYou will be starting at for the time starting at $datetime_start to $datetime_end<p> ";
+$message = "Your Request has been received/activated! \r\ntutor name: $studentname \r\n\r\nYou will be starting at for the time starting at $datetime_start to $datetime_end<p> ";
 
 $headers = 'From: NHS Database <NHS@database.com>' . PHP_EOL .
     'Reply-To: NHS <NHS@database.com>' . PHP_EOL .
     'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
 			
-//mail($to, $subject, $message, $headers);
-echo "<br>email to requestee  sent";			
+mail($to, $subject, $message, $headers);
+//echo "<br>email to requestee  sent";			
 		
 			
 			
@@ -290,11 +292,12 @@ $headers = 'From: NHS Database <NHS@database.com>' . PHP_EOL .
     'Reply-To: NHS <NHS@database.com>' . PHP_EOL .
     'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
 			
-//mail($to, $subject, $message, $headers);
-echo "<br>email to TEACHER has been sent";
+mail($to, $subject, $message, $headers);
+//echo "<br>email to TEACHER has been sent";
 			
 		} else { 
-			echo "Emails failed to send";
+			//echo "Emails failed to send";
+		echo '<script>window.location.href = "confirmpending.php?error=Something went wrong! Emails failed to send";</script>';	
 				}				
 			
 			
@@ -314,12 +317,14 @@ if(isset($_POST['reject']) & !empty(isset($_POST['reject']))){
 		
 		$removeresult = mysqli_query($connection, $sqlremove);
 		if ($removeresult) {
-			echo "Entry successfully removed";
+			//echo "Entry successfully removed";
+			
 
 
 		} else {
 		
-			echo "Entry failed to be removed";
+			//echo "Entry failed to be removed";
+			echo '<script>window.location.href = "confirmpending.php?error=Entry failed to be removed";</script>';	
 		}
 
 			
@@ -346,12 +351,13 @@ if(isset($_POST['reject']) & !empty(isset($_POST['reject']))){
 $subject = "EMAIL TO CHAPMAN";
 $message = "$studentname has rejected $requestee for tutoring at $datetime_start for the reason of '$reason'. ";
 
-$headers = 'From: NHS Organizer <NHS@database.com>' . PHP_EOL .
-    'Reply-To: NHS <NHS@database.com>' . PHP_EOL .
+$headers = 'From: Honor Help <honorhelp@database.com>' . PHP_EOL .
+    'Reply-To: HonorHelp <honorhelp@database.com>' . PHP_EOL .
     'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
 	
 mail($to, $subject, $message, $headers);
-echo "<br>email to chapman has been sent";
+//echo "<br>email to chapman has been sent";
+		echo '<script>window.location.href = "confirmpending.php?success=Email to Chapman/Gordon Sent!";</script>';	
 			
 } 
 }

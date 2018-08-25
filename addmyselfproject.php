@@ -119,7 +119,8 @@ include 'hubheader.php';
 
 														$addstudentresult = mysqli_query( $connection, $addstudentsql );
 														if ( $addstudentresult ) {
-															echo "Entry successfully added";
+															//echo "Entry successfully added";
+															echo '<script>window.location.href = "addmyselfproject.php?success=Entry added";</script>';	
 															
 															if ($_POST[ "service_hours" ] > 100) {
 																echo " Wow! That's a lot of service hours! An email has been sent to Chapman/Gordon to confirm this.";
@@ -128,11 +129,13 @@ include 'hubheader.php';
 
 														} else {
 															//echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-															echo "Entry failed to be added";
+															//echo "Entry failed to be added";
+															echo '<script>window.location.href = "addmyselfproject.php?error=Entry failed to be added";</script>';	
 														}
 
 													} else {
-														echo "student is already in the project";
+														echo '<script>window.location.href = "addmyselfproject.php?error=Student is already in the Project";</script>';	
+														//echo "student is already in the project";
 													}
 													
 												}
@@ -140,7 +143,7 @@ include 'hubheader.php';
 											</div>
 											<hr>
 
-
+		
 										</div>
 									</div>
 								</div>

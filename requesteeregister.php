@@ -13,17 +13,17 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 	$age = mysqli_real_escape_string( $connection, $_POST[ "age" ] );
 	$password = md5( $_POST[ "password" ] );
 	$passwordAgain = md5( $_POST[ "passwordAgain" ] );
-	
-	
-	if($parent_or_student == "parent") {
+
+
+	if ( $parent_or_student == "parent" ) {
 		$age = '0';
 	}
-	
 
-//first checkking if the password is the same as the password again.	
+
+	//first checkking if the password is the same as the password again.	
 	if ( $password == $passwordAgain ) {
 
-//Checking if the username already exists
+		//Checking if the username already exists
 		$usernamesql = "SELECT * FROM `requestlogin` WHERE username = '$username'";
 		$usernameres = mysqli_query( $connection, $usernamesql );
 		$count = mysqli_num_rows( $usernameres );
@@ -32,7 +32,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 			$error = "true";
 
 		}
-//checking if the email already exists
+		//checking if the email already exists
 		$emailsql = "SELECT * FROM `requestlogin` WHERE contact = '$email'";
 		$emailsqlres = mysqli_query( $connection, $emailsql );
 		$count = mysqli_num_rows( $emailsqlres );
@@ -47,8 +47,8 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 
 
 
-//if any of the errors above, $error will be set to true. If no erros above then it will not be true and thus
-//the statement continues
+		//if any of the errors above, $error will be set to true. If no erros above then it will not be true and thus
+		//the statement continues
 		if ( $error != "true" ) {
 
 			$sql = "INSERT INTO requestlogin (username, contact, full_name, password, parent_or_student, age) VALUES ('$username', '$email', '$full_name', '$password', '$parent_or_student', '$age');";
@@ -102,7 +102,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 
 <body>
 
-<!--These are the success and error messages	-->
+	<!--These are the success and error messages	-->
 	<?php if(isset($smsg)){ ?>
 	<div class="alert alert-success" role="alert" style="margin-top: 20px;">
 		<?php echo $smsg; ?> </div>
@@ -121,7 +121,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 
 
 
-<!--This is the HTML for the form-->
+	<!--This is the HTML for the form-->
 	<div class="login-container">
 		<section class="login" id="login">
 
@@ -143,10 +143,10 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 					<option value="student">Student</option>
 					<option value="parent">Parent</option>
 				</select>
-				
+
 				<input type="number" name="age" id="" class="login-input" max=20 placeholder="If you are a student, enter your age">
-				
-				
+
+
 
 				<button class="btn btn-success">create</button>
 

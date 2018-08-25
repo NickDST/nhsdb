@@ -78,12 +78,14 @@ include 'hubheader.php';
 
 									$result = mysqli_query( $connection, $sql );
 									if ( $result ) {
-										echo "Entry successfully removed";
+										//echo "Entry successfully removed";
+										echo '<script>window.location.href = "removemyselfproject.php?success=Successfully removed!";</script>';
 
 
 									} else {
 
-										echo "Entry failed to be removed";
+										//echo "Entry failed to be removed";
+										echo '<script>window.location.href = "removemyselfproject.php?error=Something went wrong!";</script>';
 									}
 
 
@@ -95,12 +97,14 @@ include 'hubheader.php';
 
 										$result = mysqli_query( $connection, $sql );
 										if ( $result ) {
-											echo "everything successfully removed";
+											//echo "everything successfully removed";
+											//echo '<script>window.location.href = "removemyselfproject.php?success=Successfully removed!";</script>';
 
 
 										} else {
 
-											echo "everything failed to be removed";
+											//echo "everything failed to be removed";
+													//echo '<script>window.location.href = "removemyselfproject.php?error=Something went wrong!";</script>';
 										}
 									}
 

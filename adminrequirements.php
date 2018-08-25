@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Untitled Document</title>
+	<title>Admin Requirements</title>
 </head>
 
 <body>
@@ -50,7 +50,7 @@
 									if ( $resultCheck > 0 ) {
 										while ( $row = mysqli_fetch_assoc( $result ) ) {
 
-										$studentid = $row[ "studentid" ];
+											$studentid = $row[ "studentid" ];
 
 
 
@@ -73,9 +73,9 @@
 
 													}
 												endwhile;
-											} 
-											
-											
+											}
+
+
 											if ( $view_society == 'SNHS' ) {
 												$sqlhours = "SELECT SUM(service_hours) FROM students_in_projects WHERE studentid = '$studentid' AND affiliated_group_for_servicehours = 'SNHS'";
 												//echo $id;
@@ -93,7 +93,7 @@
 
 													}
 												endwhile;
-											} 
+											}
 
 
 
