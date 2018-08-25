@@ -222,6 +222,17 @@ endwhile;
 								
 								
 								<?php 
+									
+									if ($tutor['grouporone'] == "group study") {
+									echo "<br><h5>This is a group study session: ".$tutor['group_subject']."</h5>" ;
+									echo "<h5>Description: ".$tutor['group_desc']."</h5>" ;
+									//echo "";
+									echo "<br>Affiliated: ".$tutor['affiliated'] ;
+									echo "<br>";
+									echo "<br>";
+								}
+									
+									
 									if ($parent_or_student == "parent") {
 										
 									
@@ -229,17 +240,12 @@ endwhile;
 
 								
 
-								<h2 class="">As a parent, please fill out your child's information</h2>
+								<h3 class="">As a parent, please fill out your child's information.</h3>
 
 								<?php
 //If it is a group session, then information regarding the group session will be displayed
 									
-								if ($tutor['grouporone'] == "group study") {
-									echo "This is a group study session: ".$tutor['group_subject'] ;
-									echo "<br>Desc: ".$tutor['group_desc'] ;
-									echo "<br>";
-									echo "<br>Affiliated: ".$tutor['affiliated'] ;
-								}
+								
 
 
 
@@ -259,7 +265,7 @@ endwhile;
 								
 								<?php }  else {
 										
-										echo "<h5>As a student your information is already prepared</h5>";
+										echo "<h5>As a student your information is already prepared!</h5>";
 										
 										echo"Name: ". $requesteename;
 										echo "<br>";
@@ -448,10 +454,10 @@ endwhile;
 
 					//$headers = "Content-type: text/html\r\n";
 					mail( $to, $subject, $message, $headers );
-					//echo "email to Project Manager sent";
+					echo "email to Project Manager sent";
 
 				} else {
-					//echo "Request to Project Manager failed to send";
+					echo "Request to Project Manager failed to send";
 				}
 
 
@@ -460,17 +466,17 @@ endwhile;
 				$subject = "";
 				$message = "<h1> Someone has requested for you to tutor them in $subject </h1> <p> Requestee name: $requestee <br> They are requesting for the time starting at $datetime_start to $datetime_end<p> <h3>Log into the NHS database to verify this request They are $age years old</h3>";
 
-				$headers = 'From: Honor Help  <system@honorhelp.com>' . PHP_EOL .
+				$headers = 'From: Honor Help <system@honorhelp.com>' . PHP_EOL .
 				'Reply-To: Honor Help <reply@honorhelp.com>' . PHP_EOL .
 				'X-Mailer: PHP/' . phpversion() . 'Content-type: text/html; charset: utf8\r\n' . 'MIME-Version: 1.0';
 
 				mail( $to, $subject, $message, $headers );
-				//echo "email to student tutor sent";
+				echo "email to student tutor sent";
 
 
 
 				unset( $_SESSION[ "tutortime" ] );
-				echo '<script>window.location.href = "tutorrequest.php?message=success";</script>';
+				//echo '<script>window.location.href = "tutorrequest.php?message=success";</script>';
 
 			} else {
 				$fmsg = "Request failed to send";
