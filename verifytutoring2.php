@@ -180,7 +180,9 @@
 								}
 								
 //Submitting any possible feedback into the feedback table with the request id								
-								$sql6 = "INSERT INTO feedback (requestid, description) VALUES ('$requestid', '$feedback');";
+								//$sql6 = "INSERT INTO feedback (requestid, description) VALUES ('$requestid', '$feedback');";
+								$sql6 = "INSERT INTO feedback (request_user, description) VALUES ('$requestee_username', '$feedback');";
+
 
 								$result6 = mysqli_query( $connection, $sql6 );
 								if ( $result6 ) {
