@@ -156,7 +156,25 @@ echo "I have snhs officer rights";
                     </a>
                 </li>
 				<br>
-			
+				<li class="active">
+                    <a href="viewrequestee.php">
+                        <i class="pe-7s-rocket"></i>
+                        <p>View Requestees</p>
+                    </a>
+                </li>
+				<br>
+				<?php
+if (isset($_SESSION['admin_rights'])) {
+	?>
+				
+				<li class="active">
+                    <a href="lookuprequestee.php">
+                        <i class="pe-7s-rocket"></i>
+                        <p>Look Up Requestee</p>
+                    </a>
+                </li>
+				<br>
+				 <?php	 }  ?>	
 
             </ul>
     	</div>

@@ -164,6 +164,16 @@ $color = $student['sidecolor']
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
+						<?php
+						if ( isset( $_SESSION[ 'admin_rights' ] )OR isset( $_SESSION[ 'nhs_officer_rights' ] )OR isset( $_SESSION[ 'snhs_officer_rights' ] ) ) {
+							?>
+						<li>
+							<a href="adminhub.php">
+								<p>Admin</p>
+							</a>
+						</li>
+						<?php } ?>
+						
                         <li>
                            <a href="aboutme.php">
                                <p>Account</p>

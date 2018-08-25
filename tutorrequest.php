@@ -19,7 +19,7 @@ if ( isset( $_SESSION[ 'username' ] ) ) {
 	//echo "nothing yet";
 }
 
-session_start();
+
 
 require_once( 'includes/dbh.inc.php' );
 include 'emailheader.php';
