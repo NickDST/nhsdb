@@ -226,7 +226,7 @@
 								
 								
 								
-//Emails the student that they have received their service horus
+//Emails the student that they have received their service Hours
 								
 										
 $to = $studentemail;
