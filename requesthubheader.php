@@ -222,7 +222,7 @@ while ( $requestee = $result->fetch_assoc() ):
 							<div class="alert alert-danger" role="alert" style="margin-top: 20px;">
 								<?php echo $fmsg; ?> </div>
 							<?php } ?>
-<!--		echo '<script>window.location.href = "tutorrequest.php?message=success";</script>';-->		
+<!--		echo '<script>window.location.href = "tutorrequest.php?message=success";</script>';		-->
 		
 <!--A lot of possible plugins not used here		-->
 		

@@ -138,12 +138,13 @@
 
 							$addresult = mysqli_query( $connection, $addsql );
 							if ( $addresult ) {
-								echo "Project successfully inserted ";
+								//echo "Project successfully inserted ";
 
 
 							} else {
 
-								echo "project failed to be added";
+								//echo "project failed to be added";
+								echo '<script>window.location.href = "verifytutoring2.php?error=Something went wrong!";</script>';
 							}
 
 							//Finding the ID of the project added
@@ -169,12 +170,13 @@
 
 								$addresult2 = mysqli_query( $connection, $addsql2 );
 								if ( $addresult2 ) {
-									echo "student in project successfully inserted";
+									//echo "student in project successfully inserted";
 
 
 								} else {
 
-									echo "studentinproject failed to be added";
+									//echo "studentinproject failed to be added";
+									echo '<script>window.location.href = "verifytutoring2.php?error=Something went wrong!";</script>';
 								}
 								
 //Submitting any possible feedback into the feedback table with the request id								
@@ -182,12 +184,13 @@
 
 								$result6 = mysqli_query( $connection, $sql6 );
 								if ( $result6 ) {
-									echo "feedback successfully added";
+									//echo "feedback successfully added";
 
 
 								} else {
 
-									echo "feedback failed to be added";
+									//echo "feedback failed to be added";
+									echo '<script>window.location.href = "verifytutoring2.php?error=Something went wrong!";</script>';
 								}
 								
 
@@ -197,12 +200,13 @@
 
 								$result2 = mysqli_query( $connection, $sql2 );
 								if ( $result2 ) {
-									echo "Entry successfully removed";
+									//echo "Entry successfully removed";
 
 
 								} else {
 
-									echo "Entry failed to be removed";
+									//echo "Entry failed to be removed";
+									echo '<script>window.location.href = "verifytutoring2.php?error=Something went wrong!";</script>';
 								}
 
 //Deleting the original set time from the available_times table to avoid confusion
@@ -210,12 +214,14 @@
 
 								$result5 = mysqli_query( $connection, $sql5 );
 								if ( $result5 ) {
-									echo "date successfully removed";
+									//echo "date successfully removed";
+									
 
 
 								} else {
 
-									echo "Date failed to be removed";
+									//echo "Date failed to be removed";
+									echo '<script>window.location.href = "verifytutoring2.php?error=Something went wrong!";</script>';
 								}
 								
 								
@@ -227,15 +233,20 @@ $to = $studentemail;
 $subject = "Your service hours for tutoring have been added in $society";
 $message = "You got $diff_in_hrs service hours for helping $requestee ";
 
+/*								
 $headers = 'From: NHS Database <NHS@database.com>' . PHP_EOL .
     'Reply-To: NHS <NHS@database.com>' . PHP_EOL .
-    'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
+    'X-Mailer: PHP/' . phpversion() . "Content-type: text/html"; */
+								
+$headers = 'From: Honor Help <honorhelp@database.com>' . PHP_EOL .
+    'Reply-To: HonorHelp <honorhelp@database.com>' . PHP_EOL .
+    'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";								
 			
 mail($to, $subject, $message, $headers);
-echo "<br>email to requestee  sent";			
+//echo "<br>email to requestee  sent";			
 		
 
-
+echo '<script>window.location.href = "verifytutoring2.php?success=Success!";</script>';
 
 								
 								

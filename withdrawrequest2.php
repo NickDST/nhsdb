@@ -75,12 +75,13 @@
 
 							$removeresult = mysqli_query( $connection, $sqlremove );
 							if ( $removeresult ) {
-								echo "Entry successfully removed";
+								//echo "Entry successfully removed";
 
 
 							} else {
 
-								echo "Entry failed to be removed";
+								//echo "Entry failed to be removed";
+								echo '<script>window.location.href = "withdrawrequest2.php?error=Something went wrong!";</script>';
 							}
 
 
@@ -110,14 +111,19 @@
 							$subject = "EMAIL TO Student Contact";
 							$message = "$requestee has withdrawn their request to you that you have not accepted.";
 
+							/*
 							$headers = 'From: NHS Organizer <NHS@database.com>' . PHP_EOL .
 							'Reply-To: NHS <NHS@database.com>' . PHP_EOL .
-							'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
+							'X-Mailer: PHP/' . phpversion() . "Content-type: text/html"; */
+							
+							$headers = 'From: Honor Help <honorhelp@database.com>' . PHP_EOL .
+    'Reply-To: HonorHelp <honorhelp@database.com>' . PHP_EOL .
+    'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
 
 							mail( $to, $subject, $message, $headers );
-							echo "Message sent hopefully";
+							//echo "Message sent hopefully";
 						
-
+echo '<script>window.location.href = "withdrawrequest2.php?success=Success!";</script>';
 						}
 					}
 
