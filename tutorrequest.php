@@ -23,6 +23,25 @@ if ( isset( $_SESSION[ 'username' ] ) ) {
 
 require_once( 'includes/dbh.inc.php' );
 include 'emailheader.php';
+
+
+//Taking the information from the account
+$sql1 = "SELECT * FROM requestlogin WHERE username = '$username'";
+	$result = mysqli_query( $connection, $sql1 );
+	while ( $requestee = $result->fetch_assoc() ): 
+
+$requesteename = $requestee['full_name'];
+$requestee_user = $requestee['username'];
+$requestee_contact = $requestee['contact'];
+$parent_or_student = $requestee['parent_or_student'];
+$requestee_age = $requestee['age'];
+
+endwhile;
+
+?>
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -194,17 +213,23 @@ include 'emailheader.php';
 							$sql1 = "SELECT * FROM available_times WHERE id = $id ";
 							$result = mysqli_query( $connection, $sql1 );
 							while ( $tutor = $result->fetch_assoc() ): ?>
-
-
+							
+							
+						
 
 							<form method="POST">
-
-								<?php
-								//$rand=rand();
-								//	$_SESSION['rand']=$rand;
+								<h3 class="">Send in a tutoring request!</h3>
+								
+								
+								<?php 
+									if ($parent_or_student == "parent") {
+										
+									
 								?>
 
-								<h2 class="">Send in a tutoring request!</h2>
+								
+
+								<h2 class="">As a parent, please fill out your child's information</h2>
 
 								<?php
 //If it is a group session, then information regarding the group session will be displayed
@@ -231,6 +256,23 @@ include 'emailheader.php';
 								<br>
 								<input type="number" name="age" id="" class="form-control" placeholder="Age">
 								<br>
+								
+								<?php }  else {
+										
+										echo "<h5>As a student your information is already prepared</h5>";
+										
+										echo"Name: ". $requesteename;
+										echo "<br>";
+										echo"Email: ". $requestee_contact;
+										echo "<br>";
+										echo"Age: ". $requestee_age;
+										echo"<br>";
+										echo "<br>";
+										
+									}
+								
+								
+								?>
 
 <!--Displaying start and ending information for the student-->
 								
@@ -286,7 +328,7 @@ include 'emailheader.php';
 		} else {
 
 
-		if ( !( $_POST[ 'requestee' ]=="" ) or !( $_POST[ 'contact' ]=="" ) or !( $_POST[ 'subject_level' ]=="" ) or !( $_POST[ 'age' ]=="" )) {
+		if ( $parent_or_student == 'student' or (!( $_POST[ 'requestee' ]=="" ) or !( $_POST[ 'contact' ]=="" ) or !( $_POST[ 'subject_level' ]=="" ) or !( $_POST[ 'age' ]=="" ))) {
 
 		//Setting up mysqli_real_escape_string to attempt to avoid SQL injections...	
 		//Putting the POSTs into variables	
@@ -294,6 +336,12 @@ include 'emailheader.php';
 		$contact = mysqli_real_escape_string( $connection, $_POST[ "contact" ] );
 		$subject_level = mysqli_real_escape_string( $connection, $_POST[ "subject_level" ] );
 		$age = mysqli_real_escape_string( $connection, $_POST[ "age" ] );
+			
+			if ($parent_or_student == 'student') {
+				$requestee = $requesteename;
+				$contact = $requestee_contact;
+				$age = $requestee_age;
+			}
 
 
 
@@ -343,12 +391,11 @@ include 'emailheader.php';
 
 
 
-
 			//Inserting the data into the projects...
 			$sql = "INSERT INTO request (requestee, contact, datetime_start, datetime_end, subject, tutor_diff, type, studentid, age, request_username) VALUES ('$requestee', '$contact', '$datetime_start' , '$datetime_end' , '$subjectname', '$subject_level', 'tutor', '$studentid', '$age', '$username');";
 
 			//echotest
-			//echo $sql;
+			echo $sql;
 
 	
 

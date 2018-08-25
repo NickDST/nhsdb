@@ -10,8 +10,15 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 	$email = mysqli_real_escape_string( $connection, $_POST[ "email" ] );
 	$parent_or_student = mysqli_real_escape_string( $connection, $_POST[ "parent_or_student" ] );
 	$full_name = mysqli_real_escape_string( $connection, $_POST[ "full_name" ] );
+	$age = mysqli_real_escape_string( $connection, $_POST[ "age" ] );
 	$password = md5( $_POST[ "password" ] );
 	$passwordAgain = md5( $_POST[ "passwordAgain" ] );
+	
+	
+	if($parent_or_student == "parent") {
+		$age = '0';
+	}
+	
 
 //first checkking if the password is the same as the password again.	
 	if ( $password == $passwordAgain ) {
@@ -44,7 +51,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 //the statement continues
 		if ( $error != "true" ) {
 
-			$sql = "INSERT INTO requestlogin (username, contact, full_name, password, parent_or_student) VALUES ('$username', '$email', '$full_name', '$password', '$parent_or_student');";
+			$sql = "INSERT INTO requestlogin (username, contact, full_name, password, parent_or_student, age) VALUES ('$username', '$email', '$full_name', '$password', '$parent_or_student', '$age');";
 
 			//echo $sql;
 
@@ -56,7 +63,8 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 
 
 			} else {
-				$fmsg = "User Registration Failed <br><br> Make sure you are already checked inside the database!";
+				echo $sql;
+				$fmsg = "Something went wrong! Make sure you filled out all the appropriate fields!";
 
 
 			}
@@ -121,7 +129,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 			<form class="login-form" action="#" method="post">
 				<input type="text" name="username" class="login-input" placeholder="Username" maxlength="100" required/>
 
-				<input type="text" name="real_name" class="login-input" placeholder="Full Name" maxlength="100" required/>
+				<input type="text" name="full_name" class="login-input" placeholder="Full Name" maxlength="100" required/>
 				<input type="password" name="password" id="input Password" class="login-input" placeholder="Password" maxlength="100" required/>
 				<input type="email" name="email" id="inputEmail" class="login-input" placeholder="Email address" maxlength="100" required/>
 				<!-- <input type="text" name="studentid" class="login-input" placeholder="Student ID" maxlength="100" required/> -->
@@ -130,11 +138,15 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 				<input type="password" name="passwordAgain" id="input Password" class="login-input" maxlength="100" placeholder="Password Again" required>
 
 
-				<select class="login-input" name="parent_or_student">
+				<select class="login-input" name="parent_or_student" required>
 					<option>Are you a parent or student</option>
 					<option value="student">Student</option>
 					<option value="parent">Parent</option>
 				</select>
+				
+				<input type="number" name="age" id="" class="login-input" max=20 placeholder="If you are a student, enter your age">
+				
+				
 
 				<button class="btn btn-success">create</button>
 
