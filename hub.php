@@ -447,7 +447,7 @@ if (isset($_SESSION['snhs_officer_rights'])) {
 					&copy;
 					<script>
 						document.write( new Date().getFullYear() )
-					</script> NHS DB
+					</script> Honor Help
 				</p>
 			</div>
 		</footer>
