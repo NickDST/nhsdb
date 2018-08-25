@@ -1,70 +1,70 @@
 <?php include 'requesthubheader.php';?>
-		<div style="padding-left:30px; ">
-<!--Includes header to the layout and sessions-->
+<div style="padding-left:30px; ">
+	<!--Includes header to the layout and sessions-->
 
 
-<!--	HTML for the form		-->
-			<hr>
+	<!--	HTML for the form		-->
+	<hr>
 
-		</div>
-		<div class="content">
-			<div class="container-fluid">
-				<div class="row">
+</div>
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
 
-					<div class="col-md-12">
-						<div class="card">
+			<div class="col-md-12">
+				<div class="card">
 
-							<div class="header">
-								<h4 class="title"><strong>Verify Student Tutoring</strong></h4>
-								<p class="category">Please View Your Active Requests</p>
-							</div>
-							<div class="" style="padding-left:15px; padding-bottom:20px;">
-								<br>
-                <p>Make sure the tutoring event took place</p>
-								
-<!--This generates a list for the requestee to choose out of for active requests-->
+					<div class="header">
+						<h4 class="title"><strong>Verify Student Tutoring</strong></h4>
+						<p class="category">Please View Your Active Requests</p>
+					</div>
+					<div class="" style="padding-left:15px; padding-bottom:20px;">
+						<br>
+						<p>Make sure the tutoring event took place</p>
 
-                <?php
-            			//$search = mysqli_real_escape_string($connection, $_POST['search']);
-            			$sql = "SELECT * FROM request WHERE request_username = '$username' AND status = 'active' ORDER BY datetime_start";
-//I took out the datetime_start < now() because it made debugging difficult. But this sytem is relatively secure, just requires some integrity on the students part because the moment they verify the request is 'active'
-								
-            			$result = mysqli_query($connection, $sql);
-            			$queryResult = mysqli_num_rows($result);
+						<!--This generates a list for the requestee to choose out of for active requests-->
 
-            			echo "You have ".$queryResult. " tutoring event(s) to verify <hr>";
+						<?php
+						//$search = mysqli_real_escape_string($connection, $_POST['search']);
+						$sql = "SELECT * FROM request WHERE request_username = '$username' AND status = 'active' ORDER BY datetime_start";
+						//I took out the datetime_start < now() because it made debugging difficult. But this sytem is relatively secure, just requires some integrity on the students part because the moment they verify the request is 'active'
 
-//This will generate info for each active request including a link
-            			if ($queryResult > 0) {
-            				while ($row = mysqli_fetch_assoc($result)) {
-            					echo "
+						$result = mysqli_query( $connection, $sql );
+						$queryResult = mysqli_num_rows( $result );
+
+						echo "You have " . $queryResult . " tutoring event(s) to verify <hr>";
+
+						//This will generate info for each active request including a link
+						if ( $queryResult > 0 ) {
+							while ( $row = mysqli_fetch_assoc( $result ) ) {
+								echo "
 
             					<div>
-            					<h3>".$row['requestee']."</h3>
-            					<p>".$row['datetime_start']."</p>
-            					<p>".$row['datetime_end']."</p>
+            					<h3>" . $row[ 'requestee' ] . "</h3>
+            					<p>" . $row[ 'datetime_start' ] . "</p>
+            					<p>" . $row[ 'datetime_end' ] . "</p>
             					</div>
-            					<a href = 'verifytutoring2.php?name=".$row['requestee']."&startdate=".$row['datetime_start']."&id=".$row['requestid']."'>More Info/activate
+            					<a href = 'verifytutoring2.php?name=" . $row[ 'requestee' ] . "&startdate=" . $row[ 'datetime_start' ] . "&id=" . $row[ 'requestid' ] . "'>More Info/activate
             					</a>
             					<hr>";
 
-            				}
+							}
 
-            			} else {
-            				echo "All tutoring events verified!";
-            			}
-
-
-            		?>
+						} else {
+							echo "All tutoring events verified!";
+						}
 
 
+						?>
 
 
 
-							</div>
-						</div>
+
+
 					</div>
-					<!--Unused block section					
+				</div>
+			</div>
+			<!--Unused block section					
 
 					<div class="col-md-12">
 						<div class="card">
@@ -82,39 +82,40 @@
 						</div>
 					</div> -->
 
-							</div>
-						</div>
-					</div>
+		</div>
+	</div>
+</div>
 
 
 
 <!--Just page footer things-->
-		<footer class="footer">
-			<div class="container-fluid">
-				<nav class="pull-left">
-					<ul>
-						<li>
-							<a href="hub.php">
+<footer class="footer">
+	<div class="container-fluid">
+		<nav class="pull-left">
+			<ul>
+				<li>
+					<a href="hub.php">
                                 Home
                             </a>
+				
 
-						</li>
+				</li>
 
-					</ul>
-				</nav>
-				<p class="copyright pull-right">
-					&copy;
-					<script>
-						document.write( new Date().getFullYear() )
-					</script> NHS DB
-				</p>
-			</div>
-		</footer>
-
+			</ul>
+		</nav>
+		<p class="copyright pull-right">
+			&copy;
+			<script>
+				document.write( new Date().getFullYear() )
+			</script> NHS DB
+		</p>
 	</div>
-	</div>
+</footer>
 
-	<?php// endwhile ?>
+</div>
+</div>
+
+<?php// endwhile ?>
 </body>
 
 <!--   Core JS Files   -->

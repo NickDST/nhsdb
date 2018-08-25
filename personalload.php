@@ -35,7 +35,7 @@ foreach($result as $row)
 {
  $data[] = array(
   'id'   => $row["projectid"],
-  'title'   => $row["type"],
+  'title'   => $row["project_name"],
   'start'   => $row["datetime_start"],
   'end'   => $row["datetime_end"]
  );

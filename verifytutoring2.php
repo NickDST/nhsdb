@@ -133,7 +133,7 @@
 							}
 
 
-//This officially adds the project into the master project list with all the appropriate fields from either NHS or SNSH
+//This officially adds the project into the master project list with all the appropriate fields from either NHS or SNHS
 							$addsql = "INSERT INTO project_list (project_name, teacher_name, teacher_contact, datetime_start, datetime_end, affiliated_group, entered_by, project_description, requestee, requestee_email, type, request_username) VALUES ('Tutoring Request', '$teacher_name', '$teacher_contact' , '$datetime_start' , '$datetime_end', '$affiliated_group', '$studentid', '$project_description', '$requestee', '$requestee_email', 'tutor', '$requestee_username');";
 
 							$addresult = mysqli_query( $connection, $addsql );
@@ -166,7 +166,7 @@
 
 
 //including the student in this "project" with the appropriate number of service hours entered as well. In order for a student to be associated with a project they need to be entered into this table
-								$addsql2 = "INSERT INTO students_in_projects (projectid, studentid, service_hours, role) VALUES ('$projectid', '$studentid', '$diff_in_hrs' , 'Tutorer');";
+								$addsql2 = "INSERT INTO students_in_projects (projectid, studentid, service_hours, role, affiliated_group_for_servicehours) VALUES ('$projectid', '$studentid', '$diff_in_hrs' , 'Tutorer', '$affiliated_group');";
 
 								$addresult2 = mysqli_query( $connection, $addsql2 );
 								if ( $addresult2 ) {

@@ -66,7 +66,7 @@ include 'emailheader.php';
 
 		
 <?php 		
-$sql = "SELECT * FROM students WHERE studentid = '$id'";
+$sql = "SELECT * FROM students WHERE studentid = '$id' LIMIT 4";
 //echo $id;
 $result = mysqli_query($connection, $sql);
 while ($student = $result->fetch_assoc()): 		
@@ -138,11 +138,11 @@ if(isset($_POST['accept']) & !empty(isset($_POST['accept']))){
 		//UPDATE request set status = 'active', affiliated_for_service_hours = 'NHS' WHERE requestid = '13'
 		$activateresult = mysqli_query($connection, $activatesql);
 		if ($activateresult) {
-			echo "thing successfully updated ";
+			//echo "thing successfully updated ";
 
 		} else {
 		
-			echo "thing failed to be updated";
+			//echo "thing failed to be updated";
 		}
 		
 		

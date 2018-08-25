@@ -28,7 +28,7 @@ include 'hubheader.php'
 						<br>
 						<div class="" style="padding-left:15px;">
 							<form action="searchproject2.php" method="POST">
-								<input type="text" name="search" placeholder="Search" maxlength=1 00>
+								<input type="text" name="search" placeholder="Search" maxlength=100>
 								<button type="submit" name="submit-search">Submit</button>
 							</form>
 

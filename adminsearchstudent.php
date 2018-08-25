@@ -1,8 +1,6 @@
+
 <?php include 'adminhubheader.php'; ?>
 
-<!doctype html>
-
-<body>
 
 	<div class="content">
 		<div class="container-fluid">

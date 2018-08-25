@@ -88,7 +88,7 @@ while ( $student = $result->fetch_assoc() ): ?>
 					<div class="card">
 
 						<div class="header">
-							<h4 class="title">Projects + Service Hours</h4>
+							<h2 class="title"><strong>Projects + Service Hours</strong></h2>
 							<p class="category">These are all your past/current projects and service</p>
 							<h3>Current total: <?=$totalhours['SUM(service_hours)']?></h3>
 							<?php endwhile ?>
@@ -175,7 +175,8 @@ endwhile;
 
 									?>
 							<hr>
-							<?php echo $projectinfo['project_name'];?> <br>
+							<?php echo"<h3><strong>". $projectinfo['project_name']."</strong></h3>";?>
+							
 							<?php echo "Description:  ". $projectinfo['project_description'];?> <br><br>
 							<?php echo "Datetime started: ".$projectinfo['datetime_start'];?> <br>
 							<?php echo "Datetime ended: ".$projectinfo['datetime_end'];?> <br><br>

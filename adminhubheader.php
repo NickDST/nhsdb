@@ -101,9 +101,11 @@ echo "I have snhs officer rights";
 
 
 	<div class="wrapper">
+		
+		<div class='sidebar' <?php echo "data-color='$color'"?> data-image='assets/img/sidebar-5.jpg'>
 
 		<?php 
-		echo "<div class='sidebar' data-color='$color' data-image='assets/img/sidebar-5.jpg'>";
+		//echo "<div class='sidebar' data-color='$color' data-image='assets/img/sidebar-5.jpg'>";
 	?>
 
 		<!--    <div class="sidebar" data-color="blue" data-image="assets/img/sidebar-5.jpg">-->

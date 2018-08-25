@@ -16,7 +16,7 @@
 						<br>
 						<?php
 						/*Pending requests*/
-						$pendingsql = "SELECT * FROM request WHERE datetime_start > NOW() ORDER BY datetime_start";
+						$pendingsql = "SELECT * FROM request WHERE datetime_start > NOW() ORDER BY datetime_start LIMIT 3";
 						$Presultsql = mysqli_query( $connection, $pendingsql );
 
 						$pendingCheck = mysqli_num_rows( $Presultsql );

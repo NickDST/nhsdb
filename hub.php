@@ -293,7 +293,7 @@ if (isset($_SESSION['snhs_officer_rights'])) {
 								<?php
 								//Displays all the pending requests that the student has
 								/*Pending requests*/
-								$pendingsql = "SELECT * FROM request WHERE datetime_start > NOW() AND studentid = '$id' ORDER BY datetime_start";
+								$pendingsql = "SELECT * FROM request WHERE datetime_start > NOW() AND studentid = '$id' ORDER BY datetime_start LIMIT 4";
 								$Presultsql = mysqli_query( $connection, $pendingsql );
 
 								$pendingCheck = mysqli_num_rows( $Presultsql );
@@ -308,7 +308,7 @@ if (isset($_SESSION['snhs_officer_rights'])) {
 
 								<?php echo "Name: ".$pendingrequest['requestee'];?> <br>
 
-								<?php echo $pendingrequest['contact'];?>
+								<?php echo $pendingrequest['contact'];?> <br>
 								<?php echo nl2br($pendingrequest['subject']."\r\n");?>
 								<hr>
 
@@ -332,7 +332,7 @@ if (isset($_SESSION['snhs_officer_rights'])) {
 						<div class="card">
 
 							<div class="header">
-								<h4 class="title">Ongoing Projects</h4>
+								<h4 class="title"><strong>Ongoing Projects</strong></h4>
 								<p class="category">Currently Active are displayed</p>
 							</div>
 							<div class="" style="padding-left:15px; padding-bottom: 5px; ">
@@ -379,7 +379,7 @@ if (isset($_SESSION['snhs_officer_rights'])) {
 						<div class="card">
 
 							<div class="header">
-								<h4 class="title">Finished Projects/Service Here</h4>
+								<h4 class="title"><strong>Finished Projects/Service Here</strong></h4>
 								<p class="category">Service Hours have been accounted for</p>
 							</div>
 							<div class="" style="padding-left:15px; padding-bottom: 10px;">
@@ -456,6 +456,9 @@ if (isset($_SESSION['snhs_officer_rights'])) {
 	</div>
 
 	<?php endwhile ?>
+	
+	
+	
 </body>
 
 <!--   Core JS Files   -->

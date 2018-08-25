@@ -76,7 +76,7 @@ include 'adminhubheader.php';
 								?>
 
 
-								<h5>Don't see anything matching your search? <a href="newproject.php">add a new project</a></h5>
+<!--								<h5>Don't see anything matching your search? <a href="newproject.php">add a new project</a></h5>-->
 								<br>
 							</div>
 						</div>
