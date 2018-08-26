@@ -41,8 +41,8 @@
 				<div class="card">
 
 					<div class="header">
-						<h4 class="title">All my Tutoring Events</h4>
-						<p class="category">Please View Your Active Requests</p>
+						<h4 class="title">All My Active Tutoring Events</h4>
+						<p class="category">This is active! </p>
 					</div>
 					<div class="" style="padding-left:15px; padding-bottom:20px;">
 						<br>
@@ -50,7 +50,7 @@
 						<!--Querying to find the information for the user for all their tutor requests -->
 						<?php
 						/*Pending requests*/
-						$pendingsql = "SELECT * FROM request WHERE request_username = '$username' ORDER BY datetime_start";
+						$pendingsql = "SELECT * FROM request WHERE request_username = '$username' AND status = 'active' ORDER BY datetime_start LIMIT 5";
 						$Presultsql = mysqli_query( $connection, $pendingsql );
 
 						$pendingCheck = mysqli_num_rows( $Presultsql );
@@ -103,7 +103,7 @@
 
 						<?php
 						/*Pending requests*/
-						$pendingsql = "SELECT * FROM request WHERE status = 'inactive' AND request_username = '$username' ORDER BY datetime_start";
+						$pendingsql = "SELECT * FROM request WHERE status = 'inactive' AND request_username = '$username' ORDER BY datetime_start LIMIT 4";
 						$Presultsql = mysqli_query( $connection, $pendingsql );
 
 						$pendingCheck = mysqli_num_rows( $Presultsql );

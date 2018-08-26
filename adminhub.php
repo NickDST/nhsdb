@@ -10,13 +10,13 @@
 
 					<div class="header">
 						<h4 class="title"><strong>Latest Pending Requests</strong></h4>
-						<p class="category">Please View Your Active Requests</p>
+						<p class="category">Pending requests</p>
 					</div>
 					<div class="" style="padding-left:15px; padding-bottom:20px;">
 						<br>
 						<?php
 						/*Pending requests*/
-						$pendingsql = "SELECT * FROM request WHERE datetime_start > NOW() ORDER BY datetime_start LIMIT 3";
+						$pendingsql = "SELECT * FROM request WHERE datetime_start > NOW() AND status = 'inactive' ORDER BY datetime_start LIMIT 3";
 						$Presultsql = mysqli_query( $connection, $pendingsql );
 
 						$pendingCheck = mysqli_num_rows( $Presultsql );
@@ -34,7 +34,6 @@
 
 						<?php echo "Contact: ".$pendingrequest['contact'];?> <br>
 						<?php echo "Datetime Start: ".$pendingrequest['datetime_start'];?> <br>
-						<?php echo "Datetime End: ".$pendingrequest['datetime_end'];?> <br>
 						<?php echo "Subject: ".nl2br($pendingrequest['subject']."\r\n");?>
 
 						<hr>
@@ -62,7 +61,7 @@
 					<div class="" style="padding-left:15px; padding-bottom: 5px; ">
 						<?php
 						/*Projects where status = ongoing*/
-						$studentsql = "SELECT project_list.*, students_in_projects.*, students.* FROM project_list, students_in_projects, students WHERE students.studentid = students_in_projects.studentid AND students_in_projects.projectid = project_list.projectid AND datetime_end > NOW()";
+						$studentsql = "SELECT project_list.*, students_in_projects.*, students.* FROM project_list, students_in_projects, students WHERE students.studentid = students_in_projects.studentid AND students_in_projects.projectid = project_list.projectid AND datetime_end > NOW() LIMIT 5";
 						$resultsql = mysqli_query( $connection, $studentsql );
 
 						$resultCheck = mysqli_num_rows( $resultsql );

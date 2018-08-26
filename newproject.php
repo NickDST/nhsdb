@@ -96,7 +96,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 
 											<label for="">Name of Project</label>
 											<br>
-											<input type="text" name="project_name" class="form-control" placeholder="Name of Project" required maxlength=1 00>
+											<input type="text" name="project_name" class="form-control" placeholder="Name of Project" required maxlength=100>
 
 											<br>
 											<label for="">Name of Student Representative for this</label>
@@ -108,11 +108,11 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 											<br>
 											<label for="">Name of Responsible Adult</label>
 											<br>
-											<input type="text" name="teacher_name" id="" class="form-control" placeholder="ie. Darren Jones" required maxlength=1 00>
+											<input type="text" name="teacher_name" id="" class="form-control" placeholder="ie. Darren Jones" required maxlength=100>
 											<br>
 											<label for="">Email of Responsible Adult</label>
 											<br>
-											<input type="email" name="teacher_contact" id="" class="form-control" placeholder="nick@concordiashanghai.org" required maxlength=1 00>
+											<input type="email" name="teacher_contact" id="" class="form-control" placeholder="nick@concordiashanghai.org" required maxlength=100>
 
 											
 											<br>
@@ -136,7 +136,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 
 											<label for="">Affiliated Group</label>
 											<br>
-											<input type="text" name="affiliated_group" id="" class="form-control" placeholder="i.e SMS, NHS, SNHS" maxlength=1 00>
+											<input type="text" name="affiliated_group" id="" class="form-control" placeholder="i.e SMS, NHS, SNHS" maxlength=100>
 
 											<br>
 
@@ -150,6 +150,9 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 
 
 											<br>
+											
+											
+											<h4>There's no going back! Double check all the fields are entered correctly!</h4>
 											<br>
 
 
