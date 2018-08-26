@@ -59,7 +59,19 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 
 			$result = mysqli_query( $connection, $sql );
 			if ( $result ) {
-				$smsg = "User Registration Successful";
+				$smsg = "Success! Check your <strong>spam inbox</strong> for the registration email. Make sure to set that email to <strong>THIS IS NOT SPAM</strong>";
+				
+				$to = $email;
+$subject = "Thank you for registering to HonorHelp!";
+$message = "Thank you for registering to HonorHelp!! Please set this email to THIS IS NOT SPAM so that you will receive all the nessesary email notifications for our tutoring system. If you have any problems, email nicholas2019108@concordiashanghai.org";
+
+$headers = 'From: HonorHelp <HonorHelp@database.com>' . PHP_EOL .
+    'Reply-To: HonorHelp <HonorHelp@database.com>' . PHP_EOL .
+    'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
+			
+			
+mail($to, $subject, $message, $headers);
+//echo "<br>email to Project Manager sent";
 
 
 			} else {

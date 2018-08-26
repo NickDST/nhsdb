@@ -73,7 +73,7 @@
 						<!--		    <p>We offer</p>-->
 						<h2>Science Tutoring Services</h2>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia sapiente deserunt consectetur, quod reiciendis corrupti quo ea aliquid! Repellendus numquam quo, voluptate. Suscipit soluta omnis quibusdam facilis, illo voluptates odit!</p>
-						<a href="requestlogin.php"><button class="btn">Submit a Request</button></a>
+						<a href="requestlogin.php"><button class="btn btn-primary">Submit a Request</button></a>
 						<p>
 							<!--          <a href="https://twitter.com/ettrics" target="_blank"><i class="fa fa-twitter"></i></a>-->
 						</p>
@@ -89,7 +89,7 @@
 					<div class="strip__inner-text">
 						<h2>Math Tutoring Services</h2>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia sapiente deserunt consectetur, quod reiciendis corrupti quo ea aliquid! Repellendus numquam quo, voluptate. Suscipit soluta omnis quibusdam facilis, illo voluptates odit!</p>
-						<a href="requestlogin.php"><button class="btn">Submit a Request</button></a>
+						<a href="requestlogin.php"><button class="btn btn-primary">Submit a Request</button></a>
 						<p>
 							<!--          <a href="https://twitter.com/ettrics" target="_blank"><i class="fa fa-twitter"></i></a>-->
 						</p>
@@ -104,7 +104,7 @@
 					<div class="strip__inner-text">
 						<h2>English and Social Studies Tutoring Services</h2>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia sapiente deserunt consectetur, quod reiciendis corrupti quo ea aliquid! Repellendus numquam quo, voluptate. Suscipit soluta omnis quibusdam facilis, illo voluptates odit!</p>
-						<a href="requestlogin.php"><button class="btn">Submit a Request</button></a>
+						<a href="requestlogin.php"><button class="btn btn-primary">Submit a Request</button></a>
 						<p>
 							<!--          <a href="https://twitter.com/ettrics" target="_blank"><i class="fa fa-twitter"></i></a>-->
 						</p>
@@ -115,9 +115,9 @@
 				<div class="strip__content">
 					<h1 class="strip__title" data-name="Sit">SMS</h1>
 					<div class="strip__inner-text">
-						<h2>Writing Tutoring Services</h2>
+						<h2>Student Media Services</h2>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia sapiente deserunt consectetur, quod reiciendis corrupti quo ea aliquid! Repellendus numquam quo, voluptate. Suscipit soluta omnis quibusdam facilis, illo voluptates odit!</p>
-						<a href="#"><button class="btn">Submit a Request</button></a>
+						<a href="#"><button class="btn btn-primary">Submit a Request</button></a>
 						<p>
 							<!--          <a href="https://twitter.com/ettrics" target="_blank"><i class="fa fa-twitter"></i></a>-->
 						</p>
@@ -130,7 +130,7 @@
 					<div class="strip__inner-text">
 						<h2>Members Login</h2>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia sapiente deserunt consectetur, quod reiciendis corrupti quo ea aliquid! Repellendus numquam quo, voluptate. Suscipit soluta omnis quibusdam facilis, illo voluptates odit!</p>
-						<a href="login.php"><button class="btn">Login</button></a>
+						<a href="login.php"><button class="btn btn-primary">Login</button></a>
 						<p>
 							<!--          <a href="https://twitter.com/ettrics" target="_blank"><i class="fa fa-twitter"></i></a>-->
 						</p>

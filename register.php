@@ -49,7 +49,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 		$count = mysqli_num_rows( $studentidsqlres );
 
 		if ( $count == 1 ) {
-			$csmsg .= "Connection established to a student account!";
+			$csmsg .= "Connected to student account!";
 			$studentexists = "true";
 
 		}
@@ -65,7 +65,19 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 
 			$result = mysqli_query( $connection, $sql );
 			if ( $result ) {
-				$smsg = "User Registration Successful";
+				$smsg = "Success! BUT... <br> PLEASE CHECK YOUR SPAM INBOX FOR THE REGISTRATION EMAIL! Make sure to set THIS IS NOT SPAM. ";
+				
+				$to = $email;
+$subject = "Thank you for registering to Honor Help!";
+$message = "Hey! Thanks for registering to HonorHelp. Make sure to set this email to not spam in order to get all the nessesary emails.";
+
+$headers = 'From: HonorHelp <HonorHelp@database.com>' . PHP_EOL .
+    'Reply-To: HonorHelp <HonorHelp@database.com>' . PHP_EOL .
+    'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
+			
+			
+mail($to, $subject, $message, $headers);
+//echo "<br>email to Project Manager sent";
 
 
 			} else {

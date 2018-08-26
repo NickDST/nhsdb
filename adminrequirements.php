@@ -16,8 +16,8 @@
 					<div class="card">
 
 						<div class="header">
-							<h4 class="title"><strong>List of Students in the Database for this Honor Society</strong></h4>
-							<p class="category">Please View Your Active Requests</p>
+							<h4 class="title"><strong>List of Students in the Database</strong></h4>
+							<p class="category">First Semester of 2018</p>
 						</div>
 						<div class="" style="padding-left:15px; padding-bottom:20px;">
 
@@ -42,7 +42,7 @@
 
 
 
-									$sql = "SELECT students_in_societies.*, students.* from students, students_in_societies WHERE students.studentid = students_in_societies.studentid AND students_in_societies.honor_society = '$view_society' ORDER BY name";
+									$sql = "SELECT students_in_societies.*, students.* from students, students_in_societies WHERE students.studentid = students_in_societies.studentid AND students_in_societies.honor_society = '$view_society' AND students.studentid != '1111111' ORDER BY name";
 									$result = mysqli_query( $connection, $sql );
 
 

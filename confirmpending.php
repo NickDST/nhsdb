@@ -83,20 +83,25 @@ while ($student = $result->fetch_assoc()):
 		endwhile ?>		
 <form method="POST">
 		<label for=""> Type "I ACCEPT", in caps, in the designated box to accept this request</label>
-		<input type="text" name="confirm" id="" class= "form-control" placeholder = "Type it"  required >
+		<input type="text" name="confirm" id="" class= "form-control" placeholder = "Type it"  required maxlength = 8>
+	<br>
+		<label for="">Where will you guys meet?</label>
+	<br>
+		<textarea name="location" rows="3" cols="40" required placeholder = "i.e. HS Library" maxlength=300></textarea>
 	<br>
 	<button type="submit" name = "accept" class = "btn btn-success">Submit</button>	
 </form>		
 		
-<br>
+
+<hr>
 		
 <form method="POST">
 		<label for=""> Type "REJECT", in caps, in the designated box to delete this request. </label>
-		<input type="text" name="deny" id="" class= "form-control" placeholder = "Type it"  required >
+		<input type="text" name="deny" id="" class= "form-control" placeholder = "Type it"  required maxlegnth = 6>
 		<br>
 		<label for="">Enter reason for rejecting</label>
 	<br>
-		<textarea name="reason" rows="5" cols="40" required></textarea>
+		<textarea name="reason" rows="5" cols="40" required maxlength = 400></textarea>
 	<br>
 	<button type="submit" name = "reject" class = "btn btn-danger">Reject</button>	
 </form>		
@@ -112,6 +117,7 @@ while ($student = $result->fetch_assoc()):
 <?php
 if(isset($_POST['accept']) & !empty(isset($_POST['accept']))){
 	$confirm = mysqli_real_escape_string($connection, $_POST["confirm"]);
+	$location = mysqli_real_escape_string($connection, $_POST["location"]);
 	if ($confirm == "I ACCEPT") {
 		
 		if ($society == "NHS") {
@@ -245,10 +251,10 @@ if(isset($_POST['accept']) & !empty(isset($_POST['accept']))){
 		
 $to = $officercontact;
 $subject = "EMAIL TO OFFICER IN $society";
-$message = "A new Request has been submitted \r\nRequestee name: '$requestee' \r\nThey are requesting for the time starting at '$datetime_start'";
+$message = "A new Request has been submitted \r\nRequestee name: '$requestee' \r\nThey are requesting for the time starting at '$datetime_start'\r\n\r\nThey will at this specified location: $location";
 
-$headers = 'From: NHS Database <NHS@database.com>' . PHP_EOL .
-    'Reply-To: NHS <NHS@database.com>' . PHP_EOL .
+$headers = 'From: HonorHelp <HonorHelp@database.com>' . PHP_EOL .
+    'Reply-To: HonorHelp <HonorHelp@database.com>' . PHP_EOL .
     'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
 			
 			
@@ -260,9 +266,9 @@ mail($to, $subject, $message, $headers);
 			
 $to = $studentcontact;
 $subject = "EMAIL TO STUDENT CONTACT IN $society";
-$message = "You have confirmed the tutor request! Here is an email of the info \r\nRequestee name: $requestee \r\n\r\nThey are requesting for the time starting at $datetime_start to $datetime_end \r\nLog into the NHS database to verify this request";
-$headers = 'From: NHS Database <NHS@database.com>' . PHP_EOL .
-    'Reply-To: NHS <NHS@database.com>' . PHP_EOL .
+$message = "You have confirmed the tutor request! Here is an email of the info \r\nRequestee name: $requestee \r\n\r\nThey are requesting for the time starting at $datetime_start to $datetime_end \r\n\r\nYou specified to meet at the location: $location";
+$headers = 'From: Honor Help <HonorHelp@database.com>' . PHP_EOL .
+    'Reply-To: Honor Help <HonorHelp@database.com>' . PHP_EOL .
     'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
 mail($to, $subject, $message, $headers);
 //echo "<br>email to student tutor sent";
@@ -271,10 +277,10 @@ mail($to, $subject, $message, $headers);
 		
 $to = $requestee_email;
 $subject = "EMAIL TO REQUESTEE IN $society";
-$message = "Your Request has been received/activated! \r\ntutor name: $studentname \r\n\r\nYou will be starting at for the time starting at $datetime_start to $datetime_end<p> ";
+$message = "Your Request has been received/activated! \r\ntutor name: $studentname \r\n\r\nYou will be starting at for the time starting at $datetime_start to $datetime_end. Your tutorer has asked to meet up at this location: $location";
 
-$headers = 'From: NHS Database <NHS@database.com>' . PHP_EOL .
-    'Reply-To: NHS <NHS@database.com>' . PHP_EOL .
+$headers = 'From: Honor Help <HonorHelp@database.com>' . PHP_EOL .
+    'Reply-To: Honor Help <HonorHelp@database.com>' . PHP_EOL .
     'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
 			
 mail($to, $subject, $message, $headers);
@@ -285,11 +291,11 @@ mail($to, $subject, $message, $headers);
 	
 $to = $teacher_contact;
 $subject = "EMAIL TO TEACHER IN $society";
-$message = "Email to chapman \r\n$studentname has accepted and verified the tutor request to $requestee \r\n\r\nRequestee name: $requestee \r\n\r\nThey are requesting for the time starting at $datetime_start to $datetime_end";
+$message = "Email to chapman \r\n$studentname has accepted and verified the tutor request to $requestee \r\n\r\nRequestee name: $requestee \r\n\r\nThey are requesting for the time starting at $datetime_start to $datetime_end. \r\n\r\nThey are meeting at this location: $location";
 
 
-$headers = 'From: NHS Database <NHS@database.com>' . PHP_EOL .
-    'Reply-To: NHS <NHS@database.com>' . PHP_EOL .
+$headers = 'From: Honor Help <HonorHelp@database.com>' . PHP_EOL .
+    'Reply-To: Honor Help <HonorHelp@database.com>' . PHP_EOL .
     'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
 			
 mail($to, $subject, $message, $headers);

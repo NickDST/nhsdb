@@ -2,14 +2,11 @@
 <!--The requesthubheader.php has all the repetitive session and layout info, to keep consistency and make it easier to change, all request hub interfaces just link to it.-->
 
 
-<div style="padding-left:30px; ">
+<div class="col-md-12">
 
 
-
-
-	<div>
+	
 		<h1>Requestee Hub</h1>
-	</div>
 	<hr>
 
 </div>
@@ -31,7 +28,7 @@
 						<p>This is where you can make tutor requests and verify tutor events!!</p>
 						<p>On the left bar you can make tutor requests!</p>
 						<p>After the tutor event, make sure to verify the tutoring so our students can get their service hours!</p>
-						<p>If you have any questions, email nicholas2019108@concordiashanghai.org</p>
+						<p>If you have any questions, email one of our officers!</p>
 
 
 

@@ -211,6 +211,8 @@ endwhile;
 			    <br>
 				<br>		   
 				<a href="hub.php" class ="btn btn-info">Back to Hub</a>
+				<br>
+				<br>
 
 						   
 	  

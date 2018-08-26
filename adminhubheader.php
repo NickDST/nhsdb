@@ -278,11 +278,11 @@ echo "I have snhs officer rights";
 		</nav>
 
 
-		<div style="padding-left:30px; ">
-			<div>
+		<div class="col-md-12" style = "padding-bottom:20px;">
+			
 
 				<h1> Admin/Officer Hub</h1>
-			</div>
+			
 			<hr>
 			<h2>Currently logged in as: <?= $student['officer_log'];?> Officer</h2>
 			<?php
