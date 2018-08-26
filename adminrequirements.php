@@ -19,7 +19,46 @@
 							<h4 class="title"><strong>List of Students in the Database</strong></h4>
 							<p class="category">First Semester of 2018</p>
 						</div>
+						
+
+
+						
+						
+						
 						<div class="" style="padding-left:15px; padding-bottom:20px;">
+							
+													<div class = "select-form">
+	<form method="GET">
+		<div class = "Entry-Form">
+			
+			<h3>Date Start:</h3>
+			<input type="date" name="datestart" class="form-control" >
+			<h3>Date End:</h3>
+			<input type="date" name="dateend" class="form-control" >
+			<br>
+			<button class="btn btn-secondary" type="submit" name ="submitbtn">submit</button>
+		</div>
+
+	</form>
+</div>
+							<br>
+							
+							<?php
+
+
+	if (isset($_GET['submitbtn'])) {
+	$roomid = mysqli_real_escape_string($connection, $_GET['roomid']);	
+	$datetime_start = mysqli_real_escape_string($connection, $_GET['datestart']);
+	$dateend = mysqli_real_escape_string($connection, $_GET['dateend']);
+
+		if ($_GET['datestart'] == "") {
+			$datetime_start = '1010-08-10 10:41:45';
+		}
+		if ($_GET['dateend'] == "") {
+			$datetime_end = '3020-08-10 10:41:45';
+		}
+		?>
+							
 
 							<div class="row">
 								<?php// echo $view_society; ?>
@@ -38,6 +77,7 @@
 
 									</tr>
 									<?php
+		
 
 
 
@@ -57,8 +97,14 @@
 
 
 											if ( $view_society == 'NHS' ) {
-												$sqlhours = "SELECT SUM(service_hours) FROM students_in_projects WHERE studentid = '$studentid' AND affiliated_group_for_servicehours = 'NHS'";
+												//$sqlhours = "SELECT SUM(service_hours) FROM students_in_projects WHERE studentid = '$studentid' AND affiliated_group_for_servicehours = 'NHS'";
 												//echo $id;
+												
+												$sqlhours = "SELECT SUM(service_hours) FROM students_in_projects, project_list WHERE students_in_projects.projectid = project_list.projectid AND students_in_projects.studentid = '$studentid' AND affiliated_group_for_servicehours = 'NHS' AND project_list.datetime_start >= '$datetime_start' AND project_list.datetime_start <='$datetime_end'";
+												//echo $sqlhours;
+												
+												
+												
 												$resulthours = mysqli_query( $connection, $sqlhours );
 
 												$numCheck = mysqli_num_rows( $resulthours );
@@ -77,8 +123,12 @@
 
 
 											if ( $view_society == 'SNHS' ) {
-												$sqlhours = "SELECT SUM(service_hours) FROM students_in_projects WHERE studentid = '$studentid' AND affiliated_group_for_servicehours = 'SNHS'";
+												//$sqlhours = "SELECT SUM(service_hours) FROM students_in_projects WHERE studentid = '$studentid' AND affiliated_group_for_servicehours = 'SNHS'";
 												//echo $id;
+												
+												$sqlhours = "SELECT SUM(service_hours) FROM students_in_projects, project_list WHERE students_in_projects.projectid = project_list.projectid AND students_in_projects.studentid = '$studentid' AND affiliated_group_for_servicehours = 'SNHS' AND project_list.datetime_start >= '$datetime_start' AND project_list.datetime_start <='$datetime_end'";
+												//echo $sqlhours;
+												
 												$resulthours = mysqli_query( $connection, $sqlhours );
 
 												$numCheck = mysqli_num_rows( $resulthours );
@@ -115,7 +165,7 @@
 										echo "0 results";
 									}
 									//$hours = "0";
-
+	}
 									?>
 
 
