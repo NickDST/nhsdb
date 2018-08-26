@@ -81,7 +81,7 @@ include 'hubheader.php';
 													<br>
 													
 													<select name="affiliated_group_for_servicehours" id="">
-													<option>Select affiliated Honor Society you want service hours to count towards</option>
+													<option>Where do the hours count towards?</option>
 										 			<option value="NHS">NHS</option>
 										  			<option value="SNHS">SNHS</option>
 														
