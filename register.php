@@ -114,7 +114,7 @@ mail($to, $subject, $message, $headers);
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Untitled Document</title>
+	<title>Register!</title>
 </head>
 
 <body>
