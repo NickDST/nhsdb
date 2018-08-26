@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+	<meta name="viewport" content="width=device-width">
 	<meta charset="UTF-8">
 	<title>Index</title>
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
