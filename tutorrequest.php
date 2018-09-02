@@ -259,8 +259,7 @@ endwhile;
 
 
 								<input type="text" name="requestee" id="" class="form-control" placeholder="Your Name" maxlength="100">
-								<br>
-								<input type="email" name="contact" id="" class="form-control" placeholder="Email" maxlength="100">
+								
 								<br>
 								<input type="number" name="age" id="" class="form-control" placeholder="Age">
 								<br>
@@ -302,7 +301,7 @@ endwhile;
 
 								<!--continuing the HTML form-->
 								<br>
-								<input type="text" name="subject_level" id="" class="form-control" placeholder="Topic i.e Fractions" maxlength="100">
+								<input type="text" name="subject_level" id="" class="form-control" placeholder="Topic i.e Fractions" maxlength="100" required>
 
 								<br>
 
@@ -343,7 +342,7 @@ endwhile;
 				//Setting up mysqli_real_escape_string to attempt to avoid SQL injections...	
 				//Putting the POSTs into variables	
 				$requestee = mysqli_real_escape_string( $connection, $_POST[ "requestee" ] );
-				$contact = mysqli_real_escape_string( $connection, $_POST[ "contact" ] );
+				$contact = $requestee_contact;
 				$subject_level = mysqli_real_escape_string( $connection, $_POST[ "subject_level" ] );
 				$age = mysqli_real_escape_string( $connection, $_POST[ "age" ] );
 

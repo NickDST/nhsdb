@@ -9,11 +9,14 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 	$username = mysqli_real_escape_string( $connection, $_POST[ "username" ] );
 	$email = mysqli_real_escape_string( $connection, $_POST[ "email" ] );
 	$parent_or_student = mysqli_real_escape_string( $connection, $_POST[ "parent_or_student" ] );
-	$full_name = mysqli_real_escape_string( $connection, $_POST[ "full_name" ] );
+	$first_name = mysqli_real_escape_string( $connection, $_POST[ "first_name" ] );
+	$last_name = mysqli_real_escape_string( $connection, $_POST[ "last_name" ] );
 	$age = mysqli_real_escape_string( $connection, $_POST[ "age" ] );
 	$password = md5( $_POST[ "password" ] );
 	$passwordAgain = md5( $_POST[ "passwordAgain" ] );
 
+	$full_name = "$first_name"." "."$last_name";
+	
 
 	if ( $parent_or_student == "parent" ) {
 		$age = '0';
@@ -59,7 +62,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 
 			$result = mysqli_query( $connection, $sql );
 			if ( $result ) {
-				$smsg = "Success! Check your <strong>spam inbox</strong> for the registration email. Make sure to set that email to <strong>THIS IS NOT SPAM</strong>";
+				//$smsg = "Success! Check your <strong>spam inbox</strong> for the registration email. You can now Log In! Go into the Login page to log in.";
 				
 				$to = $email;
 $subject = "Thank you for registering to HonorHelp!";
@@ -68,9 +71,12 @@ $message = "Thank you for registering to HonorHelp!! Please set this email to TH
 $headers = 'From: HonorHelp <HonorHelp@database.com>' . PHP_EOL .
     'Reply-To: HonorHelp <HonorHelp@database.com>' . PHP_EOL .
     'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
+				
+				
+				
+echo '<script>window.location.href = "requestlogin.php?success=Success! Make sure to CHECK your SPAM INBOX for the registration email. Now you can log in";</script>';			
 			
-			
-mail($to, $subject, $message, $headers);
+//mail($to, $subject, $message, $headers);
 //echo "<br>email to Project Manager sent";
 
 
@@ -134,6 +140,9 @@ mail($to, $subject, $message, $headers);
 
 
 	<!--This is the HTML for the form-->
+	
+		<p class="message">Already registered? <a href="requestlogin.php" class = "btn btn-primary">Sign In</a>
+	</p>
 	<div class="login-container">
 		<section class="login" id="login">
 
@@ -141,7 +150,8 @@ mail($to, $subject, $message, $headers);
 			<form class="login-form" action="#" method="post">
 				<input type="text" name="username" class="login-input" placeholder="Username" maxlength="100" required/>
 
-				<input type="text" name="full_name" class="login-input" placeholder="Full Name" maxlength="100" required/>
+				<input type="text" name="first_name" class="login-input" placeholder="First Name" maxlength="100" required/>
+				<input type="text" name="last_name" class="login-input" placeholder="Last Name" maxlength="100" required/>
 				<input type="password" name="password" id="input Password" class="login-input" placeholder="Password" maxlength="100" required/>
 				<input type="email" name="email" id="inputEmail" class="login-input" placeholder="Email address" maxlength="100" required/>
 				<!-- <input type="text" name="studentid" class="login-input" placeholder="Student ID" maxlength="100" required/> -->
@@ -169,8 +179,7 @@ mail($to, $subject, $message, $headers);
 	</div>
 
 
-	<p class="message">Already registered? <a href="requestlogin.php">Sign In</a>
-	</p>
+
 
 
 	<script src="js/loginindex.js"></script>

@@ -23,7 +23,7 @@ include 'hubheader.php'
 
 						<div class="header">
 							<h2 class="title">All Projects</h2>
-							<h3 class="category">Search Project</h3>
+							<h3 class="category">Click on a project for its information</h3>
 						</div>
 						<br>
 						<div class="" style="padding-left:15px;">
@@ -44,7 +44,7 @@ include 'hubheader.php'
 									while ( $row = mysqli_fetch_assoc( $result ) ) {
 										echo "
 				<div>
-					<h3>" . $row[ 'project_name' ] . "</h3>
+					<a href = 'searchproject3.php?name=".$row['project_name']."&startdate=".$row['datetime_start']."&id=".$row['projectid']."'><h3>" . $row[ 'project_name' ] . "</h3></a>
 					<p>" . $row[ 'project_description' ] . "</p>
 				</div>
 				<hr>";

@@ -83,7 +83,7 @@ while ( $student = $result->fetch_assoc() ):
 
 		<div class="sidebar-wrapper">
 			<div class="logo">
-				<a href="index.php" class="simple-text">
+				<a href="index.htm" class="simple-text">
                     Honor Help
                 </a>
 			
@@ -309,6 +309,7 @@ if (isset($_SESSION['snhs_officer_rights'])) {
 								<?php echo "Name: ".$pendingrequest['requestee'];?> <br>
 
 								<?php echo $pendingrequest['contact'];?> <br>
+								<?php echo "Date Time Start: ". $pendingrequest['datetime_start'];?> <br>
 								<?php echo nl2br($pendingrequest['subject']."\r\n");?>
 								<hr>
 
@@ -447,7 +448,7 @@ if (isset($_SESSION['snhs_officer_rights'])) {
 					&copy;
 					<script>
 						document.write( new Date().getFullYear() )
-					</script> Honor Help
+					</script> Powered by Weebs
 				</p>
 			</div>
 		</footer>

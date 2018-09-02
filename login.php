@@ -82,6 +82,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 	} else {
 		//echo "Invalid Username/Password";
 		echo '<script>window.location.href = "login.php?error=Invalid Username/Password";</script>';	
+		//echo "<script>window.location.href = 'login.php?error='$ello' Username/Password';</script>";
 
 	}
 
@@ -159,7 +160,7 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 		</div>
 		<br>
 		<a href="logout.php"><button class = "login-button">logout</button></a>
-		<a href="index.php"><button class = "login-button">Back</button></a>
+		<a href="index.htm"><button class = "login-button">Back</button></a>
 		<br>
 
 

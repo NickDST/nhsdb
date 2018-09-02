@@ -52,7 +52,7 @@ while ($student = $result->fetch_assoc()): ?>
 	<a href="removeself.php">Remove myself from a project/tutor</a>
 	<br>
 	<!--heads back-->
-	<a href="index.php">back</a>
+	<a href="index.htm">back</a>
 	
 	
 	<h4> Pending Requests: </h4>

@@ -213,7 +213,7 @@ endwhile;
 
 							?>
 							<?php
-							$fieldsql = "SELECT students_in_subjects.*, students.* FROM students_in_subjects, students WHERE students.studentid = students_in_subjects.studentid AND students.studentid = '$id'";
+							$fieldsql = "SELECT students_in_subjects.*, students.* FROM students_in_subjects, students WHERE students.studentid = students_in_subjects.studentid AND students.studentid = '$studentid'";
 							$fieldresultsql = mysqli_query( $connection, $fieldsql );
 
 							$fieldresultCheck = mysqli_num_rows( $fieldresultsql );
@@ -240,8 +240,21 @@ endwhile;
 							?>
 							<br>
 							<hr>
+							
+							<?php
+							$sql = "SELECT available_times.*, students_in_societies.*, students.* FROM available_times, students_in_societies, students WHERE students_in_societies.studentid = students.studentid AND available_times.studentid = students.studentid AND students.studentid = '$studentid' AND students_in_societies.honor_society = 'NHS'";
+												
+												
+												$resulthours = mysqli_query( $connection, $sql );
 
+												echo $numCheck = mysqli_num_rows( $resulthours );
+												//$numCheck = $number;
+												while ( $nhstotalhours = $resulthours->fetch_assoc() ):
+												
+												endwhile;
+											
 
+?>
 
 
 							<h3><strong>Involved Projects</strong></h3>

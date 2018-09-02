@@ -85,7 +85,7 @@ while ( $requestee = $result->fetch_assoc() ):
 
 		<div class="sidebar-wrapper">
 			<div class="logo">
-				<a href="index.php" class="simple-text">
+				<a href="index.htm" class="simple-text">
                     Honor Help
                 </a>
 
@@ -142,7 +142,7 @@ while ( $requestee = $result->fetch_assoc() ):
 
                     </button>
 
-					<a class="navbar-brand" href="#">Welcome</a>
+					<a class="navbar-brand" href="#">Welcome <?=$requestee['full_name']?></a>
 				</div>
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav navbar-left">
@@ -184,7 +184,7 @@ while ( $requestee = $result->fetch_assoc() ):
 
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="index.php">Back to Index</a>
+								<li><a href="index.htm">Back to Index</a>
 								</li>
 
 								<li class="divider"></li>

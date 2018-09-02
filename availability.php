@@ -59,7 +59,7 @@ endwhile;
     //select a particular cell, dragging events and stuff
     selectable:true,
     selectHelper:true,
-    select: function(start, end, allDay)
+    select: function(start, end, allday)
     {
      var title = prompt("Enter Event Title");
      if(title)
@@ -92,7 +92,7 @@ endwhile;
       data:{title:title, start:start, end:end, id:id},
       success:function(){
        calendar.fullCalendar('refetchEvents');
-       alert('Event Update');
+       //alert('Event Update');
       }
      })
     },
@@ -110,7 +110,7 @@ endwhile;
       success:function()
       {
        calendar.fullCalendar('refetchEvents');
-       alert("Event Updated");
+       //alert("Event Updated");
       }
      });
     },
@@ -213,7 +213,8 @@ endwhile;
 				<a href="hub.php" class ="btn btn-info">Back to Hub</a>
 				<br>
 				<br>
-
+<h3>If you haven't set dates yet, <strong style = "color: red;">please set dates after September 7th.</strong></h3>
+				<p>This is because tutor requestees cannot choose times within three days of today (to allow tutorers to know a certain time in advance)</p>
 						   
 	  
   						</div>

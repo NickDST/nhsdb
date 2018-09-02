@@ -276,8 +276,8 @@ mail($to, $subject, $message, $headers);
 
 		
 $to = $requestee_email;
-$subject = "EMAIL TO REQUESTEE IN $society";
-$message = "Your Request has been received/activated! \r\ntutor name: $studentname \r\n\r\nYou will be starting at for the time starting at $datetime_start to $datetime_end. Your tutorer has asked to meet up at this location: $location";
+$subject = "Your Request has been Activated!";
+$message = "Your Request has been received/activated! \r\ntutor name: $studentname \r\n\r\nYou will be starting at for the time starting at $datetime_start to $datetime_end. Your tutorer has asked to meet up at this location: $location \r\n\r\n PLEASE MAKE SURE to log into your tutors.concordiashanghai.org account to verify the tutoring after the event takes place, this is how our members get service hours.";
 
 $headers = 'From: Honor Help <HonorHelp@database.com>' . PHP_EOL .
     'Reply-To: Honor Help <HonorHelp@database.com>' . PHP_EOL .
@@ -332,6 +332,19 @@ if(isset($_POST['reject']) & !empty(isset($_POST['reject']))){
 			//echo "Entry failed to be removed";
 			echo '<script>window.location.href = "confirmpending.php?error=Entry failed to be removed";</script>';	
 		}
+		
+		$sql5 = "DELETE FROM available_times WHERE studentid = '$id' AND datetime_start = '$datetime_start' AND datetime_end = '$datetime_end'";
+		
+		$result5 = mysqli_query($connection, $sql5);
+		if ($result5) {
+			//echo "date successfully removed";
+
+
+		} else {
+		
+			//echo "Entry failed to be removed";
+			echo '<script>window.location.href = "confirmpending.php?error=Entry failed to be removed";</script>';	
+		}	
 
 			
 	//querying to look for the student email		
@@ -350,11 +363,27 @@ if(isset($_POST['reject']) & !empty(isset($_POST['reject']))){
 					 endwhile; 
 				} else {
 					echo "Student has no email";
-				}		
+				}	
+	
+		
+if ($society == "NHS") {
+		
+		$teacher_contact = 'Jennifer.chapman@concordiashanghai.org';
+
+		}
+		
+		if ($society == "SNHS") {
+			
+		$teacher_contact = 'todd.gordon@concordiashanghai.org';
+
+			
+		}		
+		
+		
 	
 	
-	$to = $chapmanemail;
-$subject = "EMAIL TO CHAPMAN";
+	$to = $teacher_contact;
+$subject = "A Student has Rejected a Request";
 $message = "$studentname has rejected $requestee for tutoring at $datetime_start for the reason of '$reason'. ";
 
 $headers = 'From: Honor Help <honorhelp@database.com>' . PHP_EOL .
@@ -363,7 +392,28 @@ $headers = 'From: Honor Help <honorhelp@database.com>' . PHP_EOL .
 	
 mail($to, $subject, $message, $headers);
 //echo "<br>email to chapman has been sent";
+		
+		
+	$to = $requestee_email;
+$subject = "HonorHelp - Your Request";
+$message = "We are terribly sorry, but the student has rejected the time you have requested. This shouldn't happen often. Please try to schedule another date for a tutor request at tutors.concordiashanghai.org. ";
+
+$headers = 'From: Honor Help <honorhelp@database.com>' . PHP_EOL .
+    'Reply-To: HonorHelp <honorhelp@database.com>' . PHP_EOL .
+    'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
+	
+mail($to, $subject, $message, $headers);
+//echo "<br>email to chapman has been sent";		
+		
+		
+		
+		
+		
 		echo '<script>window.location.href = "confirmpending.php?success=Email to Chapman/Gordon Sent!";</script>';	
+		
+		
+		
+		
 			
 } 
 }

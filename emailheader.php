@@ -9,9 +9,11 @@ $vpemail = 'nicholas2019108@concordiashanghai.org';
 
 $NHS_requestofficeremail = "nicholas2019108@concordiashanghai.org";
 
-$presidentemail = "";
+$NHSpresidentemail = "";
 
-$tutormanageremail = "";
+$NHStutormanageremail = "";
+
+$NHSprojectmanageremail = "";
 
 $snhsemail = "nicholas2019108@concordiashanghai.org";
 

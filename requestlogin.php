@@ -116,12 +116,12 @@ if ( isset( $_POST ) & !empty( $_POST ) ) {
 		</div>
 		</form>
 		</section>
-		<p class="message">Not registered? <a href="requesteeregister.php">Create an account</a>
+		<p class="message">Not registered? <a href="requesteeregister.php" class = "btn btn-primary">Create an account</a>
 		</p>
 		</div>
 		<br>
 		<a href="logout.php"><button class = "login-button">logout</button></a>
-		<a href="index.php"><button class = "login-button">Back</button></a>
+		<a href="index.htm"><button class = "login-button">Back</button></a>
 		<br>
 
 

@@ -25,7 +25,7 @@ endwhile;
 
 $data = array();
 
-$query = "SELECT available_times.*, students_in_societies.* FROM available_times, students_in_societies WHERE students_in_societies.studentid = available_times.studentid AND students_in_societies.honor_society = '$view_society'";
+$query = "SELECT available_times.*, students_in_societies.*, students.* FROM available_times, students_in_societies, students WHERE students_in_societies.studentid = available_times.studentid AND students.studentid = students_in_societies.studentid AND students_in_societies.honor_society = '$view_society'";
 
 $statement = $connect->prepare($query);
 
@@ -37,7 +37,7 @@ foreach($result as $row)
 {
  $data[] = array(
   'id'   => $row["id"],
-  'title'   => $row["studentid"],
+  'title'   => $row["name"],
   'start'   => $row["datetime_start"],
   'end'   => $row["datetime_end"]
  );

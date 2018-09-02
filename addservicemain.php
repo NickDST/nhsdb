@@ -47,6 +47,7 @@ include 'hubheader.php'
 					<h3>" . $row[ 'project_name' ] . "</h3>
 					<p>" . $row[ 'project_description' ] . "</p>
 				</div>
+				<a class = 'btn btn-success' href = 'addmyselfproject.php?name=" . $row[ 'project_name' ] . "&startdate=" . $row[ 'datetime_start' ] . "&id=" . $row[ 'projectid' ] . "'>I'm also in this project</a>
 				<hr>";
 									}
 
@@ -54,6 +55,9 @@ include 'hubheader.php'
 								}
 
 								?>
+								<h5>Don't see anything matching your search? <a href="newproject.php" class = "btn btn-warning">add a new project</a></h5>
+								<br>
+									
 							</div>
 						</div>
 					</div>

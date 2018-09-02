@@ -65,7 +65,7 @@ while ($student = $result->fetch_assoc()): ?>
 
     	<div class="sidebar-wrapper">
             <div class="logo">
-                <a href="index.php" class="simple-text">
+                <a href="index.htm" class="simple-text">
                     NHS HUB
                 </a>
             </div>

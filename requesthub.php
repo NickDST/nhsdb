@@ -18,17 +18,31 @@
 				<div class="card">
 
 					<div class="header">
-						<h4 class="title"><strong>My Tutoring Events</strong></h4>
-						<p class="category">Please View Your Active Requests</p>
+						<h3 class="title"><strong>What should I do?</strong></h3>
+						<br>
+						<a href="tutorrequest.php" class = "btn btn-primary"><h5>Click here to make a tutor request!</h5></a>
+						<br>
+						<br>
+						<a href="verifytutoring.php" class = "btn btn-dark"><p>Click here to Verify the tutoring event! </p></a>
+<!--						<p class="category">Please View Your Active Requests</p>-->
 					</div>
 					<div class="" style="padding-left:15px; padding-bottom:20px;">
-						<br>
+						
+						
 
 						<!--				This is where you can give some information to the entering tutorers				-->
-						<p>This is where you can make tutor requests and verify tutor events!!</p>
-						<p>On the left bar you can make tutor requests!</p>
-						<p>After the tutor event, make sure to verify the tutoring so our students can get their service hours!</p>
-						<p>If you have any questions, email one of our officers!</p>
+<!--						<a href="tutorrequest.php" class = "btn btn-primary"><h5>Click here to make a tutor request!</h5></a>-->
+						
+						
+						
+						
+<!--						<a href="verifytutoring.php" class = "btn btn-primary"><p>Make sure to come back here to verify the tutoring after it takes place!</p></a>-->
+						
+						
+						
+						<h4><strong>After the tutor event, make sure to verify the tutoring so our students can get their service hours!</strong></h4>
+						<hr>
+						<p>This is where you will request for tutor events and verify tutoring events. <strong>Look at the left bar to see what you can do. </strong> Enjoy your tutoring experience!</p>
 
 
 
@@ -42,7 +56,7 @@
 
 					<div class="header">
 						<h4 class="title">All My Active Tutoring Events</h4>
-						<p class="category">This is active! </p>
+						<p class="category">Mark this on your calendar!</p>
 					</div>
 					<div class="" style="padding-left:15px; padding-bottom:20px;">
 						<br>

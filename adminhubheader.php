@@ -189,6 +189,39 @@ echo "I have snhs officer rights";
 					
 					</li>
 					<br>
+					<li class="active">
+						<a href="adminmodifyproject.php">
+                        <i class="pe-7s-edit"></i>
+                        <p>Modify Project Info</p>
+                    </a>
+					
+					</li>
+					
+					<br>
+					
+					<li class="active">
+						<a href="emailshooter.php">
+                        <i class="pe-7s-edit"></i>
+                        <p>Send an email</p>
+                    </a>
+					
+					</li>
+					<br>
+					<li class="active">
+						<a href="searchstudentfields.php">
+                        <i class="pe-7s-anchor"></i>
+                        <p>students in Subjects</p>
+                    </a>
+					
+					</li>
+					<br>
+					<li class="active">
+						<a href="didpeoplesetdates.php">
+                        <i class="pe-7s-anchor"></i>
+                        <p>Check number of dates</p>
+                    </a>
+					
+					</li>
 					<?php	 }  ?>
 
 				</ul>
