@@ -258,11 +258,37 @@ $headers = 'From: HonorHelp <HonorHelp@database.com>' . PHP_EOL .
     'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
 			
 			
-mail($to, $subject, $message, $headers);
+//mail($to, $subject, $message, $headers);
 //echo "<br>email to Project Manager sent";
 	
 		
-			
+	$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+try {
+    //Server settings
+   // $mail->SMTPDebug = 1;                                 // Enable verbose debug output
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = 'smtp.office365.com';  // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    $mail->Username = $very_secure_email_username;                 // SMTP username
+    $mail->Password = $very_secure_email_password;                           // SMTP password
+    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 587;                                    // TCP port to connect to
+    //Recipients
+    $mail->setFrom($very_secure_email_username, 'Nick');
+    $mail->addAddress($to, 'Recipient');     // Add a recipient
+    //Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = $subject;
+    $mail->Body    = $message;
+    $mail->AltBody = $message;
+
+    $mail->send();
+    echo 'Message has been sent';
+} catch (Exception $e) {
+    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+}
+
+		
 			
 $to = $studentcontact;
 $subject = "EMAIL TO STUDENT CONTACT IN $society";
@@ -270,9 +296,37 @@ $message = "You have confirmed the tutor request! Here is an email of the info \
 $headers = 'From: Honor Help <HonorHelp@database.com>' . PHP_EOL .
     'Reply-To: Honor Help <HonorHelp@database.com>' . PHP_EOL .
     'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
-mail($to, $subject, $message, $headers);
+//mail($to, $subject, $message, $headers);
 //echo "<br>email to student tutor sent";
-			
+
+		
+	$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+try {
+    //Server settings
+   // $mail->SMTPDebug = 1;                                 // Enable verbose debug output
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = 'smtp.office365.com';  // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    $mail->Username = $very_secure_email_username;                 // SMTP username
+    $mail->Password = $very_secure_email_password;                           // SMTP password
+    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 587;                                    // TCP port to connect to
+    //Recipients
+    $mail->setFrom($very_secure_email_username, 'Nick');
+    $mail->addAddress($to, 'Recipient');     // Add a recipient
+    //Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = $subject;
+    $mail->Body    = $message;
+    $mail->AltBody = $message;
+
+    $mail->send();
+    echo 'Message has been sent';
+} catch (Exception $e) {
+    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+}
+
+				
 
 		
 $to = $requestee_email;
@@ -283,9 +337,37 @@ $headers = 'From: Honor Help <HonorHelp@database.com>' . PHP_EOL .
     'Reply-To: Honor Help <HonorHelp@database.com>' . PHP_EOL .
     'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
 			
-mail($to, $subject, $message, $headers);
+//mail($to, $subject, $message, $headers);
 //echo "<br>email to requestee  sent";			
+
 		
+	$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+try {
+    //Server settings
+   // $mail->SMTPDebug = 1;                                 // Enable verbose debug output
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = 'smtp.office365.com';  // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    $mail->Username = $very_secure_email_username;                 // SMTP username
+    $mail->Password = $very_secure_email_password;                           // SMTP password
+    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 587;                                    // TCP port to connect to
+    //Recipients
+    $mail->setFrom($very_secure_email_username, 'Nick');
+    $mail->addAddress($to, 'Recipient');     // Add a recipient
+    //Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = $subject;
+    $mail->Body    = $message;
+    $mail->AltBody = $message;
+
+    $mail->send();
+    echo 'Message has been sent';
+} catch (Exception $e) {
+    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+}
+
+			
 			
 			
 	
@@ -298,8 +380,38 @@ $headers = 'From: Honor Help <HonorHelp@database.com>' . PHP_EOL .
     'Reply-To: Honor Help <HonorHelp@database.com>' . PHP_EOL .
     'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
 			
-mail($to, $subject, $message, $headers);
+//mail($to, $subject, $message, $headers);
 //echo "<br>email to TEACHER has been sent";
+		
+		
+		
+$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+try {
+    //Server settings
+   // $mail->SMTPDebug = 1;                                 // Enable verbose debug output
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = 'smtp.office365.com';  // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    $mail->Username = $very_secure_email_username;                 // SMTP username
+    $mail->Password = $very_secure_email_password;                           // SMTP password
+    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 587;                                    // TCP port to connect to
+    //Recipients
+    $mail->setFrom($very_secure_email_username, 'Nick');
+    $mail->addAddress($to, 'Recipient');     // Add a recipient
+    //Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = $subject;
+    $mail->Body    = $message;
+    $mail->AltBody = $message;
+
+    $mail->send();
+    echo 'Message has been sent';
+} catch (Exception $e) {
+    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+}
+
+	
 			
 		} else { 
 			//echo "Emails failed to send";

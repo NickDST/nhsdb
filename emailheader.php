@@ -1,6 +1,13 @@
 <?php
 
-//Configurable emails 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+//Load Composer's autoloader
+require 'vendor/autoload.php';
+
+
+$very_secure_email_password = "SMSConcordiaSH2017";
+$very_secure_email_username = "sms@concordiashanghai.org";
 
 
 $chapmanemail = 'nicholas2019108@concordiashanghai.org';

@@ -47,6 +47,8 @@ endwhile;
 <!DOCTYPE html>
 <html>
 <head>
+    
+	
 	<br>
 	<title>Tutor Request</title>
 
@@ -141,7 +143,7 @@ endwhile;
 								<br>
 								<br>
 								<p>Then click on the date you want</p>
-								<a href="requesthub.php">or go back</a>
+								<a href="requesthub.php" class = "btn btn-primary">or go back</a>
 								<hr>
 								<!--                                <p class="category">Click a cell to set a time where you are available</p>-->
 						</div>
@@ -259,7 +261,8 @@ endwhile;
 
 
 								<input type="text" name="requestee" id="" class="form-control" placeholder="Your Name" maxlength="100">
-								
+							
+							
 								<br>
 								<input type="number" name="age" id="" class="form-control" placeholder="Age">
 								<br>
@@ -301,7 +304,7 @@ endwhile;
 
 								<!--continuing the HTML form-->
 								<br>
-								<input type="text" name="subject_level" id="" class="form-control" placeholder="Topic i.e Fractions" maxlength="100" required>
+								<input type="text" name="subject_level" id="" class="form-control" placeholder="Topic i.e Fractions" maxlength="100">
 
 								<br>
 
@@ -342,7 +345,9 @@ endwhile;
 				//Setting up mysqli_real_escape_string to attempt to avoid SQL injections...	
 				//Putting the POSTs into variables	
 				$requestee = mysqli_real_escape_string( $connection, $_POST[ "requestee" ] );
+				//$contact = mysqli_real_escape_string( $connection, $_POST[ "contact" ] );
 				$contact = $requestee_contact;
+				
 				$subject_level = mysqli_real_escape_string( $connection, $_POST[ "subject_level" ] );
 				$age = mysqli_real_escape_string( $connection, $_POST[ "age" ] );
 
@@ -372,7 +377,35 @@ endwhile;
 						'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
 
 						//$headers = "Content-type: text/html\r\n";
-						mail( $to, $subject, $message, $headers );
+						//mail( $to, $subject, $message, $headers );
+						
+						
+$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+try {
+    //Server settings
+   // $mail->SMTPDebug = 1;                                 // Enable verbose debug output
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = 'smtp.office365.com';  // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    $mail->Username = $very_secure_email_username;                 // SMTP username
+    $mail->Password = $very_secure_email_password;                           // SMTP password
+    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 587;                                    // TCP port to connect to
+    //Recipients
+    $mail->setFrom($very_secure_email_username, 'Nick');
+    $mail->addAddress($to, 'Recipient');     // Add a recipient
+    //Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = $subject;
+    $mail->Body    = $message;
+    $mail->AltBody = $message;
+
+    $mail->send();
+    echo 'Message has been sent';
+} catch (Exception $e) {
+    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+}
+
 						echo "email to Project Manager sent";
 					}
 
@@ -388,7 +421,34 @@ endwhile;
 						'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
 
 						//$headers = "Content-type: text/html\r\n";
-						mail( $to, $subject, $message, $headers );
+						//mail( $to, $subject, $message, $headers );
+						
+$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+try {
+    //Server settings
+   // $mail->SMTPDebug = 1;                                 // Enable verbose debug output
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = 'smtp.office365.com';  // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    $mail->Username = $very_secure_email_username;                 // SMTP username
+    $mail->Password = $very_secure_email_password;                           // SMTP password
+    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 587;                                    // TCP port to connect to
+    //Recipients
+    $mail->setFrom($very_secure_email_username, 'Nick');
+    $mail->addAddress($to, 'Recipient');     // Add a recipient
+    //Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = $subject;
+    $mail->Body    = $message;
+    $mail->AltBody = $message;
+
+    $mail->send();
+    echo 'Message has been sent';
+} catch (Exception $e) {
+    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+}
+
 						echo "email to Project Manager sent";
 					}
 					unset( $_SESSION[ "tutortime" ] );
@@ -448,15 +508,43 @@ endwhile;
 							//Automated Email Test. The email variables are in the emailheader.php
 
 							$to = $vpemail;
-							$subject = "A tutor Request has been submitted!!";
-							$message = "A new Request has been submitted \r\nRequestee name: '$requestee' \r\nThey are requesting for the time starting at '$datetime_start'";
+							$subject = "An initial new tutor request has been submitted";
+							$message = "A new Request has been submitted \r\nRequestee name: '$requestee' \r\nThey are requesting for the time starting at '$datetime_start'. The tutor contact is '$studentcontact'. This is the first level of tutor request. We are now waiting for the tutor request to be accepted by the tutor.";
 
-							$headers = 'From: NHS  <NHS@database.com>' . PHP_EOL .
+							$headers = 'From: Honor Help <honorhelp@database.com>' . PHP_EOL .
 							'Reply-To: NHS <NHS@database.com>' . PHP_EOL .
 							'X-Mailer: PHP/' . phpversion() . "Content-type: text/html";
 
 							//$headers = "Content-type: text/html\r\n";
-							mail( $to, $subject, $message, $headers );
+							//mail( $to, $subject, $message, $headers );
+							
+							
+$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+try {
+    //Server settings
+   // $mail->SMTPDebug = 1;                                 // Enable verbose debug output
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = 'smtp.office365.com';  // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    $mail->Username = $very_secure_email_username;                 // SMTP username
+    $mail->Password = $very_secure_email_password;                           // SMTP password
+    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 587;                                    // TCP port to connect to
+    //Recipients
+    $mail->setFrom($very_secure_email_username, 'Nick');
+    $mail->addAddress($to, 'Recipient');     // Add a recipient
+    //Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = $subject;
+    $mail->Body    = $message;
+    $mail->AltBody = $message;
+
+    $mail->send();
+    echo 'Message has been sent';
+} catch (Exception $e) {
+    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+}
+
 							echo "email to Project Manager sent";
 
 						} else {
@@ -467,20 +555,48 @@ endwhile;
 
 						$to = $studentcontact;
 						$subject = "";
-						$message = " Someone has requested for you to tutor them in $subject. \r\nRequestee name: $requestee \r\n\r\nThey are requesting for the time starting at $datetime_start to $datetime_end \r\n\r\nLog into the NHS database to verify this request They are $age years old.";
+						$message = " Someone has requested for you to tutor them in $subject. \r\nRequestor name: $requestee \r\n\r\nThey are requesting for the time starting at $datetime_start to $datetime_end \r\n\r\nLog into the NHS database to verify this request They are $age years old.";
 
-						$headers = 'From: Honor Help <system@honorhelp.com>' . PHP_EOL .
+						$headers = 'From: Honor Help <honorhelp@database.com>' . PHP_EOL .
 						'Reply-To: Honor Help <reply@honorhelp.com>' . PHP_EOL .
 						'X-Mailer: PHP/' . phpversion() . 'Content-type: text/html; charset: utf8\r\n' . 'MIME-Version: 1.0';
 
-						mail( $to, $subject, $message, $headers );
+					//	mail( $to, $subject, $message, $headers );
+					
+					
+$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+try {
+    //Server settings
+   // $mail->SMTPDebug = 1;                                 // Enable verbose debug output
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = 'smtp.office365.com';  // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    $mail->Username = $very_secure_email_username;                 // SMTP username
+    $mail->Password = $very_secure_email_password;                           // SMTP password
+    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 587;                                    // TCP port to connect to
+    //Recipients
+    $mail->setFrom($very_secure_email_username, 'Nick');
+    $mail->addAddress($to, 'Recipient');     // Add a recipient
+    //Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = $subject;
+    $mail->Body    = $message;
+    $mail->AltBody = $message;
+
+    $mail->send();
+    echo 'Message has been sent';
+} catch (Exception $e) {
+    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+}
+
 						echo "email to student tutor sent";
 						
 						
 						
 						$to = $contact;
-							$subject = "EMAIL TO Requestee";
-							$message = "You have sent in a tutor request from $datetime_start to $datetime_end for $subject. We will notify you when your request has been accepted";
+							$subject = "EMAIL TO Requestor";
+							$message = "You have sent in a tutor request from $datetime_start to $datetime_end for $subject. You have sent the request to $studentcontact. We will notify you when your request has been accepted";
 
 							
 							$headers = 'From: Honor Help <honorhelp@database.com>' . PHP_EOL .
@@ -488,7 +604,35 @@ endwhile;
 							'X-Mailer: PHP/' . phpversion() . "Content-type: text/html"; 
 							
 
-							mail( $to, $subject, $message, $headers );
+							//mail( $to, $subject, $message, $headers );
+							
+							
+$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+try {
+    //Server settings
+   // $mail->SMTPDebug = 1;                                 // Enable verbose debug output
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = 'smtp.office365.com';  // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    $mail->Username = $very_secure_email_username;                 // SMTP username
+    $mail->Password = $very_secure_email_password;                           // SMTP password
+    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 587;                                    // TCP port to connect to
+    //Recipients
+    $mail->setFrom($very_secure_email_username, 'Nick');
+    $mail->addAddress($to, 'Recipient');     // Add a recipient
+    //Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = $subject;
+    $mail->Body    = $message;
+    $mail->AltBody = $message;
+
+    $mail->send();
+    echo 'Message has been sent';
+} catch (Exception $e) {
+    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+}
+
 
 
 

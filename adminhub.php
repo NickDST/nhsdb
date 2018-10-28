@@ -74,7 +74,7 @@
 								?>
 						<?php echo"Name: ".$projectinfo['name'];?> <br>
 						<?php echo"Project Name: ". $projectinfo['project_name'];?> <br>
-						<?php echo"Requestee: ". $projectinfo['requestee'];?> <br>
+						<?php echo"Requestor: ". $projectinfo['requestee'];?> <br>
 						<?php echo "Role: ".nl2br($projectinfo['role']."\r\n");?>
 
 						<hr>

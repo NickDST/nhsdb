@@ -30,7 +30,7 @@
 						
 						
 
-						<!--				This is where you can give some information to the entering tutorers				-->
+						<!--				This is where you can give some information to the entering tuts				-->
 <!--						<a href="tutorrequest.php" class = "btn btn-primary"><h5>Click here to make a tutor request!</h5></a>-->
 						
 						

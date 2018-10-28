@@ -27,7 +27,7 @@ $data = array();
 
 //$query = "SELECT available_times.*, students_in_subjects.* FROM available_times, students_in_subjects WHERE available_times.studentid = students_in_subjects.studentid AND students_in_subjects.subject = '$subjectname' AND available_times.hold = 'free' AND datetime_start > NOW()";
 
-$query = "SELECT available_times.*, students_in_subjects.* FROM available_times, students_in_subjects WHERE available_times.studentid = students_in_subjects.studentid AND students_in_subjects.subject = '$subjectname' AND available_times.hold = 'free' AND datetime_start > adddate(now(),+3)";
+$query = "SELECT available_times.*, students_in_subjects.*, students.* FROM available_times, students_in_subjects, students WHERE available_times.studentid = students_in_subjects.studentid AND students_in_subjects.subject = '$subjectname' AND students.studentid = available_times.studentid AND available_times.hold = 'free' AND datetime_start > adddate(now(),+3)";
 
 
 $statement = $connect->prepare($query);
@@ -41,7 +41,7 @@ foreach($result as $row)
  $data[] = array(
   'id'   => $row["id"],
 	 //taking out the titles
-  'title'   => $row["grouporone"],
+  'title'   => $row["name"],
   'start'   => $row["datetime_start"],
   'end'   => $row["datetime_end"]
  );

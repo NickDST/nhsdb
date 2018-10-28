@@ -24,7 +24,7 @@
 								$startdate = mysqli_real_escape_string( $connection, $_GET[ 'startdate' ] );
 								$requestid = mysqli_real_escape_string( $connection, $_GET[ 'id' ] );
 								//echo $projectid;
-								$sql = "SELECT * FROM request WHERE requestid = '$requestid'";
+								$sql = "SELECT request.*, students.* FROM request, students WHERE request.requestid = '$requestid' AND request.studentid = students.studentid";
 								//The requestid is unique, and thus it unpacks the information from the request id
 								
 								//Displays the information
