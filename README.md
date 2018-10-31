@@ -10,22 +10,22 @@ This website is also used to organize and store student service hours and projec
 
 <h3>Here is the main page.</h3>
 
-![alt text](https://github.com/NickDST/nhsdb/blob/master/github_pics/homepage.png)
+![alt text](https://github.com/NickDST/nhsdb/blob/master/website_all_files/github_pics/homepage.png)
 
 <br/>
 <h3>Here is the NHS/SNHS Hub after they log in.</h3>
 
-![alt text](https://github.com/NickDST/nhsdb/blob/master/github_pics/hubpage.png)
+![alt text](https://github.com/NickDST/nhsdb/blob/master/website_all_files/github_pics/hubpage.png)
 
 <br/>
 <h3>Here is where students set times where they are available to tutor.</h3>
 
-![alt text](https://github.com/NickDST/nhsdb/blob/master/github_pics/availability.png)
+![alt text](https://github.com/NickDST/nhsdb/blob/master/website_all_files/github_pics/availability.png)
 
 <br/>
 <h3>NHS/SNHS members can also designate fields/subjects they are willing to tutor in.</h3>
 
-![alt text](https://github.com/NickDST/nhsdb/blob/master/github_pics/set_tutor_fields.png)
+![alt text](https://github.com/NickDST/nhsdb/blob/master/website_all_files/github_pics/set_tutor_fields.png)
 
 <br/>
 <h3>When several members log in their times, the calendar will fill up. Requestors can log in on their account and choose a field/subject, then select tutors from their side. </h3>
@@ -33,14 +33,14 @@ This website is also used to organize and store student service hours and projec
 <br/>
 <h3>When several members log in their times, the calendar will fill up. </h3>
 
-![alt text](https://github.com/NickDST/nhsdb/blob/master/github_pics/calendar.png)
+![alt text](https://github.com/NickDST/nhsdb/blob/master/website_all_files/github_pics/calendar.png)
 
 <br/>
 <h3>Projects and service hours can be entered and stored.</h3>
 
-![alt text](https://github.com/NickDST/nhsdb/blob/master/github_pics/adding_self_to_project.png)
+![alt text](https://github.com/NickDST/nhsdb/blob/master/website_all_files/github_pics/adding_self_to_project.png)
 
-![alt text](https://github.com/NickDST/nhsdb/blob/master/github_pics/project_info.png)
+![alt text](https://github.com/NickDST/nhsdb/blob/master/website_all_files/github_pics/project_info.png)
 
 <br>
 <h3>Extra Notes</h3>
