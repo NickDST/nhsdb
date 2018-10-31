@@ -49,8 +49,11 @@ This website is also used to organize and store student service hours and projec
 
 Credits
 <hr>
+
+
 Expanding Columns - Ettrics (https://codepen.io/ettrics/pen/ZYqKGb) <br>
-Full Calendar - https://github.com/fullcalendar/fullcalendar
+Full Calendar - (https://github.com/fullcalendar/fullcalendar) <br>
+Creative Tim (MIT License) - (https://www.creative-tim.com/product/light-bootstrap-dashboard)
 
 
 
