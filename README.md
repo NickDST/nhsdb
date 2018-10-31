@@ -1,4 +1,5 @@
-# Honor Help (tutors.concordiashanghai.org) The National Honor Society/National Science Honor Society Website
+# Honor Help - The National Honor Society/National Science Honor Society Website
+# Currently hosted/used at tutors.concordiashanghai.org
 
 <p>
 This is primarily a tutoring and service management system on a website using php, mysql, javascript, html and css. This is my second major website project.
